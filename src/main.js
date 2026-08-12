@@ -48,7 +48,7 @@ root.innerHTML = `
 
     <section id="resultados" class="results-section section-yellow"><div class="section-marker dark js-reveal"><span>04</span><span>resultados</span><span>↘</span></div><div class="results-heading"><p class="micro-copy js-reveal">Prova visual de que consistência muda o corpo.</p><h2 class="section-title dark-title js-reveal">Evolução<br /><span>registrada.</span></h2><p class="results-note js-reveal">Imagens de antes e depois fornecidas para apresentar transformações reais. Cada resultado depende do processo, da rotina e do acompanhamento individual.</p></div><div class="before-after-grid"><figure class="before-after-card js-reveal"><img src="${assets.beforeAfterOne}" alt="Comparação de antes e depois de uma aluna em processo de transformação corporal" loading="lazy" /><figcaption><span>transformação 01</span><b>força / composição corporal</b></figcaption></figure><figure class="before-after-card offset js-reveal"><img src="${assets.beforeAfterTwo}" alt="Comparação de antes e depois de uma mulher em processo de transformação corporal" loading="lazy" /><figcaption><span>transformação 02</span><b>consistência / confiança</b></figcaption></figure></div></section>
 
-    <section class="football-section section-dark"><div class="football-video js-reveal"><video autoplay muted loop playsinline preload="metadata" poster="${assets.community}" aria-label="Tiago falando sobre futebol, identidade e transformação social"><source src="${assets.video}" type="video/mp4" /></video><span class="video-caption">vídeo / futebol é muito mais do que uma partida</span></div><div class="football-copy js-reveal"><span class="micro-copy">Além da academia</span><h2>O corpo<br />também é<br /><em>cultura.</em></h2><p>Para Tiago, o esporte carrega identidade, disciplina, trabalho em equipe e oportunidade. É a mesma visão que aparece no treino: técnica para sustentar a paixão.</p><a class="text-link" href="https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y" target="_blank" rel="noreferrer">ver conteúdo no Instagram <span>↗</span></a></div></section>
+    <section class="football-section section-dark"><div class="football-video js-reveal"><video id="football-video" autoplay muted loop playsinline preload="metadata" poster="${assets.community}" aria-label="Tiago falando sobre futebol, identidade e transformação social"><source src="${assets.video}" type="video/mp4" /></video><span class="video-caption">vídeo / futebol é muito mais do que uma partida</span><button class="video-audio-toggle" type="button" aria-pressed="false" aria-label="Ativar som do vídeo"><span class="audio-state">ativar som</span><span aria-hidden="true">↗</span></button></div><div class="football-copy js-reveal"><span class="micro-copy">Além da academia</span><h2>O corpo<br />também é<br /><em>cultura.</em></h2><p>Para Tiago, o esporte carrega identidade, disciplina, trabalho em equipe e oportunidade. É a mesma visão que aparece no treino: técnica para sustentar a paixão.</p><a class="text-link" href="https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y" target="_blank" rel="noreferrer">ver conteúdo no Instagram <span>↗</span></a></div></section>
 
     <section id="estudos" class="cases-section section-paper"><div class="section-marker dark js-reveal"><span>05</span><span>estudos de caso</span><span>↘</span></div><div class="cases-heading"><p class="micro-copy js-reveal">Ciência aplicada com cuidado e contexto.</p><h2 class="section-title dark-title js-reveal">Treinar<br /><span>também é</span><br />cuidar.</h2><p class="cases-note js-reveal">Os estudos acadêmicos mostram como o exercício precisa respeitar a pessoa, o ambiente e a resposta do corpo.</p></div><div class="cases-grid"><article class="case-card case-wide js-reveal"><img src="${assets.inclusionOne}" alt="Estudo de caso sobre esporte adaptado e inclusão através do movimento" loading="lazy" /><div><span class="case-kicker">EDUCAÇÃO FÍSICA INCLUSIVA</span><h3>Participar<br />no próprio ritmo.</h3><p>Adaptação sensorial, rotina visual, instruções claras e jogos cooperativos para ampliar participação e pertencimento.</p></div></article><article class="case-card js-reveal"><img src="${assets.hypertension}" alt="Estudo de caso sobre exercícios e hipertensão" loading="lazy" /><div><span class="case-kicker">FISIOLOGIA DO EXERCÍCIO</span><h3>Segurança<br />antes da carga.</h3><p>Plano individualizado com progressão, monitoramento e combinação de estímulos aeróbicos, resistidos e de mobilidade.</p></div></article><article class="case-card case-dark js-reveal"><img src="${assets.inclusionThree}" alt="Atividade coletiva de educação física inclusiva" loading="lazy" /><div><span class="case-kicker">PRÁTICA E EDUCAÇÃO</span><h3>Movimento<br />para todos.</h3><p>Uma aula acessível melhora o coletivo, fortalece cooperação e respeita diferentes formas de aprender.</p></div></article></div></section>
 
@@ -67,5 +67,49 @@ function bootGsap() {
   if (ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); gsap.utils.toArray(".js-reveal").forEach((element) => gsap.fromTo(element, { y: 32, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: "power3.out", scrollTrigger: { trigger: element, start: "top 84%" } })); gsap.to(".js-object-image", { yPercent: -12, ease: "none", scrollTrigger: { trigger: ".js-object-wrap", scrub: true } }); }
 }
 
+function setupFootballAudio() {
+  const section = document.querySelector(".football-section");
+  const video = document.querySelector("#football-video");
+  const toggle = document.querySelector(".video-audio-toggle");
+  const label = toggle?.querySelector(".audio-state");
+  if (!section || !video || !toggle || !label) return;
+
+  const updateAudioUI = () => {
+    const muted = video.muted;
+    label.textContent = muted ? "ativar som" : "mutar vídeo";
+    toggle.setAttribute("aria-label", muted ? "Ativar som do vídeo" : "Mutar vídeo");
+    toggle.setAttribute("aria-pressed", String(!muted));
+  };
+
+  const tryUnmute = () => {
+    video.muted = false;
+    video.volume = 0.82;
+    const playback = video.play();
+    if (playback?.catch) playback.catch(() => { video.muted = true; updateAudioUI(); });
+    updateAudioUI();
+  };
+
+  toggle.addEventListener("click", () => {
+    if (video.muted) {
+      tryUnmute();
+    } else {
+      video.muted = true;
+      updateAudioUI();
+    }
+  });
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.45)) {
+        tryUnmute();
+        observer.disconnect();
+      }
+    }, { threshold: [0.45] });
+    observer.observe(section);
+  }
+  updateAudioUI();
+}
+
 const waitForLibs = () => { if (window.gsap) { bootGsap(); } else window.setTimeout(waitForLibs, 100); };
 waitForLibs();
+setupFootballAudio();
