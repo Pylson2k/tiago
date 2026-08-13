@@ -48,7 +48,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
 
 .site-shell { min-height: 100vh; position: relative; background: var(--ink); }
-.site-header { height: 76px; padding: 0 3.2vw; position: fixed; z-index: 20; top: 0; left: 0; right: 0; display: grid; grid-template-columns: 1.3fr 1fr auto auto; align-items: center; gap: 2vw; border-bottom: 1px solid rgba(242,238,229,.18); background: rgba(12,13,13,.76); backdrop-filter: blur(16px); }
+.site-header { height: 76px; padding: 0 3.2vw; position: fixed; z-index: 20; top: 0; left: 0; right: 0; display: grid; grid-template-columns: minmax(190px, 1.15fr) auto minmax(280px, 1fr) auto auto; align-items: center; gap: 1.4vw; border-bottom: 1px solid rgba(242,238,229,.18); background: rgba(12,13,13,.76); backdrop-filter: blur(16px); }
 .brand-mark { display: inline-flex; align-items: center; gap: 12px; width: fit-content; font-family: "DM Mono", monospace; font-size: 10px; font-weight: 500; letter-spacing: .06em; }
 .brand-box { width: 31px; height: 31px; display: grid; place-items: center; background: var(--acid); color: var(--ink); font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: -.05em; }
 .brand-name { line-height: .9; }
@@ -190,8 +190,8 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
 .before-after-card figcaption { display: flex; justify-content: space-between; gap: 20px; padding-top: 12px; font: 10px "DM Mono", monospace; text-transform: uppercase; }
 .before-after-card figcaption b { font-weight: 500; text-align: right; }
 
-.football-section { display: grid; grid-template-columns: 1.12fr .88fr; gap: 0; min-height: 590px; border-top: 1px solid rgba(242,238,229,.22); border-bottom: 1px solid rgba(242,238,229,.22); }
-.football-video { min-height: 590px; position: relative; overflow: hidden; border-right: 1px solid rgba(242,238,229,.22); }
+.football-section { display: grid; grid-template-columns: 1.12fr .88fr; gap: 0; min-height: 460px; border-top: 1px solid rgba(242,238,229,.22); border-bottom: 1px solid rgba(242,238,229,.22); }
+.football-video { min-height: 460px; position: relative; overflow: hidden; border-right: 1px solid rgba(242,238,229,.22); }
 .football-video video { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; filter: saturate(.82) contrast(1.14); }
 .football-video::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12,13,13,.75), transparent 45%); pointer-events: none; }
 .video-caption { position: absolute; z-index: 1; left: 8%; bottom: 7%; color: var(--acid); font: 11px "DM Mono", monospace; text-transform: uppercase; }
@@ -331,7 +331,7 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
   .before-after-grid { grid-template-columns: 1fr; gap: 54px; }
   .before-after-card.offset { margin-top: 0; }
   .football-section { grid-template-columns: 1fr; }
-  .football-video { min-height: 390px; border-right: 0; border-bottom: 1px solid rgba(242,238,229,.22); }
+  .football-video { min-height: 320px; border-right: 0; border-bottom: 1px solid rgba(242,238,229,.22); }
   .football-copy { min-height: 0; padding: 13vw 8vw 16vw; }
   .content-section { min-height: 0; padding-top: 28px; padding-bottom: 80px; }
   .content-heading { grid-template-columns: 1fr; gap: 28px; margin-top: 90px; }

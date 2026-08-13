@@ -83,9 +83,11 @@ function setupFootballAudio() {
   const label = toggle?.querySelector(".audio-state");
   if (!section || !video || !toggle || !label) return;
   const updateAudioUI = () => { const muted = video.muted; label.textContent = muted ? "ativar som" : "mutar vídeo"; toggle.setAttribute("aria-label", muted ? "Ativar som do vídeo" : "Mutar vídeo"); toggle.setAttribute("aria-pressed", String(!muted)); };
-  const tryUnmute = () => { video.muted = false; video.volume = .82; const playback = video.play(); if (playback?.catch) playback.catch(() => { video.muted = true; updateAudioUI(); }); updateAudioUI(); };
+  const tryUnmute = () => { const playback = video.play(); if (playback?.then) playback.then(() => { video.muted = false; video.volume = .82; updateAudioUI(); }).catch(() => { video.muted = true; label.textContent = "toque para ativar"; updateAudioUI(); }); else { video.muted = false; video.volume = .82; updateAudioUI(); } };
   toggle.addEventListener("click", () => { if (video.muted) tryUnmute(); else { video.muted = true; updateAudioUI(); } });
-  if ("IntersectionObserver" in window) { const observer = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= .45)) { tryUnmute(); observer.disconnect(); } }, { threshold: [.45] }); observer.observe(section); }
+  if ("IntersectionObserver" in window) { const observer = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= .25)) { tryUnmute(); observer.disconnect(); } }, { threshold: [.25] }); observer.observe(section); }
+  section.addEventListener("pointerdown", (event) => { if (!event.target.closest(".video-audio-toggle") && video.muted) tryUnmute(); }, { once: true });
+  section.addEventListener("touchstart", (event) => { if (!event.target.closest(".video-audio-toggle") && video.muted) tryUnmute(); }, { once: true, passive: true });
   updateAudioUI();
 }
 
