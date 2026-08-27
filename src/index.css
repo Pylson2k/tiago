@@ -140,7 +140,7 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
 
 .content-section { min-height: 890px; padding: 38px 8vw 110px; position: relative; overflow: hidden; }
 .content-heading { display: grid; grid-template-columns: .5fr 1fr; gap: 8vw; margin-top: 12vh; }
-.content-heading .section-title { grid-column: 2; }
+.content-heading .section-title { grid-column: 1 / -1; white-space: nowrap; font-size: clamp(3rem, 5.1vw, 6rem); }
 .content-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 80px; background: rgba(242,238,229,.3); border: 1px solid rgba(242,238,229,.3); }
 .content-card { min-height: 400px; background: var(--ink); }
 .content-card img { width: 100%; height: 225px; display: block; object-fit: cover; filter: saturate(.8) contrast(1.1); }
@@ -153,8 +153,8 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
 .content-card-link a { display: inline-block; margin-top: 24px; font: 10px "DM Mono", monospace; text-transform: uppercase; }
 .content-index { font: 10px "DM Mono", monospace; }
 
-.proof-section { min-height: 730px; padding: 38px 8vw 110px; position: relative; overflow: hidden; }
-.proof-layout { display: grid; grid-template-columns: 1fr .8fr; gap: 9vw; margin-top: 13vh; }
+.proof-section { min-height: 540px; padding: 38px 8vw 80px; position: relative; overflow: hidden; }
+.proof-layout { display: grid; grid-template-columns: 1fr .8fr; gap: 9vw; margin-top: 32px; }
 .proof-empty { align-self: end; max-width: 360px; border-top: 1px solid var(--ink); padding-top: 20px; }
 .proof-mark { display: inline-grid; width: 42px; height: 42px; place-items: center; margin-bottom: 30px; background: var(--acid); color: var(--ink); font-size: 27px; }
 .proof-empty h3 { margin: 0 0 15px; font: 700 32px/.9 "Space Grotesk", sans-serif; letter-spacing: -.055em; text-transform: uppercase; }
@@ -243,7 +243,7 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
 .texture-note { display: flex; justify-content: space-between; font: 10px "DM Mono", monospace; color: #9c9b93; text-transform: uppercase; }
 .texture-note span { color: var(--acid); font-size: 18px; }
 
-.contact-section { min-height: 690px; padding: 38px 8vw 32px; display: flex; flex-direction: column; justify-content: space-between; }
+.contact-section { min-height: 0; padding: 32px 8vw; display: flex; flex-direction: column; justify-content: space-between; }
 .contact-top, .contact-footer { display: flex; justify-content: space-between; }
 .contact-main { margin: 12vh 0 9vh; }
 .contact-main .micro-copy { color: #4c6620; }
@@ -335,7 +335,7 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
   .football-copy { min-height: 0; padding: 13vw 8vw 16vw; }
   .content-section { min-height: 0; padding-top: 28px; padding-bottom: 80px; }
   .content-heading { grid-template-columns: 1fr; gap: 28px; margin-top: 90px; }
-  .content-heading .section-title { grid-column: 1; }
+  .content-heading .section-title { grid-column: 1; font-size: clamp(2rem, 6.5vw, 3.7rem); }
   .content-grid { grid-template-columns: 1fr; margin-top: 60px; }
   .content-card img { height: 225px; }
   .cases-section { min-height: 0; padding-top: 28px; padding-bottom: 80px; }
@@ -346,10 +346,10 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
   .community-section { min-height: 620px; }
   .community-copy { padding: 15vw 8vw; }
   .community-stamp { right: 8vw; bottom: 8vh; width: 105px; height: 105px; font-size: 22px; }
-  .proof-section { min-height: 720px; padding-top: 28px; padding-bottom: 80px; }
-  .proof-layout { grid-template-columns: 1fr; gap: 70px; margin-top: 90px; }
+  .proof-section { min-height: 0; padding-top: 28px; padding-bottom: 80px; }
+  .proof-layout { grid-template-columns: 1fr; gap: 70px; margin-top: 48px; }
   .proof-empty { max-width: 86vw; }
-  .contact-section { min-height: 650px; padding-top: 28px; }
+  .contact-section { min-height: 0; padding-top: 28px; }
   .contact-main { margin: 14vh 0 7vh; }
   .contact-main h2 { font-size: clamp(3.65rem, 17.5vw, 6.9rem); margin-top: 20px; margin-bottom: 42px; }
   .contact-actions { align-items: stretch; flex-direction: column; gap: 16px; }
