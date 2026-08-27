@@ -63,6 +63,10 @@ root.innerHTML = `
   </main>
 `;
 
+const resultsSection = document.querySelector("#resultados");
+const proofSection = document.querySelector("#depoimentos");
+if (resultsSection && proofSection) resultsSection.append(proofSection);
+
 function bootGsap() {
   const gsap = window.gsap; const ScrollTrigger = window.ScrollTrigger;
   if (!gsap) return;

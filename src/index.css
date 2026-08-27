@@ -151,7 +151,7 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
 .content-card-link a { display: inline-block; margin-top: 24px; font: 10px "DM Mono", monospace; text-transform: uppercase; }
 .content-index { font: 10px "DM Mono", monospace; }
 
-.proof-section { min-height: 540px; padding: 38px 8vw 80px; position: relative; overflow: hidden; }
+.proof-section { min-height: 0; margin-top: 88px; padding: 48px 0 0; position: relative; overflow: hidden; border-top: 1px solid rgba(20,20,20,.5); }
 .proof-layout { display: grid; grid-template-columns: 1fr .8fr; gap: 9vw; margin-top: 32px; }
 .proof-empty { align-self: end; max-width: 360px; border-top: 1px solid var(--ink); padding-top: 20px; }
 .proof-mark { display: inline-grid; width: 42px; height: 42px; place-items: center; margin-bottom: 30px; background: var(--acid); color: var(--ink); font-size: 27px; }
@@ -343,7 +343,7 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
   .community-section { min-height: 620px; }
   .community-copy { padding: 15vw 8vw; }
   .community-stamp { right: 8vw; bottom: 8vh; width: 105px; height: 105px; font-size: 22px; }
-  .proof-section { min-height: 0; padding-top: 28px; padding-bottom: 80px; }
+  .proof-section { min-height: 0; margin-top: 64px; padding-top: 28px; padding-bottom: 0; }
   .proof-layout { grid-template-columns: 1fr; gap: 70px; margin-top: 48px; }
   .proof-empty { max-width: 86vw; }
   .contact-section { min-height: 0; padding-top: 28px; }
