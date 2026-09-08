@@ -23,9 +23,9 @@ root.innerHTML = `
   <main class="site-shell">
     <header class="site-header">
       <a class="brand-mark" href="#top" aria-label="Tiago Gomes Filadelfo — voltar ao topo"><span class="brand-box">TF</span><span class="brand-name">TIAGO GOMES<br /><b>FILADELFO</b></span></a>
-      <div class="header-status"><span class="status-dot"></span> treino personalizado / São Paulo</div>
+      <div class="header-status"><span class="status-dot"></span> treino personalizado / São Paulo / hipertrofia / condicionamento / definição</div>
       <nav class="site-nav" aria-label="Navegação principal"><a href="#sobre">Sobre</a><a href="#resultados">Resultados</a><a href="#contato">Contato</a></nav>
-      <span class="header-index">[ 01—08 ]</span>
+      <span class="header-index">[ 01—07 ]</span>
     </header>
 
     <section id="top" class="hero-section" aria-labelledby="hero-title">
@@ -37,7 +37,7 @@ root.innerHTML = `
         <h1 id="hero-title" class="hero-title"><span class="hero-line-wrap"><span class="hero-line js-hero-line">TREINO</span></span><span class="hero-line-wrap indent"><span class="hero-line js-hero-line">COM</span></span><span class="hero-line-wrap"><span class="hero-line hero-line-yellow js-hero-line">MÉTODO<span class="hero-punct">.</span></span></span></h1>
         <div class="hero-bottom js-hero-meta"><p>Hipertrofia, condicionamento e definição muscular com ciência, técnica e estratégia.</p></div>
       </div>
-      <div class="hero-side-note">01 / 08<br />cada repetição tem um motivo</div><div class="scroll-cue"><span>desça para evoluir</span><span class="scroll-line"></span></div>
+      <div class="hero-side-note">01 / 07<br />cada repetição tem um motivo</div><div class="scroll-cue"><span>desça para evoluir</span><span class="scroll-line"></span></div>
       <div class="hero-tag">TREINO<br /><span>PERSONALIZADO</span></div>
     </section>
 
@@ -63,9 +63,10 @@ root.innerHTML = `
   </main>
 `;
 
-const resultsSection = document.querySelector("#resultados");
 const proofSection = document.querySelector("#depoimentos");
-if (resultsSection && proofSection) resultsSection.append(proofSection);
+proofSection?.remove();
+const casesIndex = document.querySelector("#estudos .section-marker span");
+if (casesIndex) casesIndex.textContent = "06";
 
 function bootGsap() {
   const gsap = window.gsap; const ScrollTrigger = window.ScrollTrigger;
