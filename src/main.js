@@ -73,7 +73,6 @@ function bootGsap() {
   if (!gsap) return;
   const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
   intro.fromTo(".js-hero-line", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .9, stagger: .075 }, .1).fromTo(".js-hero-kicker, .js-hero-meta", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: .55, stagger: .08 }, .5).fromTo(".js-hero-image", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.15, ease: "power3.inOut" }, .18);
-  gsap.to(".js-marquee-track", { xPercent: -50, duration: 24, repeat: -1, ease: "none" });
   if (ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); gsap.utils.toArray(".js-reveal").forEach((element) => gsap.fromTo(element, { y: 32, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: "power3.out", scrollTrigger: { trigger: element, start: "top 84%" } })); }
 }
 

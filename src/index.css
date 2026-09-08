@@ -87,8 +87,12 @@ a:focus-visible { outline: 2px solid var(--acid); outline-offset: 5px; }
 .scroll-line { display: block; width: 1px; height: 54px; background: linear-gradient(var(--acid), transparent); }
 
 .marquee-band { overflow: hidden; border-bottom: 1px solid rgba(242,238,229,.2); background: var(--acid); color: var(--ink); white-space: nowrap; }
-.marquee-track { width: max-content; padding: 12px 0 10px; font: 700 14px/1 "Space Grotesk", sans-serif; letter-spacing: .12em; }
+.marquee-track { width: max-content; padding: 12px 0 10px; font: 700 14px/1 "Space Grotesk", sans-serif; letter-spacing: .12em; animation: marquee-scroll 24s linear infinite; will-change: transform; }
 .marquee-track span { color: var(--orange); padding: 0 24px; }
+
+@keyframes marquee-scroll {
+  to { transform: translateX(-50%); }
+}
 
 .section-dark { background: var(--ink); color: var(--paper); }
 .section-paper { background: var(--paper); color: var(--ink); }
