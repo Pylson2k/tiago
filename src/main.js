@@ -67,6 +67,8 @@ const proofSection = document.querySelector("#depoimentos");
 proofSection?.remove();
 const casesIndex = document.querySelector("#estudos .section-marker span");
 if (casesIndex) casesIndex.textContent = "06";
+const marqueeTrack = document.querySelector(".js-marquee-track");
+if (marqueeTrack) marqueeTrack.innerHTML = marqueeTrack.innerHTML.repeat(8);
 
 function bootGsap() {
   const gsap = window.gsap; const ScrollTrigger = window.ScrollTrigger;
