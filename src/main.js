@@ -1,98 +1,548 @@
-// Estilo: Sinal de esforço — editorial esportivo brasileiro para Tiago Gomes Filadelfo. A pessoa vem antes do efeito; provas reais, método claro e CTAs acionáveis organizam toda a experiência.
-const assets = {
-  portrait: "assets/tiago-portrait.webp",
-  training: "assets/tiago-training.webp",
-  community: "assets/futebol-comunidade.jpeg",
-  crowd: "assets/futebol-torcida.jpeg",
-  beforeAfterOne: "assets/antes-depois-01.jpeg",
-  beforeAfterTwo: "assets/antes-depois-02.jpeg",
-  inclusionOne: "assets/estudo-inclusao-01.jpeg",
-  inclusionThree: "assets/estudo-inclusao-03.jpeg",
-  hypertension: "assets/estudo-hipertensao.jpeg",
-  video: "assets/video-futebol.mp4",
+/**
+ * main.js — Aplicação Interativa & Motor de Conversão
+ * Tiago Filadelfo (TF Personal)
+ */
+
+import { GALLERY, TESTIMONIAL_PRINTS } from "./data/content.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initAttributionAndForm();
+  initBiomecanicaSelector();
+  initComparisonSlider();
+  initPhoneMask();
+  initSmoothScrollAndSticky();
+  initVideoAudioToggle();
+  initVideoPlayToggle();
+  initMobileNav();
+  initGallery();
+  initTestimonialPrints();
+  initLightbox();
+  initCopyrightYear();
+  initGsapAnimations();
+});
+
+/* ==========================================================================
+   1. Integração com LeadTracker & Formulário de Qualificação
+   ========================================================================== */
+function initAttributionAndForm() {
+  const form = document.querySelector("#leadCaptureForm");
+  if (!form || !window.LeadTracker) return;
+
+  // Injeta campos ocultos com UTMs e SS identificado
+  window.LeadTracker.autoPopulateForm("#leadCaptureForm");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nameInput = form.querySelector("#leadName");
+    const phoneInput = form.querySelector("#leadPhone");
+    const objectiveInput = form.querySelector("#leadObjective");
+    const modalityInput = form.querySelector("#leadModality");
+    const submitBtn = form.querySelector("#submitBtn");
+
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const objective = objectiveInput.value;
+    const modality = modalityInput.value;
+
+    if (!name || !phone || !objective || !modality) {
+      alert("Por favor, preencha todos os campos antes de continuar.");
+      return;
+    }
+
+    // 1. Gera código de rastreio único atribuído ao SS atual
+    const activeSS = window.LeadTracker.getActiveSS();
+    const trackingCode = window.LeadTracker.generateTrackingCode(activeSS);
+
+    // 2. Dispara eventos para Meta Pixel e GA4
+    window.LeadTracker.trackLeadEvent({
+      name,
+      phone,
+      objective: `${modality} - ${objective}`,
+      trackingCode
+    });
+
+    // 3. Altera estado do botão
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.75";
+    submitBtn.innerHTML = `Conectando ao WhatsApp do Tiago...`;
+
+    // 4. Monta a mensagem estruturada e incontestável para o WhatsApp
+    const message =
+      `Olá Tiago! Meu nome é *${name}*.\n` +
+      `Gostaria de saber como funciona o acompanhamento:\n\n` +
+      `• *Modalidade:* ${modality}\n` +
+      `• *Objetivo:* ${objective}\n` +
+      `• *WhatsApp:* ${phone}\n\n` +
+      `[Ref: ${trackingCode}]`;
+
+    const whatsappUrl = `https://wa.me/${window.LeadTracker.OFFICIAL_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    // 5. Redirecionamento após breve timeout para disparo garantido de pixels
+    setTimeout(() => {
+      window.location.href = whatsappUrl;
+    }, 450);
+  });
+}
+
+/* ==========================================================================
+   2. Máscara de Telefone / WhatsApp
+   ========================================================================== */
+function initPhoneMask() {
+  const phoneInput = document.querySelector("#leadPhone");
+  if (!phoneInput) return;
+
+  phoneInput.addEventListener("input", (e) => {
+    let val = e.target.value.replace(/\D/g, "");
+    if (val.length > 11) val = val.slice(0, 11);
+
+    if (val.length > 6) {
+      val = `(${val.slice(0, 2)}) ${val.slice(2, 7)}-${val.slice(7)}`;
+    } else if (val.length > 2) {
+      val = `(${val.slice(0, 2)}) ${val.slice(2)}`;
+    } else if (val.length > 0) {
+      val = `(${val}`;
+    }
+    e.target.value = val;
+  });
+}
+
+/* ==========================================================================
+   3. Infográfico Interativo de Biomecânica
+   ========================================================================== */
+const biomecanicaData = {
+  peito: {
+    title: "Peitoral Maior & Ajuste de Tração",
+    subtitle: "Biomecânica de Supinos e Crucifixos",
+    tag: "Foco: Feixes Clavicular e Esternal",
+    svgColor: "#00e5ff",
+    bullets: [
+      {
+        b: "1. Ângulo do Banco e Linha da Fibra",
+        p: "Para ativar o feixe clavicular (porção superior), incline o banco entre 30º e 45º. Inclinações maiores desviam a sobrecarga para o deltoide anterior."
+      },
+      {
+        b: "2. Depressão e Adução das Escápulas",
+        p: "Manter as escápulas presas no banco estabiliza a glenoumeral, evitando atrito no manguito rotador e isolando o esforço no peitoral."
+      },
+      {
+        b: "3. Amplitude de Movimento com Segurança",
+        p: "Descer a barra ou halteres até o nível do esterno com os cotovelos a cerca de 60º do tronco, e não abertos a 90º."
+      }
+    ]
+  },
+  costas: {
+    title: "Dorsais, Romboides & Escápulas",
+    subtitle: "Biomecânica de Puxadas e Remadas",
+    tag: "Foco: Expansão Dorsal e Espessura",
+    svgColor: "#38bdf8",
+    bullets: [
+      {
+        b: "1. Vetor de Força e Direção dos Cotovelos",
+        p: "Puxadas com cotovelos colados ao tronco enfatizam o grande dorsal. Cotovelos abertos direcionam a tensão para romboides e trapézio médio."
+      },
+      {
+        b: "2. Depressão Escapular Antes da Puxada",
+        p: "Inicie o movimento deprimindo os ombros para baixo antes de flexionar os cotovelos, ativando as fibras inferiores do trapézio e dorsal."
+      },
+      {
+        b: "3. Conexão Mente-Músculo",
+        p: "Pense em empurrar com os cotovelos para trás, e não em 'puxar com as mãos', reduzindo o gasto excessivo dos bíceps."
+      }
+    ]
+  },
+  pernas: {
+    title: "Membros Inferiores & Glúteos",
+    subtitle: "Biomecânica de Agachamento e Leg Press",
+    tag: "Foco: Quadríceps, Glúteo Máximo e Isquiotibiais",
+    svgColor: "#f59e0b",
+    bullets: [
+      {
+        b: "1. Mobilidade de Tornozelo e Joelhos",
+        p: "A dorsiflexão adequada permite agachar profundo sem retroversão pélvica ('buttwink'), protegendo os discos lombares."
+      },
+      {
+        b: "2. Posição dos Pés e Ativação Glútea",
+        p: "Posição dos pés ligeiramente abertos (cerca de 15º a 30º) alinha o fêmur com a patela e potencializa o torque do glúteo máximo."
+      },
+      {
+        b: "3. Distribuição de Peso no Pé",
+        p: "O tripé do pé (calcanhar, base do dedão e base do dedinho) deve permanecer fixo no chão durante toda a fase excêntrica e concêntrica."
+      }
+    ]
+  },
+  deltoides: {
+    title: "Deltoides & Estabilização do Manguito",
+    subtitle: "Biomecânica das Elevações Laterais e Desenvolvimentos",
+    tag: "Foco: Porção Lateral sem Pinçamento",
+    svgColor: "#a855f7",
+    bullets: [
+      {
+        b: "1. Plano Escapular (30º à Frente)",
+        p: "Execute a elevação lateral cerca de 30º anterior ao corpo. Isso alinha a cabeça do úmero na cavidade glenoide e elimina o impacto no supraespinhal."
+      },
+      {
+        b: "2. Não Ultrapasse a Linha dos Ombros",
+        p: "Elevar halteres acima da linha do queixo não recruta mais o deltoide lateral, apenas transfere a tensão para o trapézio superior."
+      },
+      {
+        b: "3. Polegar Ligeiramente para Baixo",
+        p: "Mantenha a mão neutra com leve rotação para manter a tensão mecânica constante no ventre muscular do deltoide medial."
+      }
+    ]
+  }
 };
 
-const links = {
-  whatsapp: "https://wa.me/5511963552470?text=Ol%C3%A1%20Tiago%2C%20quero%20conversar%20sobre%20um%20plano%20de%20treino.",
-  instagram: "https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y",
-};
+function initBiomecanicaSelector() {
+  const buttons = document.querySelectorAll(".muscle-btn");
+  const titleEl = document.querySelector("#muscleTitle");
+  const subtitleEl = document.querySelector("#muscleTargetSub");
+  const tagEl = document.querySelector("#muscleGraphicTag");
+  const bulletsEl = document.querySelector("#muscleInfoContent .muscle-bullets");
+  const svgPath = document.querySelector("#muscleMainPath");
 
-const root = document.querySelector("#root");
+  if (!buttons.length || !titleEl || !bulletsEl) return;
 
-root.innerHTML = `
-  <main class="site-shell">
-    <header class="site-header">
-      <a class="brand-mark" href="#top" aria-label="Tiago Gomes Filadelfo — voltar ao topo"><span class="brand-box">TF</span><span class="brand-name">TIAGO GOMES<br /><b>FILADELFO</b></span></a>
-      <div class="header-status"><span class="status-dot"></span> treino personalizado / São Paulo / hipertrofia / condicionamento / definição</div>
-      <nav class="site-nav" aria-label="Navegação principal"><a href="#sobre">Sobre</a><a href="#resultados">Resultados</a><a href="#contato">Contato</a></nav>
-      <span class="header-index">[ 01—07 ]</span>
-    </header>
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.getAttribute("data-target");
+      const data = biomecanicaData[target];
+      if (!data) return;
 
-    <section id="top" class="hero-section" aria-labelledby="hero-title">
-      <div class="hero-cream" aria-hidden="true"></div><div class="hero-grid" aria-hidden="true"></div>
-      <img class="hero-photo js-hero-image" src="${assets.portrait}" alt="Tiago Gomes Filadelfo em uma academia" />
-      <div class="hero-vignette" aria-hidden="true"></div>
-      <div class="hero-content">
-        <p class="eyebrow js-hero-kicker"><span>TIAGO GOMES FILADELFO</span><span>EDUCAÇÃO FÍSICA / TREINO</span></p>
-        <h1 id="hero-title" class="hero-title"><span class="hero-line-wrap"><span class="hero-line js-hero-line">TREINO</span></span><span class="hero-line-wrap indent"><span class="hero-line js-hero-line">COM</span></span><span class="hero-line-wrap"><span class="hero-line hero-line-yellow js-hero-line">MÉTODO<span class="hero-punct">.</span></span></span></h1>
-        <div class="hero-bottom js-hero-meta"><p>Hipertrofia, condicionamento e definição muscular com ciência, técnica e estratégia.</p></div>
-      </div>
-      <div class="hero-side-note">01 / 07<br />cada repetição tem um motivo</div><div class="scroll-cue"><span>desça para evoluir</span><span class="scroll-line"></span></div>
-      <div class="hero-tag">TREINO<br /><span>PERSONALIZADO</span></div>
-    </section>
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
 
-    <div class="marquee-band" aria-hidden="true"><div class="marquee-track js-marquee-track">CIÊNCIA <span>✳</span> TÉCNICA <span>✳</span> ESTRATÉGIA <span>✳</span> ACOMPANHAMENTO <span>✳</span> CIÊNCIA <span>✳</span> TÉCNICA <span>✳</span> ESTRATÉGIA <span>✳</span> ACOMPANHAMENTO <span>✳</span></div></div>
+      titleEl.textContent = data.title;
+      subtitleEl.textContent = data.subtitle;
+      tagEl.textContent = data.tag;
+      if (svgPath) {
+        svgPath.setAttribute("fill", data.svgColor);
+        svgPath.setAttribute("stroke", data.svgColor);
+      }
 
-    <section id="sobre" class="about-section section-paper"><div class="section-marker dark js-reveal"><span>02</span><span>sobre o Tiago</span><span>↘</span></div><div class="about-grid"><div><p class="micro-copy js-reveal">Educação física aplicada à vida real.</p><h2 class="section-title dark-title js-reveal">Treinar é<br /><span>entender</span><br />o corpo.</h2></div><div class="about-copy js-reveal"><p class="lead-copy">Tiago Gomes Filadelfo trabalha com treino personalizado para quem quer evoluir com direção, segurança e consistência.</p><p>Sua prática cruza biomecânica, periodização, conexão mente-músculo e leitura individual. Os estudos de caso em esportes adaptados e em um plano para hipertensão mostram uma visão que não separa resultado de cuidado.</p><div class="about-facts"><span><b>01</b> Educação física</span><span><b>02</b> Biomecânica e periodização</span><span><b>03</b> Treino inclusivo e seguro</span></div></div></div><div class="about-photo js-reveal"><img src="${assets.training}" alt="Tiago trabalhando em uma academia" loading="lazy" /><span>trajetória / técnica / presença</span></div></section>
+      bulletsEl.innerHTML = data.bullets
+        .map(
+          (b) => `
+          <div class="bullet-card">
+            <b>${b.b}</b>
+            <p>${b.p}</p>
+          </div>
+        `
+        )
+        .join("");
+    });
+  });
+}
 
-    <section id="metodo" class="method-section section-dark"><div class="section-marker js-reveal"><span>03</span><span>o método</span><span>↘</span></div><div class="method-heading"><p class="micro-copy js-reveal">Três pilares para fazer cada repetição contar.</p><h2 class="section-title js-reveal">Resultado<br /><span>real</span> pede<br />método.</h2></div><div class="method-list"><article class="method-item js-reveal"><span class="method-number">01</span><h3>Análise<br />individual</h3><p>Biotipo, histórico, objetivo e restrições entram no plano desde o primeiro dia.</p><span class="method-arrow">↗</span></article><article class="method-item js-reveal"><span class="method-number">02</span><h3>Treino<br />inteligente</h3><p>Técnica, progressão e estímulo na medida certa — sem copiar a ficha de outra pessoa.</p><span class="method-arrow">↗</span></article><article class="method-item js-reveal"><span class="method-number">03</span><h3>Você<br />entende</h3><p>Educação para executar melhor, evitar lesões e assumir o controle da própria evolução.</p><span class="method-arrow">↗</span></article></div></section>
+/* ==========================================================================
+   4. Slider Comparativo de Antes e Depois
+   ========================================================================== */
+function initComparisonSlider() {
+  const sliderRange = document.querySelector("#sliderRange");
+  const afterImg = document.querySelector(".img-after");
+  const sliderHandle = document.querySelector("#sliderHandle");
 
-    <section id="resultados" class="results-section section-paper"><div class="section-marker dark js-reveal"><span>04</span><span>portfólio de resultados</span><span>↘</span></div><div class="results-heading"><p class="micro-copy js-reveal">Prova visual de que consistência muda o corpo.</p><h2 class="section-title dark-title js-reveal">Evolução<br /><span>registrada.</span></h2><p class="results-note js-reveal">Resultados construídos com constância, técnica e cuidado em cada etapa. Cada trajetória tem seu próprio ritmo.</p></div><div class="before-after-grid"><figure class="before-after-card js-reveal"><img src="${assets.beforeAfterOne}" alt="Comparação de antes e depois de uma aluna em processo de transformação corporal" loading="lazy" /><figcaption><span>transformação 01</span><b>força / composição corporal</b></figcaption></figure><figure class="before-after-card offset js-reveal"><img src="${assets.beforeAfterTwo}" alt="Comparação de antes e depois de uma mulher em processo de transformação corporal" loading="lazy" /><figcaption><span>transformação 02</span><b>consistência / confiança</b></figcaption></figure></div></section>
+  if (!sliderRange || !afterImg || !sliderHandle) return;
 
-    <section class="football-section section-dark"><div class="football-video js-reveal"><video id="football-video" autoplay muted loop playsinline preload="metadata" poster="${assets.community}" aria-label="Tiago falando sobre futebol, identidade e transformação social"><source src="${assets.video}" type="video/mp4" /></video><span class="video-caption">vídeo / futebol é muito mais do que uma partida</span><button class="video-audio-toggle" type="button" aria-pressed="false" aria-label="Ativar som do vídeo"><span class="audio-state">ativar som</span><span aria-hidden="true">↗</span></button></div><div class="football-copy js-reveal"><span class="micro-copy">Além da academia</span><h2>O corpo<br />também é<br /><em>cultura.</em></h2><p>Para Tiago, o esporte carrega identidade, disciplina, trabalho em equipe e oportunidade. É a mesma visão que aparece no treino: técnica para sustentar a paixão.</p><a class="text-link" href="${links.instagram}" target="_blank" rel="noreferrer">ver conteúdo no Instagram <span>↗</span></a></div></section>
+  const updatePosition = (val) => {
+    afterImg.style.clipPath = `inset(0 0 0 ${val}%)`;
+    sliderHandle.style.left = `${val}%`;
+  };
 
-    <section id="conteudo" class="content-section section-dark"><div class="section-marker js-reveal"><span>05</span><span>conteúdo educativo</span><span>↘</span></div><div class="content-heading"><p class="micro-copy js-reveal">Conhecimento que continua depois do treino.</p><h2 class="section-title js-reveal">Entenda Antes de Executar</h2></div><div class="content-grid"><article class="content-card js-reveal"><img src="${assets.hypertension}" alt="Material de estudo sobre exercício e hipertensão" loading="lazy" /><div><span class="case-kicker">FISIOLOGIA DO EXERCÍCIO</span><h3>Treino também é cuidado.</h3><p>Um plano individualizado considera pressão arterial, resposta ao esforço, progressão e segurança.</p></div></article><article class="content-card js-reveal"><img src="${assets.inclusionOne}" alt="Material de estudo sobre esporte adaptado" loading="lazy" /><div><span class="case-kicker">ESPORTES ADAPTADOS</span><h3>Mais formas de participar.</h3><p>Adaptação, instrução e cooperação mudam a experiência do movimento.</p></div></article><article class="content-card content-card-link js-reveal"><span class="content-index">03</span><div><span class="case-kicker">INSTAGRAM / VÍDEO</span><h3>Treino da semana<br />em movimento.</h3><p>Vídeos curtos, técnica e bastidores do trabalho do Tiago.</p><a href="${links.instagram}" target="_blank" rel="noreferrer">ver conteúdo ↗</a></div></article></div></section>
+  sliderRange.addEventListener("input", (e) => {
+    updatePosition(e.target.value);
+  });
 
-    <section id="estudos" class="cases-section section-paper"><div class="section-marker dark js-reveal"><span>07</span><span>estudos de caso</span><span>↘</span></div><div class="cases-heading"><p class="micro-copy js-reveal">Ciência aplicada com cuidado e contexto.</p><h2 class="section-title dark-title js-reveal">Treinar<br /><span>também é</span><br />cuidar.</h2><p class="cases-note js-reveal">Os estudos acadêmicos mostram como o exercício precisa respeitar a pessoa, o ambiente e a resposta do corpo.</p></div><div class="cases-grid"><article class="case-card case-wide js-reveal"><img src="${assets.inclusionOne}" alt="Estudo de caso sobre esporte adaptado e inclusão através do movimento" loading="lazy" /><div><span class="case-kicker">EDUCAÇÃO FÍSICA INCLUSIVA</span><h3>Participar<br />no próprio ritmo.</h3><p>Adaptação sensorial, rotina visual, instruções claras e jogos cooperativos para ampliar participação e pertencimento.</p></div></article><article class="case-card js-reveal"><img src="${assets.hypertension}" alt="Estudo de caso sobre exercícios e hipertensão" loading="lazy" /><div><span class="case-kicker">FISIOLOGIA DO EXERCÍCIO</span><h3>Segurança<br />antes da carga.</h3><p>Plano individualizado com progressão, monitoramento e combinação de estímulos aeróbicos, resistidos e de mobilidade.</p></div></article><article class="case-card case-dark js-reveal"><img src="${assets.inclusionThree}" alt="Atividade coletiva de educação física inclusiva" loading="lazy" /><div><span class="case-kicker">PRÁTICA E EDUCAÇÃO</span><h3>Movimento<br />para todos.</h3><p>Uma aula acessível melhora o coletivo, fortalece cooperação e respeita diferentes formas de aprender.</p></div></article></div></section>
+  // Touch e mouse interativo direto no container
+  const container = document.querySelector("#beforeAfterSlider");
+  if (container) {
+    let isDragging = false;
 
-    <section id="depoimentos" class="proof-section section-paper"><div class="section-marker dark js-reveal"><span>08</span><span>prova social</span><span>↘</span></div><div class="proof-layout"><div><p class="micro-copy js-reveal">Sem frase inventada. Sem atalho.</p><h2 class="section-title dark-title js-reveal">A próxima<br /><span>história</span><br />é sua.</h2></div><div class="proof-empty js-reveal"><span class="proof-mark">+</span><h3>Depoimentos reais entram aqui.</h3><p>Quando o Tiago enviar prints, vídeos ou frases autorizadas de alunos, esta área vira prova social publicada com contexto e consentimento.</p><a href="${links.whatsapp}" target="_blank" rel="noreferrer">enviar uma mensagem ↗</a></div></div></section>
+    const onMove = (clientX) => {
+      const rect = container.getBoundingClientRect();
+      const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+      const percentage = (x / rect.width) * 100;
+      sliderRange.value = percentage;
+      updatePosition(percentage);
+    };
 
-    <section class="community-section"><img src="${assets.crowd}" alt="Torcida brasileira celebrando em um estádio" loading="lazy" /><div class="community-overlay"></div><div class="community-copy js-reveal"><span class="micro-copy">Uma visão que vai além do espelho.</span><h2>Disciplina<br />para viver<br /><em>melhor.</em></h2><p>Mais força, disposição e confiança para levar o resultado da academia para a vida.</p></div><div class="community-stamp">TF<br /><span>EVOLUÇÃO<br />SEM CÓPIA</span></div></section>
+    container.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      onMove(e.clientX);
+    });
 
-    <section id="contato" class="contact-section section-yellow"><div class="contact-footer"><span>CONTATO / TIAGO GOMES FILADELFO</span><a href="${links.whatsapp}" target="_blank" rel="noreferrer">WHATSAPP: (11) 96355-2470 ↗</a><a href="#top">voltar ao topo ↑</a></div></section>
-  </main>
-`;
+    window.addEventListener("mousemove", (e) => {
+      if (isDragging) onMove(e.clientX);
+    });
 
-const proofSection = document.querySelector("#depoimentos");
-proofSection?.remove();
-const casesIndex = document.querySelector("#estudos .section-marker span");
-if (casesIndex) casesIndex.textContent = "06";
-const marqueeTrack = document.querySelector(".js-marquee-track");
-if (marqueeTrack) marqueeTrack.innerHTML = marqueeTrack.innerHTML.repeat(8);
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
 
-function bootGsap() {
-  const gsap = window.gsap; const ScrollTrigger = window.ScrollTrigger;
+    container.addEventListener(
+      "touchmove",
+      (e) => {
+        if (e.touches.length > 0) {
+          onMove(e.touches[0].clientX);
+        }
+      },
+      { passive: true }
+    );
+  }
+
+  // Inicializa em 50%
+  updatePosition(50);
+}
+
+/* ==========================================================================
+   5. Rolagem Suave & Botão Sticky
+   ========================================================================== */
+function initSmoothScrollAndSticky() {
+  const stickyBtn = document.querySelector("#stickyCtaBtn");
+  const nameInput = document.querySelector("#leadName");
+
+  if (stickyBtn && nameInput) {
+    stickyBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        nameInput.focus();
+      }, 600);
+    });
+  }
+}
+
+/* ==========================================================================
+   6. Animações GSAP & ScrollTrigger
+   ========================================================================== */
+function initGsapAnimations() {
+  const gsap = window.gsap;
+  const ScrollTrigger = window.ScrollTrigger;
+
+  // Acessibilidade: não anima quem prefere movimento reduzido
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
   if (!gsap) return;
-  const intro = gsap.timeline({ defaults: { ease: "power4.out" } });
-  intro.fromTo(".js-hero-line", { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .9, stagger: .075 }, .1).fromTo(".js-hero-kicker, .js-hero-meta", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: .55, stagger: .08 }, .5).fromTo(".js-hero-image", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.15, ease: "power3.inOut" }, .18);
-  if (ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); gsap.utils.toArray(".js-reveal").forEach((element) => gsap.fromTo(element, { y: 32, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: "power3.out", scrollTrigger: { trigger: element, start: "top 84%" } })); }
+
+  if (ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray(".js-reveal").forEach((elem) => {
+      gsap.fromTo(
+        elem,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: elem,
+            start: "top 88%"
+          }
+        }
+      );
+    });
+  }
 }
 
-function setupFootballAudio() {
-  const section = document.querySelector(".football-section");
+/* ==========================================================================
+   7. Controle de Áudio do Vídeo Documental
+   ========================================================================== */
+function initVideoAudioToggle() {
   const video = document.querySelector("#football-video");
-  const toggle = document.querySelector(".video-audio-toggle");
-  const label = toggle?.querySelector(".audio-state");
-  if (!section || !video || !toggle || !label) return;
-  const updateAudioUI = () => { const muted = video.muted; label.textContent = muted ? "ativar som" : "Desativar som"; toggle.setAttribute("aria-label", muted ? "Ativar som do vídeo" : "Desativar som"); toggle.setAttribute("aria-pressed", String(!muted)); };
-  const tryUnmute = () => { const playback = video.play(); if (playback?.then) playback.then(() => { video.muted = false; video.volume = .82; updateAudioUI(); }).catch(() => { video.muted = true; label.textContent = "toque para ativar"; updateAudioUI(); }); else { video.muted = false; video.volume = .82; updateAudioUI(); } };
-  toggle.addEventListener("click", () => { if (video.muted) tryUnmute(); else { video.muted = true; updateAudioUI(); } });
-  if ("IntersectionObserver" in window) { const observer = new IntersectionObserver((entries) => { if (entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= .25)) { tryUnmute(); observer.disconnect(); } }, { threshold: [.25] }); observer.observe(section); }
-  section.addEventListener("pointerdown", (event) => { if (!event.target.closest(".video-audio-toggle") && video.muted) tryUnmute(); }, { once: true });
-  section.addEventListener("touchstart", (event) => { if (!event.target.closest(".video-audio-toggle") && video.muted) tryUnmute(); }, { once: true, passive: true });
-  updateAudioUI();
+  const btn = document.querySelector("#videoAudioBtn");
+  const label = document.querySelector("#audioStateText");
+
+  if (!video || !btn || !label) return;
+
+  btn.addEventListener("click", () => {
+    if (video.muted) {
+      video.muted = false;
+      video.volume = 0.85;
+      label.textContent = "🔇 Desativar Som";
+      btn.setAttribute("aria-label", "Desativar som do vídeo");
+    } else {
+      video.muted = true;
+      label.textContent = "🔊 Ativar Som";
+      btn.setAttribute("aria-label", "Ativar som do vídeo");
+    }
+  });
 }
 
-const waitForLibs = () => { if (window.gsap) bootGsap(); else window.setTimeout(waitForLibs, 100); };
-waitForLibs();
-setupFootballAudio();
+/* ==========================================================================
+   8. Controle de Play/Pause do Vídeo Documental
+   ========================================================================== */
+function initVideoPlayToggle() {
+  const video = document.querySelector("#football-video");
+  const btn = document.querySelector("#videoPlayBtn");
+  const label = document.querySelector("#playStateText");
+
+  if (!video || !btn || !label) return;
+
+  const sync = () => {
+    if (video.paused) {
+      label.textContent = "▶ Reproduzir";
+      btn.setAttribute("aria-label", "Reproduzir vídeo");
+    } else {
+      label.textContent = "⏸ Pausar";
+      btn.setAttribute("aria-label", "Pausar vídeo");
+    }
+  };
+
+  btn.addEventListener("click", () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener("play", sync);
+  video.addEventListener("pause", sync);
+  sync();
+}
+
+/* ==========================================================================
+   9. Menu Mobile (Botão Hamburguer)
+   ========================================================================== */
+function initMobileNav() {
+  const toggle = document.querySelector("#navToggle");
+  const nav = document.querySelector("#siteNav");
+
+  if (!toggle || !nav) return;
+
+  const setMenu = (open) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Fechar menu de navegação" : "Abrir menu de navegação");
+    nav.classList.toggle("open", open);
+  };
+
+  toggle.addEventListener("click", () => {
+    setMenu(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!nav.classList.contains("open")) return;
+    if (nav.contains(e.target) || toggle.contains(e.target)) return;
+    setMenu(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 980) setMenu(false);
+  });
+}
+
+/* ==========================================================================
+   10. Galeria Multimídia (renderizada a partir de src/data/content.js)
+   ========================================================================== */
+function initGallery() {
+  const grid = document.querySelector("#galleryGrid");
+  if (!grid) return;
+
+  grid.innerHTML = GALLERY.map(
+    (item, index) => `
+    <button class="gallery-card js-reveal" type="button"
+      data-lightbox-src="${item.src}"
+      data-lightbox-alt="${item.alt}"
+      data-lightbox-kicker="${item.kicker}"
+      data-lightbox-title="${item.title}"
+      aria-label="Ampliar imagem: ${item.title}">
+      <img src="${item.src}" alt="${item.alt}" loading="${index < 2 ? "eager" : "lazy"}" />
+      <span class="gallery-caption">
+        <span>${item.kicker}</span>
+        ${item.title}
+      </span>
+    </button>
+  `
+  ).join("");
+}
+
+/* ==========================================================================
+   11. Botões "Ver print" dos Depoimentos Reais
+   ========================================================================== */
+function initTestimonialPrints() {
+  document.querySelectorAll(".testimonial-actions").forEach((slot) => {
+    const card = slot.closest(".testimonial-card");
+    const key = card?.getAttribute("data-testimonial-key");
+    const printData = TESTIMONIAL_PRINTS[key];
+    if (!printData) return;
+
+    slot.dataset.lightboxSrc = printData.src;
+    slot.dataset.lightboxAlt = printData.alt;
+    slot.dataset.lightboxKicker = "Print de depoimento";
+    slot.dataset.lightboxTitle = "Relato real enviado pela aluna";
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "print-btn";
+    btn.textContent = "🔍 Ver print do depoimento";
+    btn.setAttribute("aria-label", "Ampliar print do depoimento");
+    slot.appendChild(btn);
+  });
+}
+
+/* ==========================================================================
+   12. Lightbox de Prévias (galeria + prints)
+   ========================================================================== */
+function initLightbox() {
+  const lightbox = document.querySelector("#lightbox");
+  if (!lightbox) return;
+
+  const image = lightbox.querySelector("#lightboxImage");
+  const caption = lightbox.querySelector("#lightboxCaption");
+  const closeBtn = lightbox.querySelector("#lightboxClose");
+
+  const openLightbox = (src, alt, kicker = "", title = "") => {
+    image.src = src;
+    image.alt = alt || "";
+    caption.textContent = kicker ? `${kicker} // ${title}` : title;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  // Exibido programaticamente (ex.: futuras integrações)
+  window.openLightbox = openLightbox;
+  window.closeLightbox = closeLightbox;
+
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-lightbox-src]");
+    if (!trigger) return;
+    openLightbox(
+      trigger.dataset.lightboxSrc,
+      trigger.dataset.lightboxAlt,
+      trigger.dataset.lightboxKicker,
+      trigger.dataset.lightboxTitle
+    );
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
+  });
+}
+
+/* ==========================================================================
+   13. Ano do Rodapé (atualizado dinamicamente)
+   ========================================================================== */
+function initCopyrightYear() {
+  const year = document.querySelector("#copyrightYear");
+  if (!year) return;
+  year.textContent = String(new Date().getFullYear());
+}
+

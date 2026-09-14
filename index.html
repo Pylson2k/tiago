@@ -1,22 +1,744 @@
-<!-- Estilo: Sinal de esforço; tipografia editorial esportiva, fotografia real e leitura mobile-first. -->
 <!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <meta name="theme-color" content="#0c0d0d" />
-    <meta name="description" content="Tiago Gomes Filadelfo — treino personalizado para hipertrofia, condicionamento e definição muscular." />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f5c400'/%3E%3Cpath d='M13 14h38v8H35v28h-8V22H13z' fill='%230c0d0d'/%3E%3Cpath d='M36 28h14v8H36z' fill='%230c0d0d'/%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030712" />
+    <meta name="description" content="Portfólio de Educação Física de Tiago Filadelfo — Práticas pedagógicas, projetos comunitários, biomecânica e treinamento personalizado." />
+
+    <!-- SEO / Open Graph / Twitter -->
+    <link rel="canonical" href="https://landing-page-tiago-eta.vercel.app/" />
+    <meta property="og:title" content="Tiago Filadelfo | Treinamento e Educação Física" />
+    <meta property="og:description" content="Trajetória, práticas esportivas inclusivas, ciência do movimento e portfólio de resultados em treinamento físico." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://landing-page-tiago-eta.vercel.app/" />
+    <meta property="og:image" content="https://landing-page-tiago-eta.vercel.app/assets/tiago-portrait.webp" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Tiago Filadelfo — Treinamento e Educação Física" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tiago Filadelfo | Treinamento e Educação Física" />
+    <meta name="twitter:description" content="Trajetória, práticas esportivas inclusivas, ciência do movimento e portfólio de resultados em treinamento físico." />
+    <meta name="twitter:image" content="https://landing-page-tiago-eta.vercel.app/assets/tiago-portrait.webp" />
+
+    <!-- Dados Estruturados: Perfil Profissional / Pessoa -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tiago Gomes Filadelfo",
+        "jobTitle": "Profissional de Educação Física",
+        "url": "https://landing-page-tiago-eta.vercel.app/",
+        "image": "https://landing-page-tiago-eta.vercel.app/assets/tiago-portrait.webp",
+        "description": "Profissional de Educação Física e treinador. Práticas pedagógicas, projetos comunitários, biomecânica aplicada e treinamento personalizado.",
+        "knowsAbout": ["Educação Física", "Biomecânica", "Cinesiologia", "Fisiologia do Exercício", "Treinamento Personalizado", "Esporte Comunitário", "Esporte Adaptado"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Atendimento ao aluno",
+          "telephone": "+55-11-96355-2470",
+          "availableLanguage": "Portuguese"
+        },
+        "sameAs": [
+          "https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y",
+          "https://wa.me/5511963552470"
+        ]
+      }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23030712'/%3E%3Cpath d='M12 14h40v8H36v28h-8V22H12z' fill='%2300e5ff'/%3E%3Cpath d='M36 28h16v8H36z' fill='%232563eb'/%3E%3C/svg%3E" />
     <link rel="stylesheet" href="src/index.css" />
+    <link rel="preload" as="image" href="assets/tiago-portrait.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>Tiago Gomes Filadelfo — Treino com método</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <title>Tiago Filadelfo | Treinamento e Educação Física</title>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="src/lead-tracker.js"></script>
   </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+    <!-- Top Header / Identificação do Portfólio -->
+    <header class="site-header">
+      <a class="brand-mark" href="#top" aria-label="Tiago Filadelfo — Início do Portfólio">
+        <!-- TF SVG Monogram com Cromo & Neon -->
+        <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="40%" stop-color="#cbd5e1" />
+              <stop offset="70%" stop-color="#64748b" />
+              <stop offset="100%" stop-color="#334155" />
+            </linearGradient>
+            <linearGradient id="neonGlowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00e5ff" />
+              <stop offset="100%" stop-color="#2563eb" />
+            </linearGradient>
+          </defs>
+          <path d="M15 20 H85 L70 85 L15 20 Z" stroke="url(#chromeGrad)" stroke-width="2" fill="none" opacity="0.35" />
+          <path d="M22 28 H78 V38 H55 V76 H43 V38 H22 V28 Z" fill="url(#chromeGrad)" />
+          <path d="M55 46 H75 V54 H55 V46 Z" fill="url(#chromeGrad)" />
+          <path d="M20 74 C35 88, 65 88, 82 58" stroke="url(#neonGlowGrad)" stroke-width="4" stroke-linecap="round" fill="none" />
+        </svg>
+        <div class="brand-text">
+          TIAGO <span>FILADELFO</span>
+          <span class="brand-sub">PORTFÓLIO DE EDUCAÇÃO FÍSICA</span>
+        </div>
+      </a>
+
+      <div class="header-status">
+        <span class="status-dot"></span> Portfólio Profissional • Educação Física & Atuação de Campo
+      </div>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menu de navegação">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+        <a href="#sobre">Trajetória</a>
+        <a href="#praticas">Práticas & Esporte</a>
+        <a href="#estudos">Estudos & Inclusão</a>
+        <a href="#biomecanica">Biomecânica</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#servicos">Atuação</a>
+        <a class="nav-cta-btn" href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <!-- 1. Página Inicial / Apresentação do Portfólio -->
+    <section id="main-content" class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-grid-lines" aria-hidden="true"></div>
+      <img class="hero-photo js-hero-image" src="assets/tiago-portrait.webp" alt="Tiago Filadelfo — Profissional de Educação Física" />
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge-wrap js-reveal">
+          <span class="hero-badge">
+            <span class="status-dot"></span> Portfólio de Educação Física & Treinador
+          </span>
+        </div>
+
+        <div>
+          <h1 id="hero-title" class="hero-title js-reveal">
+            TRANSFORMANDO TREINO EM <span class="highlight-blue">RESULTADO</span> DE FORMA <span class="highlight-silver">INTELIGENTE</span> E SEGURA.
+          </h1>
+          <p class="hero-subtext js-reveal">
+            Bem-vindo ao portfólio profissional de <b>Tiago Filadelfo</b>. Aqui compartilho minha formação em Educação Física, projetos de esporte comunitário e inclusão, metodologia biomecânica e o histórico de transformações reais construídas com rigor técnico e respeito à individualidade.
+          </p>
+
+          <div class="hero-cta-group js-reveal">
+            <a class="btn-primary" href="#contato">
+              QUERO TREINAR COM VOCÊ ↓
+            </a>
+            <a class="btn-secondary" href="#praticas">
+              CONHEÇA MEU TRABALHO ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-quick-proof js-reveal">
+          <div class="proof-metric">
+            <span class="value">Bacharel</span>
+            <span class="label">Educação Física & CREF</span>
+          </div>
+          <div class="proof-metric">
+            <span class="value">Esporte Social</span>
+            <span class="label">Projetos Comunitários</span>
+          </div>
+          <div class="proof-metric">
+            <span class="value">+100 Alunos</span>
+            <span class="label">Casos de Sucesso Reais</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faixa Conceitual -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track js-marquee-track">
+        FORMAÇÃO ACADÊMICA EM EDUCAÇÃO FÍSICA <span>✳</span> PRÁTICAS PEDAGÓGICAS E ESPORTIVAS <span>✳</span> INCLUSÃO E ESPORTE ADAPTADO <span>✳</span> BIOMECÂNICA APLICADA <span>✳</span> FISIOLOGIA DO EXERCÍCIO <span>✳</span> TREINAMENTO DE ALTA PERFORMANCE <span>✳</span>
+      </div>
+    </div>
+
+    <!-- 2. Sobre Mim: Trajetória, Formação e Filosofia -->
+    <section id="sobre" class="section-paper">
+      <div class="section-marker light js-reveal">
+        <span>01 // Trajetória e Perfil Profissional</span>
+        <span class="section-tag">Apresentação</span>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo-wrapper js-reveal">
+          <img src="assets/tiago-training.webp" alt="Tiago Filadelfo em atuação prática na academia" loading="lazy" />
+          <div class="about-badge-float">
+            <span>Propósito Profissional</span>
+            "A Educação Física vai além da estética: é saúde, disciplina comunitária, autonomia motora e dignidade."
+          </div>
+        </div>
+
+        <div class="about-text-column js-reveal">
+          <h2 class="section-title">
+            O movimento como <span>ciência</span> e ferramenta de <span>transformação</span>.
+          </h2>
+          <p class="lead">
+            Sou Tiago Gomes Filadelfo, graduado em Educação Física e apaixonado pelo potencial transformador do movimento humano.
+          </p>
+          <p>
+            Minha trajetória une vivências na prática esportiva comunitária — onde aprendi o poder integrador do esporte nas periferias — com o estudo aprofundado da biomecânica, cinesiologia e fisiologia humana na universidade. Essa bagagem me ensinou que não existem fórmulas prontas: cada ser humano traz uma história motora, restrições e objetivos únicos.
+          </p>
+          <p>
+            Minha filosofia baseia-se em três pilares inegociáveis: <b>1. Segurança antes da carga</b> (preservação articular e postura); <b>2. Ciência e biomecânica</b> (entender a linha de tração de cada fibra); e <b>3. Autonomia educativa</b> (o aluno aprende o porquê de cada repetição).
+          </p>
+
+          <div class="credentials-grid">
+            <div class="credential-item">
+              <div class="credential-icon">🎓</div>
+              <div>
+                <h4>Graduação em Educação Física</h4>
+                <p>Formação acadêmica reconhecida com registro ativo no CREF.</p>
+              </div>
+            </div>
+            <div class="credential-item">
+              <div class="credential-icon">🔬</div>
+              <div>
+                <h4>Biomecânica & Cinesiologia</h4>
+                <p>Especialização na mecânica muscular e prevenção de sobrecargas patológicas.</p>
+              </div>
+            </div>
+            <div class="credential-item">
+              <div class="credential-icon">⚽</div>
+              <div>
+                <h4>Iniciação Esportiva & Comunidade</h4>
+                <p>Atuação em projetos de futebol de base, inclusão social e esportes coletivos.</p>
+              </div>
+            </div>
+            <div class="credential-item">
+              <div class="credential-icon">❤️</div>
+              <div>
+                <h4>Fisiologia & Grupos Especiais</h4>
+                <p>Prescrição para populações com hipertensão, lesões e esportes adaptados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Práticas Pedagógicas, Metodologias & Esporte Comunitário (Galeria Multimídia) -->
+    <section id="praticas" class="section-dark">
+      <div class="section-marker js-reveal">
+        <span>02 // Planos de Aula, Práticas e Galeria Multimídia</span>
+        <span class="section-tag">Campo & Sociedade</span>
+      </div>
+
+      <div class="js-reveal">
+        <h2 class="section-title">
+          O esporte como <span>cultura</span>, formação cidadã e <span>saúde coletiva</span>.
+        </h2>
+        <p class="section-subtitle">
+          Relatos de práticas no esporte de base, atividades coletivas e a dinâmica do movimento fora das quatro paredes da academia.
+        </p>
+      </div>
+
+      <div class="community-intro-box js-reveal">
+        <div>
+          <h3>Futebol Comunitário & <span>Desenvolvimento Motor</span></h3>
+          <p>
+            O futebol não é apenas recreação: na Educação Física ele é um laboratório de tomadas de decisão sob pressão, consciência espacial, cooperação e inteligência motora. Através do esporte comunitário, trabalhamos aspectos psicomotores essenciais para jovens e crianças.
+          </p>
+        </div>
+        <div>
+          <p>
+            "Para Tiago, o esporte carrega identidade, disciplina, trabalho em equipe e oportunidade. É a mesma visão que sustenta o treino individual: técnica e método para potencializar a paixão pelo movimento."
+          </p>
+        </div>
+      </div>
+
+      <!-- Vídeo Documental do Portfólio com Áudio Opcional -->
+      <div class="video-showcase-box js-reveal">
+        <div class="video-player-wrap">
+          <video id="football-video" autoplay muted loop playsinline preload="metadata" poster="assets/futebol-comunidade.jpeg">
+            <source src="assets/video-futebol.mp4" type="video/mp4" />
+          </video>
+          <div class="video-controls-overlay">
+            <span class="video-tag-label">Registro em Vídeo // Futebol & Identidade</span>
+            <div class="video-actions">
+              <button class="video-sound-btn" id="videoAudioBtn" type="button" aria-label="Ativar áudio do vídeo">
+                <span id="audioStateText">🔊 Ativar Som</span>
+              </button>
+              <button class="video-sound-btn" id="videoPlayBtn" type="button" aria-label="Pausar vídeo">
+                <span id="playStateText">⏸ Pausar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-caption-side">
+          <div class="section-marker" style="margin-bottom: 12px; font-size: 10px;">
+            <span>Docu-registro de Campo</span>
+          </div>
+          <h4>O Corpo Também é Cultura</h4>
+          <p>
+            Nas vivências com o futebol de várzea e de comunidade, o movimento físico assume seu papel mais genuíno: conectar pessoas, canalizar energias e ensinar respeito às regras do jogo e da vida.
+          </p>
+          <div class="video-quote">
+            "A técnica lapida o atleta, mas a disciplina esportiva forma o cidadão."
+          </div>
+        </div>
+      </div>
+
+      <!-- Galeria Multimídia de Fotos Reais de Atividades (renderizada via src/data/content.js) -->
+      <div id="galleryGrid" class="multimedia-gallery-grid js-reveal"></div>
+    </section>
+
+    <!-- 4. Avaliação, Reflexões Críticas & Inclusão (Estudos Acadêmicos) -->
+    <section id="estudos" class="section-paper">
+      <div class="section-marker light js-reveal">
+        <span>03 // Avaliação, Reflexões Críticas e Inclusão</span>
+        <span class="section-tag">Estudos de Caso</span>
+      </div>
+
+      <div class="js-reveal">
+        <h2 class="section-title">
+          Ciência aplicada com <span>cuidado, ética</span> e contexto humano.
+        </h2>
+        <p class="section-subtitle">
+          Textos críticos e estudos de caso desenvolvidos durante a formação acadêmica e aplicados em intervenções práticas com diferentes públicos.
+        </p>
+      </div>
+
+      <div class="cases-grid">
+        <!-- Caso 1: Inclusão e Esporte Adaptado -->
+        <article class="case-study-card js-reveal">
+          <div class="case-study-img-wrap">
+            <img src="assets/estudo-inclusao-01.jpeg" alt="Estudo sobre inclusão e esporte adaptado" loading="lazy" />
+            <span class="case-study-badge">Educação Física Inclusiva</span>
+          </div>
+          <div class="case-study-body">
+            <h3>Participar no Próprio Ritmo: Esporte Adaptado</h3>
+            <p>
+              Análise e aplicação de adaptações sensoriais, regras flexibilizadas e jogos cooperativos. O esporte adaptado demonstra que a deficiência ou limitação motora nunca deve ser barreira para o direito ao lazer, saúde e inclusão coletiva.
+            </p>
+            <div class="case-tags-wrap">
+              <span class="case-pill">Jogos Cooperativos</span>
+              <span class="case-pill">Adaptação Sensorial</span>
+              <span class="case-pill">Acessibilidade</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Caso 2: Fisiologia do Exercício e Hipertensão -->
+        <article class="case-study-card js-reveal">
+          <div class="case-study-img-wrap">
+            <img src="assets/estudo-hipertensao.jpeg" alt="Estudo sobre fisiologia do exercício e hipertensão arterial" loading="lazy" />
+            <span class="case-study-badge">Fisiologia do Exercício</span>
+          </div>
+          <div class="case-study-body">
+            <h3>Segurança Cardiovascular: Exercício & Hipertensão</h3>
+            <p>
+              Prescrição de treinamento para indivíduos com hipertensão arterial sistêmica. Protocolos combinando estímulos aeróbicos controlados, treino resistido sem manobra de Valsalva excessiva e monitoramento contínuo da pressão e percepção de esforço.
+            </p>
+            <div class="case-tags-wrap">
+              <span class="case-pill">Controle Pressórico</span>
+              <span class="case-pill">Treino Resistido</span>
+              <span class="case-pill">Saúde Cardiovascular</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Caso 3: Corpo e Cultura -->
+        <article class="case-study-card js-reveal">
+          <div class="case-study-img-wrap">
+            <img src="assets/estudo-cultura.jpeg" alt="Estudo sobre corpo, cultura e sociedade" loading="lazy" />
+            <span class="case-study-badge">Cultura Corporal</span>
+          </div>
+          <div class="case-study-body">
+            <h3>O Movimento Além da Estética: Identidade e Vida</h3>
+            <p>
+              Reflexão crítica sobre como os padrões estéticos comerciais limitam a relação das pessoas com seus próprios corpos. A proposta de Tiago enfatiza a funcionalidade, o bem-estar duradouro e a autoconfiança conquistada pela disciplina motora.
+            </p>
+            <div class="case-tags-wrap">
+              <span class="case-pill">Cultura do Movimento</span>
+              <span class="case-pill">Autonomia</span>
+              <span class="case-pill">Saúde Mental</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. Conteúdo Educativo: Biomecânica Aplicada ao Treinamento -->
+    <section id="biomecanica" class="section-dark" style="background: #020612;">
+      <div class="section-marker js-reveal">
+        <span>04 // Conteúdo Educativo & Biomecânica</span>
+        <span class="section-tag">Engenharia do Movimento</span>
+      </div>
+
+      <div class="js-reveal">
+        <h2 class="section-title">
+          Entenda <span>antes de executar</span>.
+        </h2>
+        <p class="section-subtitle">
+          Como o Tiago traduz a biomecânica para os alunos. Interaja com as regiões musculares abaixo para compreender os pontos críticos de alinhamento e proteção articular.
+        </p>
+      </div>
+
+      <div class="biomecanica-box js-reveal">
+        <div class="muscle-tabs" role="tablist">
+          <button class="muscle-btn active" data-target="peito">Peitoral & Ombro</button>
+          <button class="muscle-btn" data-target="costas">Dorsais & Escápulas</button>
+          <button class="muscle-btn" data-target="pernas">Glúteos & Quadríceps</button>
+          <button class="muscle-btn" data-target="deltoides">Deltoides & Manguito</button>
+        </div>
+
+        <div class="muscle-display">
+          <div class="muscle-graphic">
+            <div class="muscle-svg-container" id="muscleGraphicSvg">
+              <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="16" r="10" stroke="#00e5ff" stroke-width="2" fill="rgba(0, 229, 255, 0.1)" />
+                <path d="M35 30 L50 24 L65 30 L60 62 L40 62 Z" stroke="#00e5ff" stroke-width="2.5" fill="rgba(37, 99, 235, 0.3)" id="muscleMainPath" />
+                <circle cx="28" cy="36" r="6" stroke="#00e5ff" stroke-width="2" fill="rgba(0,229,255,0.2)" />
+                <circle cx="72" cy="36" r="6" stroke="#00e5ff" stroke-width="2" fill="rgba(0,229,255,0.2)" />
+                <path d="M42 62 L38 105 M58 62 L62 105" stroke="#64748b" stroke-width="2.5" />
+              </svg>
+            </div>
+            <div class="muscle-tag-floating" id="muscleGraphicTag">Foco: Feixes Clavicular e Esternal</div>
+          </div>
+
+          <div class="muscle-info" id="muscleInfoContent">
+            <h3 id="muscleTitle">Peitoral Maior & Ajuste de Tração</h3>
+            <div class="muscle-subtitle" id="muscleTargetSub">Biomecânica de Supinos e Crucifixos</div>
+            <div class="muscle-bullets">
+              <div class="bullet-card">
+                <b>1. Ângulo do Banco e Linha da Fibra</b>
+                <p id="bulletOne">Para ativar o feixe clavicular (porção superior), incline o banco entre 30º e 45º. Inclinações maiores desviam a sobrecarga para o deltoide anterior.</p>
+              </div>
+              <div class="bullet-card">
+                <b>2. Depressão e Adução das Escápulas</b>
+                <p id="bulletTwo">Manter as escápulas presas no banco estabiliza a glenoumeral, evitando atrito no manguito rotador e isolando o esforço no peitoral.</p>
+              </div>
+              <div class="bullet-card">
+                <b>3. Amplitude de Movimento com Segurança</b>
+                <p id="bulletThree">Descer a barra ou halteres até o nível do esterno com os cotovelos a cerca de 60º do tronco, e não abertos a 90º.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Portfólio de Resultados: Transformações & Alunos -->
+    <section id="resultados" class="section-paper">
+      <div class="section-marker light js-reveal">
+        <span>05 // Portfólio de Resultados & Casos Reais</span>
+        <span class="section-tag">Transformações</span>
+      </div>
+
+      <div class="js-reveal">
+        <h2 class="section-title">
+          Evolução física comprovada com <span>método e constância</span>.
+        </h2>
+        <p class="section-subtitle">
+          Resultados colhidos por quem seguiu o acompanhamento individualizado. Arraste o divisor horizontal para visualizar o antes e depois.
+        </p>
+      </div>
+
+      <div class="results-container js-reveal">
+        <div class="comparison-slider-wrapper" id="beforeAfterSlider">
+          <img class="img-before" src="assets/antes-depois-01.jpeg" alt="Antes do acompanhamento" />
+          <img class="img-after" src="assets/antes-depois-02.jpeg" alt="Depois da aplicação do método do Tiago Filadelfo" />
+          <span class="slider-badge-label label-before">Início do Processo</span>
+          <span class="slider-badge-label label-after">Evolução Conquistada</span>
+          <div class="slider-handle" id="sliderHandle">
+            <div class="slider-knob">↔</div>
+          </div>
+          <input type="range" min="0" max="100" value="50" class="slider-range-input" id="sliderRange" aria-label="Slider comparativo de evolução física" />
+        </div>
+
+        <div class="results-metrics-panel">
+          <div class="metric-card-highlight">
+            <span class="relato-label">Relato da Aluna</span>
+            <div class="metric-number">-9 KG</div>
+            <h4>Emagrecimento com Preservação de Massa</h4>
+            <p>Redução expressiva do percentual de gordura sem perda de tônus ou sacrifícios prejudiciais à saúde.</p>
+          </div>
+          <div class="metric-card-highlight">
+            <span class="relato-label">Relato da Aluna</span>
+            <div class="metric-number">Manequim 40 / M</div>
+            <h4>Recomposição Corporal Real</h4>
+            <p>Mudança de medidas visível nas roupas, aumento de disposição diária e fortalecimento muscular.</p>
+          </div>
+          <div class="metric-card-highlight">
+            <span class="relato-label">Relato da Aluna</span>
+            <div class="metric-number">8 Meses</div>
+            <h4>Constância sem Dores ou Lesões</h4>
+            <p>Adaptação progressiva do treino às necessidades e limitações articulares de cada pessoa.</p>
+          </div>
+        </div>
+
+        <p class="results-note">
+          Resultados relatados por alunas reais em acompanhamento supervisionado. Cada resposta ao método é individual e depende de constância, alimentação e descanso. Fotos de antes/depois publicadas com autorização.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. Depoimentos Reais de Alunos -->
+    <section id="depoimentos" class="testimonials-section">
+      <div class="section-marker js-reveal">
+        <span>06 // Prova Social & Relatos de Alunos</span>
+        <span class="section-tag">Depoimentos</span>
+      </div>
+
+      <div class="js-reveal">
+        <h2 class="section-title">
+          A voz de quem vive a <span>metodologia na prática</span>.
+        </h2>
+        <p class="section-subtitle">
+          Feedbacks e mensagens autênticas enviadas por alunos atendidos na consultoria e treinos presenciais.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Depoimento 1: Lary Uilliana -->
+        <article class="testimonial-card js-reveal" data-testimonial-key="lary">
+          <div class="testimonial-header">
+            <div class="student-profile">
+              <div class="student-avatar-placeholder">👤</div>
+              <div class="student-info">
+                <h4>Lary Uilliana</h4>
+                <div class="stars-rating">★★★★★</div>
+              </div>
+            </div>
+            <span class="social-more-icon">•••</span>
+          </div>
+          <p class="testimonial-quote">
+            “Perdi peso pra caramba!! 😂 Você é foda, estou vestindo 'M' em algumas roupas, calça numero 40.. Perdi 9kg 💪 Você está de parabéns 👏👏👏”
+          </p>
+          <div class="testimonial-tag">
+            <span>@MFITPERSONAL</span>
+            <span class="tag-badge">-9kg Eliminados</span>
+          </div>
+          <div class="testimonial-actions"></div>
+        </article>
+
+        <!-- Depoimento 2: Cássia -->
+        <article class="testimonial-card js-reveal" data-testimonial-key="cassia">
+          <div class="testimonial-header">
+            <div class="student-profile">
+              <img class="student-avatar" src="assets/depoimento-cassia.jpg" alt="Foto de perfil Cássia" />
+              <div class="student-info">
+                <h4>Cássia</h4>
+                <div class="stars-rating">★★★★★</div>
+              </div>
+            </div>
+            <span class="social-more-icon">•••</span>
+          </div>
+          <p class="testimonial-quote">
+            “Estou muito satisfeita com os resultados que estou alcançando graças aos seus treinos de matar! 😂 brincadeiras à parte, esses treinos intensos fazem toda a diferença, eu reclamo mas eu adoro é muito bom olhar pra trás ver minha evolução até aqui e pensar que é só o começo. obrigada pela dedicação e o apoio, isso me ajuda a superar meus limites cada vez mais”
+          </p>
+          <div class="testimonial-tag">
+            <span>Aluna de Consultoria</span>
+            <span class="tag-badge">Superação & Força</span>
+          </div>
+          <div class="testimonial-actions"></div>
+        </article>
+
+        <!-- Depoimento 3: Ana Couto -->
+        <article class="testimonial-card js-reveal" data-testimonial-key="ana">
+          <div class="testimonial-header">
+            <div class="student-profile">
+              <img class="student-avatar" src="assets/depoimento-ana.jpg" alt="Foto de perfil Ana Couto" />
+              <div class="student-info">
+                <h4>Ana Couto</h4>
+                <div class="stars-rating">★★★★★</div>
+              </div>
+            </div>
+            <span class="social-more-icon">•••</span>
+          </div>
+          <p class="testimonial-quote">
+            “Tiago, gostaria de agradecer pelos 8 meses que venho treinando com você. Muito obrigada pela sua dedicação, cuidado, honestidade por todo apoio que vem me dando nessa jornada fitness. Nesses 8 meses com seus treinos consegui ver grandes resultados, desde o emagrecimento saudável, para o ganho de massa magra. tudo de acordo com as minhas necessidades, limitações e respeito...”
+          </p>
+          <div class="testimonial-tag">
+            <span>@any.couto</span>
+            <span class="tag-badge">8 Meses de Método</span>
+          </div>
+          <div class="testimonial-actions"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 8. Atuação Profissional & Serviços -->
+    <section id="servicos" class="section-dark">
+      <div class="section-marker js-reveal">
+        <span>07 // Modalidades de Atendimento Profissional</span>
+        <span class="section-tag">Serviços</span>
+      </div>
+
+      <div class="js-reveal">
+        <h2 class="section-title">
+          Como contratar e <span>treinar com o Tiago</span>.
+        </h2>
+        <p class="section-subtitle">
+          Atendimento estruturado tanto para acompanhamento presencial quanto remoto via aplicativo especializado.
+        </p>
+      </div>
+
+      <div class="programs-grid">
+        <article class="program-card featured js-reveal">
+          <span class="featured-tag">Mais Procurado</span>
+          <div class="program-icon">📲</div>
+          <h3>Consultoria Online (App MFIT)</h3>
+          <p>
+            Acompanhamento integral à distância com periodização individualizada, vídeos demonstrativos de cada exercício e feedback contínuo pelo WhatsApp.
+          </p>
+          <ul class="program-features">
+            <li>Acesso completo ao aplicativo MFIT Personal</li>
+            <li>Vídeos com a postura correta e orientação biomecânica</li>
+            <li>Ajustes periódicos de carga e volume</li>
+            <li>Canal direto de suporte técnico para dúvidas</li>
+          </ul>
+          <a class="card-cta" href="#contato">Solicitar Vaga na Consultoria ↗</a>
+        </article>
+
+        <article class="program-card js-reveal">
+          <div class="program-icon">🏋️‍♂️</div>
+          <h3>Personal Trainer Presencial</h3>
+          <p>
+            Atendimento 1 a 1 em academias e condomínios selecionados em São Paulo. Correção em tempo real de cada repetição e segurança postural máxima.
+          </p>
+          <ul class="program-features">
+            <li>Acompanhamento presencial completo</li>
+            <li>Ajuste fino de pegada, banco e cadência</li>
+            <li>Avaliação física e postural detalhada</li>
+            <li>Vagas restritas por disponibilidade de grade</li>
+          </ul>
+          <a class="card-cta" href="#contato">Consultar Horários Presenciais ↗</a>
+        </article>
+
+        <article class="program-card js-reveal">
+          <div class="program-icon">🛡️</div>
+          <h3>Reabilitação & Condicionamento</h3>
+          <p>
+            Planos especiais voltados para recuperação de dores articulares (coluna, joelhos, ombros) e indivíduos que necessitam de cuidados fisiológicos específicos.
+          </p>
+          <ul class="program-features">
+            <li>Adaptação biomecânica sem impacto prejudicial</li>
+            <li>Monitoramento de sinais e intensidade segura</li>
+            <li>Trabalho conjunto com laudos médicos/fisioterapia</li>
+            <li>Ganho de autonomia motora para a vida diária</li>
+          </ul>
+          <a class="card-cta" href="#contato">Agendar Avaliação Inicial ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- 9. Contato, Redes Profissionais & Sistema de Tracking -->
+    <section id="contato" class="contact-section">
+      <div class="contact-layout">
+        <div class="contact-info-col js-reveal">
+          <div class="section-marker">
+            <span>08 // Contato & Redes Profissionais</span>
+            <span class="section-tag">Agendamento</span>
+          </div>
+          <h2>
+            Vamos construir sua <span>melhor versão</span> com método?
+          </h2>
+          <p>
+            Preencha o formulário para enviar seus dados diretamente para a triagem. Você será redirecionado para o atendimento direto com o Tiago no WhatsApp com as informações da sua meta.
+          </p>
+
+          <div class="social-links-row">
+            <a class="social-link-badge" href="https://wa.me/5511963552470" target="_blank" rel="noreferrer">
+              <span>💬 WhatsApp Profissional: (11) 96355-2470</span>
+            </a>
+            <a class="social-link-badge" href="https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y" target="_blank" rel="noreferrer">
+              <span>📸 Instagram: Conteúdos & Bastidores ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="form-card js-reveal">
+          <h3>Formulário de Início & Triagem</h3>
+          <p class="form-desc">Preenchimento rápido em 1 minuto para receber uma proposta personalizada.</p>
+
+          <form id="leadCaptureForm" class="lead-form" novalidate>
+            <div class="form-group">
+              <label for="leadName">Seu Nome Completo</label>
+              <input type="text" id="leadName" name="name" placeholder="Como devemos te chamar?" required />
+            </div>
+
+            <div class="form-group">
+              <label for="leadPhone">Seu WhatsApp (com DDD)</label>
+              <input type="tel" id="leadPhone" name="phone" placeholder="(11) 99999-9999" required />
+            </div>
+
+            <div class="form-group">
+              <label for="leadObjective">Principal Objetivo</label>
+              <select id="leadObjective" name="objective" required>
+                <option value="">Selecione o seu objetivo...</option>
+                <option value="Hipertrofia Muscular">Hipertrofia Muscular (Ganho de Massa Magra)</option>
+                <option value="Emagrecimento e Definição">Emagrecimento & Definição Corporal</option>
+                <option value="Reabilitação e Saúde Articular">Reabilitação / Correção Postural / Dores</option>
+                <option value="Condicionamento Físico Geral">Condicionamento Físico & Saúde</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="leadModality">Modalidade de Interesse</label>
+              <select id="leadModality" name="modality" required>
+                <option value="Consultoria Online (App MFIT)">Consultoria Online (App MFIT)</option>
+                <option value="Personal Trainer Presencial (SP)">Personal Trainer Presencial (São Paulo)</option>
+                <option value="Avaliação / Parcerias Esportivas">Avaliação Física / Parcerias Esportivas</option>
+              </select>
+            </div>
+
+            <button type="submit" id="submitBtn" class="form-submit-btn">
+              Enviar Mensagem para o WhatsApp do Tiago ↗
+            </button>
+
+            <div class="form-disclaimer">
+              🔒 Informações confidenciais. Atendimento individual e profissional.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer do Portfólio -->
+    <footer class="site-footer">
+      <div>
+        © <span id="copyrightYear">2026</span> Tiago Gomes Filadelfo — Profissional de Educação Física & Treinador.
+      </div>
+      <div>
+        <a href="#top" style="color: var(--electric-blue); margin-right: 20px;">Voltar ao Topo ↑</a>
+        <a href="https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y" target="_blank" rel="noreferrer" style="color: #cbd5e1;">
+          Instagram ↗
+        </a>
+      </div>
+    </footer>
+
+    <!-- Barra Fixa Inferior (Sticky CTA Mobile) -->
+    <div class="sticky-bottom-bar" id="stickyBottomBar">
+      <div class="sticky-text">
+        <b>Portfólio Tiago Filadelfo</b>
+        <span>Educação Física & Treino</span>
+      </div>
+      <a class="sticky-btn" href="#contato" id="stickyCtaBtn">
+        Entrar em Contato ↗
+      </a>
+    </div>
+
+    <!-- Lightbox de Prévias (Galeria & Prints de Depoimentos) -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Prévia ampliada" aria-hidden="true">
+      <div class="lightbox-body">
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Fechar prévia">✕</button>
+        <img id="lightboxImage" src="" alt="" />
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+      </div>
+    </div>
+
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
