@@ -3,23 +3,42 @@
  * Tiago Filadelfo (TF Personal)
  */
 
-import { GALLERY, TESTIMONIAL_PRINTS } from "./data/content.js";
+import { GALLERY, TESTIMONIAL_PRINTS, WORKOUT_WEEK } from "./data/content.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  initAttributionAndForm();
-  initBiomecanicaSelector();
-  initComparisonSlider();
-  initPhoneMask();
-  initSmoothScrollAndSticky();
-  initVideoAudioToggle();
-  initVideoPlayToggle();
-  initMobileNav();
-  initGallery();
-  initTestimonialPrints();
-  initLightbox();
-  initCopyrightYear();
-  initGsapAnimations();
-});
+function startApp() {
+  const modules = [
+    ["initAttributionAndForm", initAttributionAndForm],
+    ["initBiomecanicaSelector", initBiomecanicaSelector],
+    ["initBiomechanicsVideoPlayer", initBiomechanicsVideoPlayer],
+    ["initWorkoutOfTheWeek", initWorkoutOfTheWeek],
+    ["initCaseStudyTabs", initCaseStudyTabs],
+    ["initComparisonSlider", initComparisonSlider],
+    ["initPhoneMask", initPhoneMask],
+    ["initSmoothScrollAndSticky", initSmoothScrollAndSticky],
+    ["initVideoAudioToggle", initVideoAudioToggle],
+    ["initVideoPlayToggle", initVideoPlayToggle],
+    ["initMobileNav", initMobileNav],
+    ["initGallery", initGallery],
+    ["initTestimonialPrints", initTestimonialPrints],
+    ["initLightbox", initLightbox],
+    ["initCopyrightYear", initCopyrightYear],
+    ["initGsapAnimations", initGsapAnimations]
+  ];
+
+  modules.forEach(([name, fn]) => {
+    try {
+      fn();
+    } catch (err) {
+      console.warn(`[TiagoApp] Aviso na inicialização de ${name}:`, err);
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startApp);
+} else {
+  startApp();
+}
 
 /* ==========================================================================
    1. Integração com LeadTracker & Formulário de Qualificação
@@ -70,11 +89,11 @@ function initAttributionAndForm() {
     // 4. Monta a mensagem estruturada e incontestável para o WhatsApp
     const message =
       `Olá Tiago! Meu nome é *${name}*.\n` +
-      `Gostaria de saber como funciona o acompanhamento:\n\n` +
-      `• *Modalidade:* ${modality}\n` +
-      `• *Objetivo:* ${objective}\n` +
-      `• *WhatsApp:* ${phone}\n\n` +
-      `[Ref: ${trackingCode}]`;
+      `Gostaria de agendar uma Avaliação Física / Diagnóstica com você:\n\n` +
+      `• *Modalidade de Interesse:* ${modality}\n` +
+      `• *Foco / Objetivo:* ${objective}\n` +
+      `• *Contato WhatsApp:* ${phone}\n\n` +
+      `[Código de Atribuição: ${trackingCode}]`;
 
     const whatsappUrl = `https://wa.me/${window.LeadTracker.OFFICIAL_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
@@ -108,86 +127,210 @@ function initPhoneMask() {
 }
 
 /* ==========================================================================
-   3. Infográfico Interativo de Biomecânica
+   3. Infográfico Interativo de Biomecânica (Motor Body-Muscles / WHOOP 2026)
    ========================================================================== */
 const biomecanicaData = {
   peito: {
-    title: "Peitoral Maior & Ajuste de Tração",
-    subtitle: "Biomecânica de Supinos e Crucifixos",
-    tag: "Foco: Feixes Clavicular e Esternal",
-    svgColor: "#00e5ff",
+    title: "Peitoral Maior & Tríceps Braquial",
+    subtitle: "Biomecânica de Supinos, Apoios e Crucifixos",
+    tag: "Recrutamento Principal: Peitoral Clavicular/Esternal & Tríceps",
+    latin: "Pectoralis major & Triceps brachii",
+    defaultView: "FRONT",
+    coachNote: "A depressão e adução prévia das escápulas cria uma base dorsal firme, isolando o feixe clavicular e esternal enquanto poupa o manguito rotador.",
+    bodyStateFront: {
+      "chest-upper-left": { intensity: 9, selected: true },
+      "chest-upper-right": { intensity: 9, selected: true },
+      "chest-mid-left": { intensity: 10, selected: true },
+      "chest-mid-right": { intensity: 10, selected: true },
+      "chest-lower-left": { intensity: 8, selected: true },
+      "chest-lower-right": { intensity: 8, selected: true },
+      "shoulder-front-left": { intensity: 6, selected: false },
+      "shoulder-front-right": { intensity: 6, selected: false },
+      "serratus-anterior-left": { intensity: 4, selected: false },
+      "serratus-anterior-right": { intensity: 4, selected: false }
+    },
+    bodyStateBack: {
+      "triceps-lateral-left": { intensity: 8, selected: true },
+      "triceps-lateral-right": { intensity: 8, selected: true },
+      "triceps-long-left": { intensity: 8, selected: true },
+      "triceps-long-right": { intensity: 8, selected: true },
+      "triceps-medial-left": { intensity: 7, selected: true },
+      "triceps-medial-right": { intensity: 7, selected: true }
+    },
     bullets: [
       {
         b: "1. Ângulo do Banco e Linha da Fibra",
-        p: "Para ativar o feixe clavicular (porção superior), incline o banco entre 30º e 45º. Inclinações maiores desviam a sobrecarga para o deltoide anterior."
+        p: "Para ativar o feixe clavicular (porção superior), incline o banco entre 30º e 45º. Inclinações maiores transferem a tensão excessiva para o deltoide anterior."
       },
       {
         b: "2. Depressão e Adução das Escápulas",
-        p: "Manter as escápulas presas no banco estabiliza a glenoumeral, evitando atrito no manguito rotador e isolando o esforço no peitoral."
+        p: "Manter as escápulas presas no encosto estabiliza a glenoumeral, evitando o pinçamento do supraespinhal e focando o torque nos feixes peitorais."
       },
       {
-        b: "3. Amplitude de Movimento com Segurança",
-        p: "Descer a barra ou halteres até o nível do esterno com os cotovelos a cerca de 60º do tronco, e não abertos a 90º."
+        b: "3. Trajetória dos Cotovelos na Descida",
+        p: "Desça os cotovelos a cerca de 60º em relação ao tronco (em formato de seta), preservando o tendão do bíceps e manguito."
       }
     ]
   },
   costas: {
-    title: "Dorsais, Romboides & Escápulas",
-    subtitle: "Biomecânica de Puxadas e Remadas",
-    tag: "Foco: Expansão Dorsal e Espessura",
-    svgColor: "#38bdf8",
+    title: "Dorsais, Romboides & Trapézio",
+    subtitle: "Biomecânica de Puxadas Verticais e Remadas Livres",
+    tag: "Recrutamento Principal: Latíssimo do Dorso & Romboides",
+    latin: "Latissimus dorsi & Rhomboidei",
+    defaultView: "BACK",
+    coachNote: "Conduza os cotovelos em direção aos bolsos da bermuda e deprima os ombros antes de tracionar. Isso impede que os braços roubem a carga das dorsais.",
+    bodyStateFront: {
+      "biceps-left": { intensity: 7, selected: false },
+      "biceps-right": { intensity: 7, selected: false },
+      "forearm-left": { intensity: 5, selected: false },
+      "forearm-right": { intensity: 5, selected: false }
+    },
+    bodyStateBack: {
+      "lats-upper-left": { intensity: 10, selected: true },
+      "lats-upper-right": { intensity: 10, selected: true },
+      "lats-mid-left": { intensity: 10, selected: true },
+      "lats-mid-right": { intensity: 10, selected: true },
+      "lats-lower-left": { intensity: 9, selected: true },
+      "lats-lower-right": { intensity: 9, selected: true },
+      "trapezius-mid-left": { intensity: 7, selected: false },
+      "trapezius-mid-right": { intensity: 7, selected: false },
+      "trapezius-lower-left": { intensity: 6, selected: false },
+      "trapezius-lower-right": { intensity: 6, selected: false },
+      "lower-back-erectors-left": { intensity: 5, selected: false },
+      "lower-back-erectors-right": { intensity: 5, selected: false }
+    },
     bullets: [
       {
         b: "1. Vetor de Força e Direção dos Cotovelos",
         p: "Puxadas com cotovelos colados ao tronco enfatizam o grande dorsal. Cotovelos abertos direcionam a tensão para romboides e trapézio médio."
       },
       {
-        b: "2. Depressão Escapular Antes da Puxada",
-        p: "Inicie o movimento deprimindo os ombros para baixo antes de flexionar os cotovelos, ativando as fibras inferiores do trapézio e dorsal."
+        b: "2. Depressão Escapular Prévia",
+        p: "Inicie o movimento trazendo as escápulas para baixo antes de flexionar os cotovelos, ativando as fibras inferiores do trapézio e latíssimo."
       },
       {
-        b: "3. Conexão Mente-Músculo",
-        p: "Pense em empurrar com os cotovelos para trás, e não em 'puxar com as mãos', reduzindo o gasto excessivo dos bíceps."
+        b: "3. Conexão Mente-Músculo nas Remadas",
+        p: "Foque em 'pressionar com os cotovelos para trás' em vez de puxar pela mão, minimizando a fadiga prematura dos antebraços."
       }
     ]
   },
   pernas: {
     title: "Membros Inferiores & Glúteos",
-    subtitle: "Biomecânica de Agachamento e Leg Press",
-    tag: "Foco: Quadríceps, Glúteo Máximo e Isquiotibiais",
-    svgColor: "#f59e0b",
+    subtitle: "Biomecânica de Agachamento, Búlgaro e Leg Press",
+    tag: "Recrutamento Principal: Quadríceps, Glúteo Máximo e Isquiotibiais",
+    latin: "Quadriceps femoris & Gluteus maximus",
+    defaultView: "FRONT",
+    coachNote: "A integridade do agachamento depende do tripé do pé (calcanhar, hálux e 5º metatarso). Joelhos acompanham a linha dos dedos sem colapso em valgo.",
+    bodyStateFront: {
+      "quads-left": { intensity: 10, selected: true },
+      "quads-right": { intensity: 10, selected: true },
+      "adductors-left": { intensity: 6, selected: false },
+      "adductors-right": { intensity: 6, selected: false },
+      "tibialis-anterior-left": { intensity: 5, selected: false },
+      "tibialis-anterior-right": { intensity: 5, selected: false }
+    },
+    bodyStateBack: {
+      "gluteus-maximus-left": { intensity: 10, selected: true },
+      "gluteus-maximus-right": { intensity: 10, selected: true },
+      "gluteus-medius-left": { intensity: 8, selected: false },
+      "gluteus-medius-right": { intensity: 8, selected: false },
+      "hamstrings-medial-left": { intensity: 8, selected: true },
+      "hamstrings-lateral-left": { intensity: 8, selected: true },
+      "hamstrings-medial-right": { intensity: 8, selected: true },
+      "hamstrings-lateral-right": { intensity: 8, selected: true },
+      "calves-gastroc-medial-left": { intensity: 5, selected: false },
+      "calves-gastroc-lateral-left": { intensity: 5, selected: false },
+      "calves-gastroc-medial-right": { intensity: 5, selected: false },
+      "calves-gastroc-lateral-right": { intensity: 5, selected: false }
+    },
     bullets: [
       {
         b: "1. Mobilidade de Tornozelo e Joelhos",
-        p: "A dorsiflexão adequada permite agachar profundo sem retroversão pélvica ('buttwink'), protegendo os discos lombares."
+        p: "A dorsiflexão preservada permite agachamento profundo sem retroversão pélvica ('buttwink'), garantindo estabilidade à coluna lombar."
       },
       {
-        b: "2. Posição dos Pés e Ativação Glútea",
-        p: "Posição dos pés ligeiramente abertos (cerca de 15º a 30º) alinha o fêmur com a patela e potencializa o torque do glúteo máximo."
+        b: "2. Posicionamento dos Pés e Torque Glúteo",
+        p: "Abertura dos pés em cerca de 20º a 30º favorece o alinhamento femoral e permite torque concêntrico potente do glúteo máximo."
       },
       {
-        b: "3. Distribuição de Peso no Pé",
-        p: "O tripé do pé (calcanhar, base do dedão e base do dedinho) deve permanecer fixo no chão durante toda a fase excêntrica e concêntrica."
+        b: "3. Distribuição de Carga no Solo",
+        p: "Mantenha o calcanhar e a base do dedão ancorados ao chão durante todo o arco excêntrico e concêntrico."
       }
     ]
   },
   deltoides: {
     title: "Deltoides & Estabilização do Manguito",
-    subtitle: "Biomecânica das Elevações Laterais e Desenvolvimentos",
-    tag: "Foco: Porção Lateral sem Pinçamento",
-    svgColor: "#a855f7",
+    subtitle: "Biomecânica de Elevações Laterais e Desenvolvimentos",
+    tag: "Recrutamento Principal: Deltoide Lateral, Anterior e Posterior",
+    latin: "Deltoideus & Rotator cuff",
+    defaultView: "FRONT",
+    coachNote: "Elevações laterais realizadas no plano escapular (30º anteriorizado) protegem a bursa subacromial e concentram 100% da tensão mecânica no deltoide médio.",
+    bodyStateFront: {
+      "shoulder-side-left": { intensity: 10, selected: true },
+      "shoulder-side-right": { intensity: 10, selected: true },
+      "shoulder-front-left": { intensity: 8, selected: true },
+      "shoulder-front-right": { intensity: 8, selected: true },
+      "trapezius-upper-left": { intensity: 4, selected: false },
+      "trapezius-upper-right": { intensity: 4, selected: false }
+    },
+    bodyStateBack: {
+      "shoulder-back-left": { intensity: 10, selected: true },
+      "shoulder-back-right": { intensity: 10, selected: true },
+      "trapezius-upper-left": { intensity: 5, selected: false },
+      "trapezius-upper-right": { intensity: 5, selected: false },
+      "trapezius-mid-left": { intensity: 5, selected: false },
+      "trapezius-mid-right": { intensity: 5, selected: false }
+    },
     bullets: [
       {
         b: "1. Plano Escapular (30º à Frente)",
         p: "Execute a elevação lateral cerca de 30º anterior ao corpo. Isso alinha a cabeça do úmero na cavidade glenoide e elimina o impacto no supraespinhal."
       },
       {
-        b: "2. Não Ultrapasse a Linha dos Ombros",
-        p: "Elevar halteres acima da linha do queixo não recruta mais o deltoide lateral, apenas transfere a tensão para o trapézio superior."
+        b: "2. Limite da Amplitude Confortável",
+        p: "Elevar halteres além da linha dos ombros transfere a sobrecarga para o trapézio superior. Pare ligeiramente abaixo da linha do queixo."
       },
       {
-        b: "3. Polegar Ligeiramente para Baixo",
-        p: "Mantenha a mão neutra com leve rotação para manter a tensão mecânica constante no ventre muscular do deltoide medial."
+        b: "3. Pegada Neutra e Punho Firme",
+        p: "Mantenha o punho estável e o polegar sem excessiva rotação interna para evitar pinçamento do tendão umeral."
+      }
+    ]
+  },
+  core: {
+    title: "Core, Reto Abdominal & Pressão Intra-Abdominal",
+    subtitle: "Biomecânica de Estabilidade Lombopélvica e Força Central",
+    tag: "Recrutamento Principal: Reto Abdominal, Oblíquos & Serrátil",
+    latin: "Rectus abdominis & Obliquus externus",
+    defaultView: "FRONT",
+    coachNote: "O core funciona como um cilindro de rigidez para transmitir forças entre o chão e a barra. Treinar estabilidade anti-extensão e anti-rotação previne lesões discais.",
+    bodyStateFront: {
+      "abs-upper-left": { intensity: 10, selected: true },
+      "abs-upper-right": { intensity: 10, selected: true },
+      "abs-lower-left": { intensity: 9, selected: true },
+      "abs-lower-right": { intensity: 9, selected: true },
+      "obliques-left": { intensity: 8, selected: true },
+      "obliques-right": { intensity: 8, selected: true },
+      "serratus-anterior-left": { intensity: 6, selected: false },
+      "serratus-anterior-right": { intensity: 6, selected: false }
+    },
+    bodyStateBack: {
+      "lower-back-erectors-left": { intensity: 8, selected: true },
+      "lower-back-erectors-right": { intensity: 8, selected: true },
+      "lower-back-ql-left": { intensity: 7, selected: false },
+      "lower-back-ql-right": { intensity: 7, selected: false }
+    },
+    bullets: [
+      {
+        b: "1. Manobra de Bracing (Pressão 360º)",
+        p: "Contraia o abdômen expandindo as costelas para os lados com ar diafragmático, criando um colete natural que protege a coluna."
+      },
+      {
+        b: "2. Controle Pélvico Neutro",
+        p: "Evite tanto a hiperlordose lombar descontrolada quanto a perda precoce de curvatura durante cargas axiais elevadas."
+      },
+      {
+        b: "3. Transferência Direta de Força",
+        p: "Um core estabilizado aumenta em até 20% a força transferida no agachamento, supino e saltos desportivos."
       }
     ]
   }
@@ -198,100 +341,437 @@ function initBiomecanicaSelector() {
   const titleEl = document.querySelector("#muscleTitle");
   const subtitleEl = document.querySelector("#muscleTargetSub");
   const tagEl = document.querySelector("#muscleGraphicTag");
+  const latinBadge = document.querySelector("#muscleLatinBadge");
+  const coachNote = document.querySelector("#muscleCoachNote");
   const bulletsEl = document.querySelector("#muscleInfoContent .muscle-bullets");
-  const svgPath = document.querySelector("#muscleMainPath");
+  const chartContainer = document.querySelector("#bodyMusclesChartContainer");
+  const btnViewFront = document.querySelector("#btnViewFront");
+  const btnViewBack = document.querySelector("#btnViewBack");
 
-  if (!buttons.length || !titleEl || !bulletsEl) return;
+  if (!buttons.length || !titleEl || !bulletsEl || !chartContainer) return;
 
+  let currentTarget = "peito";
+  let currentView = "FRONT";
+  let bodyChartInstance = null;
+
+  // 1. Personaliza a paleta cromática do BodyMuscles para o tema WHOOP (Pulse Violet #4a53ff)
+  if (window.BodyMuscles && window.BodyMuscles.INTENSITY_COLORS) {
+    window.BodyMuscles.INTENSITY_COLORS[0] = "#202430"; // Inativo / Base neutra escura
+    window.BodyMuscles.INTENSITY_COLORS[1] = "#282d3f";
+    window.BodyMuscles.INTENSITY_COLORS[2] = "#30364e";
+    window.BodyMuscles.INTENSITY_COLORS[3] = "#394172";
+    window.BodyMuscles.INTENSITY_COLORS[4] = "#3b43a4";
+    window.BodyMuscles.INTENSITY_COLORS[5] = "#444be0";
+    window.BodyMuscles.INTENSITY_COLORS[6] = "#4a53ff"; // Pulse Violet Primário
+    window.BodyMuscles.INTENSITY_COLORS[7] = "#636cff";
+    window.BodyMuscles.INTENSITY_COLORS[8] = "#7c84ff";
+    window.BodyMuscles.INTENSITY_COLORS[9] = "#9da3ff";
+    window.BodyMuscles.INTENSITY_COLORS[10] = "#ffffff"; // Pico de recrutamento / Branco puro
+  }
+
+  // 2. Função para obter o estado atual baseado na vista
+  const getBodyState = (target, view) => {
+    const data = biomecanicaData[target];
+    if (!data) return {};
+    return view === "BACK" ? (data.bodyStateBack || {}) : (data.bodyStateFront || {});
+  };
+
+  // 3. Atualiza painel informativo lateral
+  const updateInfoPanel = (data) => {
+    if (!data) return;
+    titleEl.textContent = data.title;
+    subtitleEl.textContent = data.subtitle;
+    if (tagEl) tagEl.textContent = data.tag;
+    if (latinBadge && data.latin) latinBadge.textContent = data.latin;
+    if (coachNote && data.coachNote) coachNote.textContent = `"${data.coachNote}"`;
+
+    bulletsEl.innerHTML = data.bullets
+      .map(
+        (b) => `
+        <div class="bullet-card">
+          <b>${b.b}</b>
+          <p>${b.p}</p>
+        </div>
+      `
+      )
+      .join("");
+  };
+
+  // 4. Renderiza / atualiza o BodyChart
+  const renderChart = () => {
+    const state = getBodyState(currentTarget, currentView);
+
+    // Atualiza botões de vista (Frente / Costas)
+    if (btnViewFront && btnViewBack) {
+      btnViewFront.classList.toggle("active", currentView === "FRONT");
+      btnViewBack.classList.toggle("active", currentView === "BACK");
+    }
+
+    if (window.BodyMuscles && window.BodyMuscles.BodyChart) {
+      if (!bodyChartInstance) {
+        bodyChartInstance = new window.BodyMuscles.BodyChart(chartContainer, {
+          view: currentView,
+          bodyState: state,
+          showViewLabel: false,
+          enableTransitions: true,
+          onMuscleClick: (muscleId, muscleName) => {
+            if (tagEl) {
+              tagEl.textContent = `Músculo Focado: ${muscleName || muscleId}`;
+            }
+            if (coachNote) {
+              coachNote.textContent = `"O músculo ${muscleName || muscleId} recebe estímulo mecânico direcionado com alinhamento angular preciso e cadência controlada."`;
+            }
+          },
+          onMuscleHover: (muscleId) => {
+            if (muscleId && tagEl && !tagEl.dataset.locked) {
+              tagEl.textContent = `Analisando: ${muscleId.replace(/-/g, " ")}`;
+            } else if (!muscleId && tagEl && !tagEl.dataset.locked) {
+              const d = biomecanicaData[currentTarget];
+              if (d) tagEl.textContent = d.tag;
+            }
+          }
+        });
+      } else {
+        bodyChartInstance.update({
+          view: currentView,
+          bodyState: state
+        });
+      }
+    }
+  };
+
+  // 5. Troca de Grupo Muscular (Tabs)
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const target = btn.getAttribute("data-target");
       const data = biomecanicaData[target];
       if (!data) return;
 
+      currentTarget = target;
       buttons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
 
-      titleEl.textContent = data.title;
-      subtitleEl.textContent = data.subtitle;
-      tagEl.textContent = data.tag;
-      if (svgPath) {
-        svgPath.setAttribute("fill", data.svgColor);
-        svgPath.setAttribute("stroke", data.svgColor);
+      // Se o grupo pedir preferencialmente BACK (como costas), ajusta a vista
+      if (data.defaultView) {
+        currentView = data.defaultView;
       }
 
-      bulletsEl.innerHTML = data.bullets
-        .map(
-          (b) => `
-          <div class="bullet-card">
-            <b>${b.b}</b>
-            <p>${b.p}</p>
-          </div>
-        `
-        )
-        .join("");
+      updateInfoPanel(data);
+      renderChart();
+    });
+  });
+
+  // 6. Troca manual do Ângulo Anatômico (Frente / Costas)
+  if (btnViewFront) {
+    btnViewFront.addEventListener("click", () => {
+      currentView = "FRONT";
+      renderChart();
+    });
+  }
+
+  if (btnViewBack) {
+    btnViewBack.addEventListener("click", () => {
+      currentView = "BACK";
+      renderChart();
+    });
+  }
+
+  // 7. Inicialização no carregamento
+  updateInfoPanel(biomecanicaData[currentTarget]);
+  renderChart();
+}
+
+/* ==========================================================================
+   2.1 Player de Vídeos Curtos de Biomecânica (Análise Cinesiológica)
+   ========================================================================== */
+function initBiomechanicsVideoPlayer() {
+  const player = document.querySelector("#bioMainVideo");
+  const playBtn = document.querySelector("#bioPlayTriggerBtn");
+  const muteBtn = document.querySelector("#bioMuteTriggerBtn");
+  const currentLabel = document.querySelector("#bioVideoCurrentLabel");
+  const clipCards = document.querySelectorAll(".bio-clip-card");
+
+  if (!player || !playBtn) return;
+
+  const syncPlayState = () => {
+    const labelSpan = playBtn.querySelector(".play-label");
+    const iconSpan = playBtn.querySelector(".play-icon");
+    if (player.paused) {
+      if (labelSpan) labelSpan.textContent = "Reproduzir Análise";
+      if (iconSpan) iconSpan.textContent = "▶";
+    } else {
+      if (labelSpan) labelSpan.textContent = "Pausar";
+      if (iconSpan) iconSpan.textContent = "⏸";
+    }
+  };
+
+  playBtn.addEventListener("click", () => {
+    if (player.paused) {
+      player.play().catch(() => {});
+    } else {
+      player.pause();
+    }
+    syncPlayState();
+  });
+
+  if (muteBtn) {
+    muteBtn.addEventListener("click", () => {
+      player.muted = !player.muted;
+      const muteIcon = muteBtn.querySelector(".mute-icon");
+      if (muteIcon) {
+        muteIcon.textContent = player.muted ? "🔇" : "🔊";
+      }
+    });
+  }
+
+  player.addEventListener("play", syncPlayState);
+  player.addEventListener("pause", syncPlayState);
+
+  clipCards.forEach((card) => {
+    const handleSelect = () => {
+      clipCards.forEach((c) => c.classList.remove("active"));
+      card.classList.add("active");
+
+      const src = card.dataset.videoSrc;
+      const poster = card.dataset.videoPoster;
+      const title = card.dataset.videoTitle;
+
+      if (src) {
+        player.src = src;
+        if (poster) player.poster = poster;
+        if (currentLabel && title) {
+          currentLabel.textContent = `Análise Ativa: ${title}`;
+        }
+        player.load();
+        player.play().catch(() => {});
+        syncPlayState();
+      }
+    };
+
+    card.addEventListener("click", handleSelect);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleSelect();
+      }
     });
   });
 }
 
 /* ==========================================================================
-   4. Slider Comparativo de Antes e Depois
+   2.2 Treino da Semana — Periodização Científica & Aplicação Prática
    ========================================================================== */
-function initComparisonSlider() {
-  const sliderRange = document.querySelector("#sliderRange");
-  const afterImg = document.querySelector(".img-after");
-  const sliderHandle = document.querySelector("#sliderHandle");
+function initWorkoutOfTheWeek() {
+  const tabs = document.querySelectorAll(".workout-pill-btn");
+  const focusBadge = document.querySelector("#sheetFocusBadge");
+  const sheetTitle = document.querySelector("#sheetTitle");
+  const sheetMeta = document.querySelector("#sheetMeta");
+  const listEl = document.querySelector("#workoutExercisesList");
 
-  if (!sliderRange || !afterImg || !sliderHandle) return;
+  if (!tabs.length || !listEl || !WORKOUT_WEEK) return;
 
-  const updatePosition = (val) => {
-    afterImg.style.clipPath = `inset(0 0 0 ${val}%)`;
-    sliderHandle.style.left = `${val}%`;
+  const renderWorkout = (key) => {
+    const data = WORKOUT_WEEK[key];
+    if (!data) return;
+
+    if (focusBadge) focusBadge.textContent = data.focus;
+    if (sheetTitle) sheetTitle.textContent = data.name;
+    if (sheetMeta) sheetMeta.textContent = data.volume;
+
+    listEl.innerHTML = data.exercises
+      .map(
+        (ex) => `
+        <div class="exercise-item-card">
+          <div class="exercise-header">
+            <span class="exercise-number">${ex.num}</span>
+            <div class="exercise-titles">
+              <h4>${ex.name}</h4>
+              <span class="exercise-target">${ex.target}</span>
+            </div>
+          </div>
+          <div class="exercise-metrics-bar">
+            <span class="ex-metric-pill"><b>Séries:</b> ${ex.sets}</span>
+            <span class="ex-metric-pill"><b>Cadência:</b> ${ex.cadence}</span>
+            <span class="ex-metric-pill"><b>Intervalo:</b> ${ex.rest}</span>
+          </div>
+          <div class="exercise-coach-tip">
+            <div class="coach-tip-header">
+              <span class="tip-badge">DICA DO TIAGO // BIOMECÂNICA</span>
+            </div>
+            <p>${ex.tip}</p>
+          </div>
+        </div>
+      `
+      )
+      .join("");
   };
 
-  sliderRange.addEventListener("input", (e) => {
-    updatePosition(e.target.value);
-  });
+  // Render inicial
+  renderWorkout("a");
 
-  // Touch e mouse interativo direto no container
-  const container = document.querySelector("#beforeAfterSlider");
-  if (container) {
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      renderWorkout(tab.dataset.workout);
+    });
+  });
+}
+
+/* ==========================================================================
+   4. Seletor de Casos Reais & Slider Comparativo com Pointer Events
+   ========================================================================== */
+function initCaseStudyTabs() {
+  const tabBtns = document.querySelectorAll(".case-tab-btn");
+  const panels = document.querySelectorAll(".case-study-panel");
+  if (!tabBtns.length) return;
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetCase = btn.dataset.case;
+      if (!targetCase) return;
+
+      tabBtns.forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
+      });
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
+
+      panels.forEach((panel) => {
+        if (panel.id === targetCase) {
+          panel.classList.add("active");
+          panel.removeAttribute("hidden");
+        } else {
+          panel.classList.remove("active");
+          panel.setAttribute("hidden", "true");
+        }
+      });
+    });
+  });
+}
+
+function initComparisonSlider() {
+  const wrappers = document.querySelectorAll('.comparison-slider-wrapper[data-slider="reveal"]');
+  if (!wrappers.length) return;
+
+  wrappers.forEach((wrapper) => {
+    const curtain = wrapper.querySelector(".curtain-reveal-overlay");
+    const sliderHandle = wrapper.querySelector(".slider-handle");
+    const curtainLabel = wrapper.querySelector(".curtain-label");
+    const panel = wrapper.closest(".case-study-panel");
+    const quickBtns = panel ? panel.querySelectorAll(".quick-pos-btn") : [];
+
+    if (!curtain || !sliderHandle) return;
+
     let isDragging = false;
 
-    const onMove = (clientX) => {
-      const rect = container.getBoundingClientRect();
-      const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-      const percentage = (x / rect.width) * 100;
-      sliderRange.value = percentage;
-      updatePosition(percentage);
+    const setPosition = (pct, animate = false) => {
+      // Limita de 50% (divisa central natural) a 100% (Depois revelado)
+      // Nunca cobre o Antes (0% a 50%)!
+      const val = Math.max(50, Math.min(100, pct));
+
+      if (animate) {
+        curtain.style.transition = "left 0.35s cubic-bezier(0.16, 1, 0.3, 1)";
+        sliderHandle.style.transition = "left 0.35s cubic-bezier(0.16, 1, 0.3, 1)";
+        setTimeout(() => {
+          curtain.style.transition = "";
+          sliderHandle.style.transition = "";
+        }, 360);
+      } else {
+        curtain.style.transition = "none";
+        sliderHandle.style.transition = "none";
+      }
+
+      curtain.style.left = `${val}%`;
+      sliderHandle.style.left = `${val}%`;
+
+      if (curtainLabel) {
+        if (val >= 85) {
+          curtainLabel.style.opacity = "0";
+          curtainLabel.style.visibility = "hidden";
+        } else {
+          curtainLabel.style.opacity = "1";
+          curtainLabel.style.visibility = "visible";
+        }
+      }
+
+      // Em 98% a 100% (Ver Só Depois), oculta a manopla para manter a foto 100% limpa
+      if (sliderHandle) {
+        sliderHandle.style.opacity = val >= 98 ? "0" : "1";
+      }
+
+      // Sincroniza estado visual dos botões rápidos
+      if (quickBtns.length) {
+        quickBtns.forEach((b) => {
+          const btnPos = parseFloat(b.dataset.sliderPos);
+          if (Math.abs(btnPos - val) < 8) {
+            b.classList.add("active");
+          } else {
+            b.classList.remove("active");
+          }
+        });
+      }
     };
 
-    container.addEventListener("mousedown", (e) => {
+    const handlePointerAction = (clientX) => {
+      const rect = wrapper.getBoundingClientRect();
+      if (rect.width <= 0) return;
+      const x = clientX - rect.left;
+      const percentage = (x / rect.width) * 100;
+      setPosition(Math.max(50, Math.min(100, percentage)));
+    };
+
+    // Pointer Events — Suporta mouse, caneta e touch com precisão absoluta
+    wrapper.addEventListener("pointerdown", (e) => {
       isDragging = true;
-      onMove(e.clientX);
+      wrapper.classList.add("is-dragging");
+      try {
+        wrapper.setPointerCapture(e.pointerId);
+      } catch (err) {}
+      handlePointerAction(e.clientX);
     });
 
-    window.addEventListener("mousemove", (e) => {
-      if (isDragging) onMove(e.clientX);
+    wrapper.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+      handlePointerAction(e.clientX);
     });
 
-    window.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
+    const stopDragging = (e) => {
+      if (isDragging) {
+        isDragging = false;
+        wrapper.classList.remove("is-dragging");
+        try {
+          if (e && e.pointerId) {
+            wrapper.releasePointerCapture(e.pointerId);
+          }
+        } catch (err) {}
+      }
+    };
 
-    container.addEventListener(
-      "touchmove",
-      (e) => {
-        if (e.touches.length > 0) {
-          onMove(e.touches[0].clientX);
-        }
-      },
-      { passive: true }
-    );
-  }
+    wrapper.addEventListener("pointerup", stopDragging);
+    wrapper.addEventListener("pointercancel", stopDragging);
+    wrapper.addEventListener("pointerleave", stopDragging);
 
-  // Inicializa em 50%
-  updatePosition(50);
+    // Botões de Ação Rápida (100% Antes / 50% Comparação / 0% Revelado)
+    if (quickBtns.length) {
+      quickBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetPos = parseFloat(btn.dataset.sliderPos);
+          setPosition(targetPos, true);
+        });
+      });
+    }
+
+    // Inicializa na metade (50/50)
+    setPosition(50);
+  });
 }
 
 /* ==========================================================================
