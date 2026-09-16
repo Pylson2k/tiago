@@ -48,37 +48,35 @@ const {
         <p class="text-xs font-semibold uppercase tracking-[.18em] text-blue-600">Trajetória</p>
         <p class="mt-4 text-base leading-8 text-zinc-600">{description}</p>
       </article>
-      <div class="mt-5 grid gap-5 lg:grid-cols-2">
-        {philosophy && (
-          <article class="rounded-3xl border border-blue-100 bg-blue-50/60 p-6 sm:p-7">
-            <p class="text-xs font-semibold uppercase tracking-[.18em] text-blue-600">
-              Filosofia de treinamento
-            </p>
-            <p class="mt-4 whitespace-pre-line text-base leading-8 text-zinc-600">{philosophy}</p>
-          </article>
-        )}
-        {differentials.length > 0 && (
-          <article class="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-7">
-            <p class="text-xs font-semibold uppercase tracking-[.18em] text-blue-600">
-              O que destaca meu trabalho
-            </p>
-            {differentialsIntro && (
-              <p class="mt-4 text-base leading-8 text-zinc-600">{differentialsIntro}</p>
-            )}
-            <ul class="mt-5 grid gap-3 sm:grid-cols-2">
-              {differentials.map((item) => (
-                <li class="flex gap-3 rounded-2xl bg-zinc-50 p-3 text-sm leading-6 text-zinc-600">
-                  <span class="mt-2 size-2 shrink-0 rounded-full bg-blue-600"></span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            {differentialsConclusion && (
-              <p class="mt-6 text-base leading-8 text-zinc-600">{differentialsConclusion}</p>
-            )}
-          </article>
-        )}
-      </div>
+      {philosophy && (
+        <article class="mt-5 max-w-xl rounded-3xl border border-blue-100 bg-blue-50/60 p-6 sm:p-7">
+          <p class="text-xs font-semibold uppercase tracking-[.18em] text-blue-600">
+            Filosofia de treinamento
+          </p>
+          <p class="mt-4 whitespace-pre-line text-base leading-8 text-zinc-600">{philosophy}</p>
+        </article>
+      )}
+      {differentials.length > 0 && (
+        <article class="mt-5 max-w-xl rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-7">
+          <p class="text-xs font-semibold uppercase tracking-[.18em] text-blue-600">
+            O que destaca meu trabalho
+          </p>
+          {differentialsIntro && (
+            <p class="mt-4 text-base leading-8 text-zinc-600">{differentialsIntro}</p>
+          )}
+          <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+            {differentials.map((item) => (
+              <li class="flex gap-3 rounded-2xl bg-zinc-50 p-3 text-sm leading-6 text-zinc-600">
+                <span class="mt-2 size-2 shrink-0 rounded-full bg-blue-600"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          {differentialsConclusion && (
+            <p class="mt-6 text-base leading-8 text-zinc-600">{differentialsConclusion}</p>
+          )}
+        </article>
+      )}
       {credentials.length > 0 && (
         <dl class="mt-5 grid gap-3 sm:grid-cols-2">
           {credentials.map((item) => (
