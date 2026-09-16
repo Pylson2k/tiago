@@ -1,6 +1,4 @@
 ---
-import { Instagram, MessageCircle } from 'lucide-astro';
-
 export interface Props {
   title: string;
   description: string;
@@ -25,7 +23,12 @@ const { title, description, instagram, whatsappHref } = Astro.props;
             class="group rounded-2xl border border-white/20 bg-white/10 p-4 transition hover:bg-white/20"
           >
             <span class="flex items-center gap-3">
-              <Instagram size={22} aria-hidden="true" />
+              <img
+                src="/assets/icons/instagram.svg"
+                alt=""
+                aria-hidden="true"
+                class="size-6 brightness-0 invert"
+              />
               <span>
                 <span class="block text-xs uppercase tracking-[.16em] text-blue-100">
                   Instagram
@@ -43,7 +46,12 @@ const { title, description, instagram, whatsappHref } = Astro.props;
             class="group rounded-2xl border border-white/20 bg-white/10 p-4 transition hover:bg-white/20"
           >
             <span class="flex items-center gap-3">
-              <MessageCircle size={22} aria-hidden="true" />
+              <img
+                src="/assets/icons/whatsapp.svg"
+                alt=""
+                aria-hidden="true"
+                class="size-6 brightness-0 invert"
+              />
               <span>
                 <span class="block text-xs uppercase tracking-[.16em] text-blue-100">WhatsApp</span>
                 <span class="mt-1 block font-medium">Entre em contato diretamente ↗</span>
