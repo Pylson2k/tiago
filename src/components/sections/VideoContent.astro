@@ -2,6 +2,7 @@
 export interface VideoCard {
   title: string;
   description: string;
+  src?: string;
 }
 
 export interface Props {
@@ -23,14 +24,32 @@ const { title, intro, cards } = Astro.props;
     <div class="mt-12 grid gap-5 md:grid-cols-2">
       {cards.map((card, index) => (
         <article class="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
-          <div class="flex aspect-video items-center justify-center border-b border-zinc-200 bg-zinc-950 p-6 text-center text-zinc-500">
-            <div>
-              <p class="font-mono text-xs uppercase tracking-[.18em] text-blue-300">
+          {card.src ? (
+            <div class="group relative aspect-video overflow-hidden border-b border-zinc-200 bg-zinc-950">
+              <video
+                class="size-full object-contain"
+                controls
+                preload="metadata"
+                playsinline
+                aria-label={`Reprodutor: ${card.title}`}
+              >
+                <source src={card.src} type="video/mp4" />
+                Seu navegador não suporta a reprodução deste vídeo.
+              </video>
+              <span class="pointer-events-none absolute left-4 top-4 rounded-full bg-zinc-950/75 px-3 py-1 font-mono text-[10px] uppercase tracking-[.18em] text-blue-200 backdrop-blur">
                 Vídeo {String(index + 1).padStart(2, '0')}
-              </p>
-              <p class="mt-3 text-sm">Espaço reservado para o próximo vídeo</p>
+              </span>
             </div>
-          </div>
+          ) : (
+            <div class="flex aspect-video items-center justify-center border-b border-zinc-200 bg-zinc-950 p-6 text-center text-zinc-500">
+              <div>
+                <p class="font-mono text-xs uppercase tracking-[.18em] text-blue-300">
+                  Vídeo {String(index + 1).padStart(2, '0')}
+                </p>
+                <p class="mt-3 text-sm">Espaço reservado para o próximo vídeo</p>
+              </div>
+            </div>
+          )}
           <div class="p-6 sm:p-7">
             <h3 class="text-2xl font-semibold tracking-tight text-zinc-950">{card.title}</h3>
             <p class="mt-3 leading-7 text-zinc-600">{card.description}</p>
