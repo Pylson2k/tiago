@@ -1,0 +1,14 @@
+---
+interface Props {
+  label?: string;
+}
+const { label = 'TIAGO FILADELFO' } = Astro.props;
+---
+
+<a
+  href="/"
+  class="font-display text-sm font-semibold tracking-[0.2em] text-paper"
+  aria-label="Página inicial"
+>
+  {label}
+</a>

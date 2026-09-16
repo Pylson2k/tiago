@@ -1,0 +1,8 @@
+@theme {
+  --color-ink: #0b0d10;
+  --color-paper: #f5f5f2;
+  --color-muted: #a3a9b2;
+  --color-accent: #4a53ff;
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', var(--font-sans);
+}

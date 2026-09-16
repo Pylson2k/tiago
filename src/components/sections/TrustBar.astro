@@ -1,0 +1,21 @@
+---
+export interface TrustItem {
+  label: string;
+  value: string;
+}
+export interface Props {
+  items: TrustItem[];
+}
+const { items } = Astro.props;
+---
+
+<section class="border-b border-zinc-200 bg-white" aria-label="Diferenciais">
+  <div class="mx-auto grid max-w-7xl gap-px bg-zinc-200 sm:grid-cols-2 lg:grid-cols-4">
+    {items.map((item) => (
+      <div class="bg-white px-5 py-6 sm:px-8">
+        <p class="text-xs font-semibold uppercase tracking-[.18em] text-zinc-500">{item.label}</p>
+        <p class="mt-2 text-lg font-medium tracking-tight text-zinc-950">{item.value}</p>
+      </div>
+    ))}
+  </div>
+</section>

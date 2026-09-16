@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+vendor/
+assets/
+
+# Legado e referências mantidos apenas como material histórico.
+index.html
+README.md
+PLANO_RECONSTRUCAO_PORTFOLIO.md
+src/index.css
+src/main.js
+src/lead-tracker.js
+src/data/content.js
+tiago docs/

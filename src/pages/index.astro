@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BrandMark from '../components/BrandMark.astro';
+import Hero from '../components/sections/Hero.astro';
+import TrustBar from '../components/sections/TrustBar.astro';
+import ResultCaseGabriel from '../components/sections/ResultCaseGabriel.astro';
+import Services from '../components/sections/Services.astro';
+import Method from '../components/sections/Method.astro';
+import About from '../components/sections/About.astro';
+import ContentPreview from '../components/sections/ContentPreview.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Contact from '../components/sections/Contact.astro';
+
+const whatsappHref =
+  'https://wa.me/5511963552470?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conhecer%20o%20acompanhamento.';
+
+const services = [
+  {
+    title: 'Treinamento presencial',
+    description:
+      'Sessões orientadas de perto, com atenção à execução, ao ritmo e ao objetivo de cada aluno.',
+    detail: 'Presencial',
+    href: '#contato',
+  },
+  {
+    title: 'Consultoria online',
+    description:
+      'Planejamento remoto com acompanhamento e ajustes baseados nos retornos do processo.',
+    detail: 'Online',
+    href: '#contato',
+  },
+  {
+    title: 'Plano personalizado',
+    description:
+      'Uma estrutura de treino organizada para hipertrofia, recomposição corporal e condicionamento.',
+    detail: 'Individual',
+    href: '#contato',
+  },
+  {
+    title: 'Treino da semana',
+    description:
+      'Conteúdos curtos para entender técnica, intenção do movimento e progressão com mais clareza.',
+    detail: 'Conteúdo',
+    href: '#conteudo',
+  },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Conhecer',
+    description:
+      'Entender objetivo, rotina, experiência e contexto antes de escolher qualquer estímulo.',
+  },
+  {
+    number: '02',
+    title: 'Planejar',
+    description: 'Organizar exercícios, volume e progressão de acordo com o momento do aluno.',
+  },
+  {
+    number: '03',
+    title: 'Acompanhar',
+    description: 'Observar execução, adesão e percepção para transformar o plano em prática.',
+  },
+  {
+    number: '04',
+    title: 'Ajustar',
+    description: 'Revisar o caminho com consistência, sem depender de fórmulas prontas.',
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'A dedicação, o cuidado e a adaptação dos treinos fizeram diferença na minha evolução.',
+    name: 'Aluna em acompanhamento',
+    context: 'Feedback anonimizado',
+  },
+  {
+    quote:
+      'A atenção em cada execução e a forma de conduzir os treinos me deram mais segurança para continuar.',
+    name: 'Aluno em acompanhamento',
+    context: 'Feedback anonimizado',
+  },
+  {
+    quote:
+      'O planejamento respeitou minhas limitações e ainda assim trouxe uma evolução que eu conseguia perceber.',
+    name: 'Aluna em acompanhamento',
+    context: 'Feedback anonimizado',
+  },
+];
+
+const contentItems = [
+  {
+    type: 'Biomecânica',
+    title: 'Como pensar a execução antes de aumentar a carga',
+    description:
+      'Um guia direto para observar posição, trajetória e intenção em exercícios básicos.',
+  },
+  {
+    type: 'Treino',
+    title: 'Progressão não é apenas colocar mais peso',
+    description: 'Volume, controle, amplitude e consistência também fazem parte da evolução.',
+  },
+  {
+    type: 'Rotina',
+    title: 'Um treino que cabe na vida tem mais chance de continuar',
+    description:
+      'A melhor estratégia é aquela que o aluno consegue aplicar com clareza e regularidade.',
+  },
+];
+---
+
+<BaseLayout
+  title="Tiago Filadelfo — Treinamento individualizado"
+  description="Treinamento individualizado para hipertrofia, recomposição corporal e condicionamento, com acompanhamento próximo."
+  canonical="https://landing-page-tiago-eta.vercel.app/"
+>
+  <header
+    class="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-zinc-950/70 text-white backdrop-blur"
+    id="topo"
+  >
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
+      <BrandMark />
+      <nav
+        class="hidden items-center gap-7 text-sm text-zinc-300 md:flex"
+        aria-label="Navegação principal"
+      >
+        <a class="transition hover:text-white" href="#metodo">
+          Método
+        </a>
+        <a class="transition hover:text-white" href="#resultados">
+          Resultados
+        </a>
+        <a class="transition hover:text-white" href="#servicos">
+          Serviços
+        </a>
+        <a class="transition hover:text-white" href="#sobre">
+          Sobre
+        </a>
+      </nav>
+      <a
+        class="inline-flex min-h-11 items-center rounded-full bg-blue-600 px-5 text-xs font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        href={whatsappHref}
+      >
+        Falar no WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <Hero
+      title="Treino inteligente. Evolução que você consegue sustentar."
+      description="Planejamento individualizado para hipertrofia, recomposição corporal e condicionamento, com acompanhamento próximo e execução bem orientada."
+      image="/assets/tiago-training.webp"
+      imageAlt="Tiago orientando um treino em ambiente profissional"
+      primaryHref={whatsappHref}
+      primaryLabel="Agendar conversa"
+      secondaryHref="#resultados"
+      secondaryLabel="Ver resultados"
+    />
+    <TrustBar
+      items={[
+        { label: 'Formato', value: 'Presencial e online' },
+        { label: 'Abordagem', value: 'Planejamento individual' },
+        { label: 'Foco', value: 'Execução e consistência' },
+        { label: 'Próximo passo', value: 'Conversa no WhatsApp' },
+      ]}
+    />
+    <ResultCaseGabriel
+      title="Gabriel: mais volume e desenvolvimento global"
+      summary="Um processo construído com treinamento estruturado, consistência e acompanhamento ao longo do tempo. A evolução apresentada nas imagens é visual e não substitui uma avaliação física."
+      image="/assets/gabriel-evolucao.jpeg"
+      imageAlt="Montagem com registros de Gabriel antes e depois em pose de duplo bíceps frontal"
+      highlights={[
+        'Objetivo: hipertrofia',
+        'Planejamento individualizado',
+        'Progressão de cargas e estímulos',
+        'Ajustes periódicos no treinamento',
+      ]}
+    />
+    <Services
+      title="Um plano que conversa com o seu momento"
+      intro="Escolha o formato de acompanhamento que faz sentido para a sua rotina e converse para entender os próximos passos."
+      services={services}
+    />
+    <Method
+      title="Método simples de entender. Difícil de fingir."
+      intro="O trabalho começa antes do primeiro exercício e continua depois da sessão: observar, decidir, acompanhar e ajustar."
+      steps={steps}
+    />
+    <About
+      title="Treinamento com presença, clareza e responsabilidade"
+      description="Tiago Filadelfo é graduando em Educação Física e treinador. Seu trabalho combina atenção à execução, planejamento individualizado e uma comunicação que ajuda o aluno a entender o próprio processo."
+      image="/assets/tiago-portrait.webp"
+      imageAlt="Retrato profissional de Tiago Filadelfo"
+      credentials={[
+        { label: 'Formação', value: 'Graduação em Educação Física — em andamento' },
+        { label: 'Princípio', value: 'Consistência antes de promessa' },
+      ]}
+    />
+    <ContentPreview
+      title="Conhecimento que vira prática"
+      intro="Conteúdo técnico para treinar com mais intenção e menos ruído."
+      items={contentItems}
+    />
+    <Testimonials
+      title="O acompanhamento também aparece na experiência de quem treina"
+      testimonials={testimonials}
+    />
+    <Contact
+      title="Vamos entender o que você precisa para evoluir?"
+      description="Envie uma mensagem e conte seu objetivo. A primeira conversa serve para entender seu momento e apresentar o formato de acompanhamento mais adequado."
+      whatsappHref={whatsappHref}
+      whatsappLabel="Agendar conversa"
+    />
+  </main>
+
+  <footer class="bg-zinc-950 px-5 py-8 text-sm text-zinc-500 sm:px-8 lg:px-12">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <span>© {new Date().getFullYear()} Tiago Filadelfo</span>
+      <a class="transition hover:text-white" href="#topo">
+        Voltar ao topo ↑
+      </a>
+    </div>
+  </footer>
+</BaseLayout>

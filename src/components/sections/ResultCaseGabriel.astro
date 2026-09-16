@@ -1,0 +1,48 @@
+---
+export interface Props {
+  title: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  highlights?: string[];
+  eyebrow?: string;
+  disclaimer?: string;
+}
+const {
+  title,
+  summary,
+  image,
+  imageAlt,
+  highlights = [],
+  eyebrow = 'Caso em destaque',
+  disclaimer = 'Registros cedidos pelo aluno. Luz, distância, enquadramento e pose podem variar.',
+} = Astro.props;
+---
+
+<section id="resultados" class="bg-zinc-100 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+  <div class="mx-auto max-w-7xl">
+    <div class="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:gap-20">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[.2em] text-blue-600">{eyebrow}</p>
+        <h2 class="mt-4 text-4xl font-semibold tracking-[-.045em] text-zinc-950 sm:text-5xl">
+          {title}
+        </h2>
+        <p class="mt-6 text-lg leading-8 text-zinc-600">{summary}</p>
+        {highlights.length > 0 && (
+          <ul class="mt-8 space-y-3">
+            {highlights.map((highlight) => (
+              <li class="flex gap-3 text-sm text-zinc-700">
+                <span class="mt-1 size-2 shrink-0 rounded-full bg-blue-600"></span>
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <figure class="overflow-hidden rounded-[2rem] bg-zinc-950 p-2 sm:p-3">
+        <img src={image} alt={imageAlt} loading="lazy" class="w-full rounded-2xl object-cover" />
+        <figcaption class="px-2 pb-2 pt-3 text-xs leading-5 text-zinc-400">{disclaimer}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

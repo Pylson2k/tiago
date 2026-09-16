@@ -1,0 +1,35 @@
+{
+  "name": "tiago-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "lucide-astro": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/ts-plugin": "latest",
+    "@tailwindcss/vite": "latest",
+    "@types/node": "latest",
+    "astro-eslint-parser": "latest",
+    "eslint": "^10.10.0",
+    "eslint-plugin-astro": "latest",
+    "mdn-data": "^2.36.0",
+    "prettier": "latest",
+    "prettier-plugin-astro": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}
