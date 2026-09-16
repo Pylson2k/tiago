@@ -1,42 +1,23 @@
 ---
-import { Instagram, Mail, MessageCircle } from 'lucide-astro';
+import { Instagram, Mail } from 'lucide-astro';
 
 export interface Props {
   title: string;
   description: string;
-  whatsappHref: string;
-  whatsappLabel?: string;
   email?: string;
   instagram?: string;
 }
-const {
-  title,
-  description,
-  whatsappHref,
-  whatsappLabel = 'Agendar conversa',
-  email,
-  instagram,
-} = Astro.props;
+const { title, description, email, instagram } = Astro.props;
 ---
 
 <section id="contato" class="bg-blue-600 px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
   <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[.2em] text-blue-100">Próximo passo</p>
+      <p class="text-xs font-semibold uppercase tracking-[.2em] text-blue-100">Informações</p>
       <h2 class="mt-4 max-w-2xl text-4xl font-semibold tracking-[-.05em] sm:text-6xl">{title}</h2>
       <p class="mt-6 max-w-xl text-lg leading-8 text-blue-100">{description}</p>
     </div>
     <div class="flex flex-col items-start gap-5 lg:items-end">
-      <a
-        href={whatsappHref}
-        class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-zinc-950 px-7 text-sm font-semibold text-white transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
-      >
-        <MessageCircle size={19} aria-hidden="true" />
-        {whatsappLabel}
-        <span aria-hidden="true" class="ml-3">
-          ↗
-        </span>
-      </a>
       <div class="flex flex-wrap gap-4 text-sm text-blue-100">
         {email && (
           <a

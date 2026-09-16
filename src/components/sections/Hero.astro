@@ -5,7 +5,7 @@ export interface Props {
   description: string;
   image: string;
   imageAlt: string;
-  primaryHref: string;
+  primaryHref?: string;
   primaryLabel?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
@@ -17,7 +17,7 @@ const {
   image,
   imageAlt,
   primaryHref,
-  primaryLabel = 'Conversar no WhatsApp',
+  primaryLabel = 'Ver seção',
   secondaryHref,
   secondaryLabel = 'Ver resultados',
 } = Astro.props;
@@ -38,22 +38,26 @@ const {
         {title}
       </h1>
       <p class="mt-7 max-w-lg text-base leading-7 text-zinc-300 sm:text-lg">{description}</p>
-      <div class="mt-9 flex flex-wrap items-center gap-3">
-        <a
-          href={primaryHref}
-          class="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-zinc-950"
-        >
-          {primaryLabel}
-        </a>
-        {secondaryHref && (
-          <a
-            href={secondaryHref}
-            class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-semibold text-white transition hover:border-white/50 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          >
-            {secondaryLabel}
-          </a>
-        )}
-      </div>
+      {primaryHref || secondaryHref ? (
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          {primaryHref && (
+            <a
+              href={primaryHref}
+              class="inline-flex min-h-12 items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-zinc-950"
+            >
+              {primaryLabel}
+            </a>
+          )}
+          {secondaryHref && (
+            <a
+              href={secondaryHref}
+              class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-6 text-sm font-semibold text-white transition hover:border-white/50 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+              {secondaryLabel}
+            </a>
+          )}
+        </div>
+      ) : null}
     </div>
     <figure class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900 shadow-2xl shadow-blue-950/20 lg:rotate-2">
       <img
@@ -63,7 +67,7 @@ const {
         loading="eager"
       />
       <figcaption class="absolute bottom-4 left-4 rounded-full bg-zinc-950/75 px-4 py-2 text-xs text-zinc-200 backdrop-blur">
-        Método. Presença. Evolução.
+        Registro de atuação profissional
       </figcaption>
     </figure>
   </div>

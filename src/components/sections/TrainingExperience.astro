@@ -1,11 +1,5 @@
 ---
-import { ArrowUpRight, Dumbbell, ShieldCheck, SlidersHorizontal, Target } from 'lucide-astro';
-
-export interface Props {
-  whatsappHref: string;
-}
-
-const { whatsappHref } = Astro.props;
+import { Dumbbell, ShieldCheck, SlidersHorizontal, Target } from 'lucide-astro';
 
 const workout = [
   {
@@ -192,12 +186,6 @@ const workout = [
                 Primeiro dominar a execução; depois aumentar a exigência.
               </p>
             </div>
-            <a
-              href={whatsappHref}
-              class="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white underline decoration-blue-500 decoration-2 underline-offset-4"
-            >
-              Quero um treino para mim <ArrowUpRight size={17} aria-hidden="true" />
-            </a>
           </div>
         </div>
       </div>

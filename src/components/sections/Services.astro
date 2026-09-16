@@ -46,7 +46,7 @@ const { eyebrow = 'Como posso ajudar', title, intro, services } = Astro.props;
               data-service-open
               class="mt-7 inline-flex min-h-11 items-center text-sm font-semibold text-zinc-950 underline decoration-blue-500 decoration-2 underline-offset-4"
             >
-              Conhecer programa{' '}
+              Ver descrição{' '}
               <span aria-hidden="true" class="ml-2 transition group-hover:translate-x-1">
                 →
               </span>
@@ -82,13 +82,13 @@ const { eyebrow = 'Como posso ajudar', title, intro, services } = Astro.props;
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#contato"
+                <button
+                  type="button"
                   data-service-close
                   class="mt-8 inline-flex min-h-12 items-center rounded-full bg-zinc-950 px-6 text-sm font-semibold text-white transition hover:bg-zinc-800"
                 >
-                  Conversar sobre este programa ↗
-                </a>
+                  Fechar descrição
+                </button>
               </div>
             </dialog>
           )}

@@ -12,21 +12,16 @@ import Method from '../components/sections/Method.astro';
 import About from '../components/sections/About.astro';
 import ContentPreview from '../components/sections/ContentPreview.astro';
 import Contact from '../components/sections/Contact.astro';
-import { Menu, MessageCircle } from 'lucide-astro';
-
-const whatsappHref =
-  'https://wa.me/5511963552470?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conhecer%20o%20acompanhamento.';
+import { Menu } from 'lucide-astro';
 
 const services = [
   {
     title: 'Treinamento presencial',
-    description:
-      'Sessões orientadas de perto, com atenção à execução, ao ritmo e ao objetivo de cada aluno.',
+    description: '[Texto a inserir: como são realizados os treinamentos presenciais.]',
     detail: 'Presencial',
     modal: {
       title: 'Treinamento presencial',
-      description:
-        'Sessões orientadas de perto para transformar cada treino em uma prática clara e segura.',
+      description: '[Texto a inserir: descrição detalhada do treinamento presencial.]',
       points: [
         'Observação da execução em tempo real',
         'Ajustes de carga, amplitude e ritmo',
@@ -36,13 +31,11 @@ const services = [
   },
   {
     title: 'Consultoria online',
-    description:
-      'Planejamento remoto com acompanhamento e ajustes baseados nos retornos do processo.',
+    description: '[Texto a inserir: se o Tiago oferece consultoria online e como funciona.]',
     detail: 'Online',
     modal: {
       title: 'Consultoria online',
-      description:
-        'Acompanhamento remoto com planejamento, retornos e ajustes ao longo do processo.',
+      description: '[Texto a inserir: descrição detalhada da consultoria online.]',
       points: [
         'Treino organizado para sua rotina',
         'Canal de acompanhamento e feedback',
@@ -52,13 +45,11 @@ const services = [
   },
   {
     title: 'Planejamento personalizado',
-    description:
-      'Estrutura individual para hipertrofia, emagrecimento, condicionamento e performance, respeitando experiência e rotina.',
+    description: '[Texto a inserir: trabalho voltado para hipertrofia e emagrecimento.]',
     detail: 'Sob medida',
     modal: {
       title: 'Planejamento personalizado',
-      description:
-        'Uma estrutura individual para hipertrofia, emagrecimento, condicionamento ou performance.',
+      description: '[Texto a inserir: abordagem para hipertrofia e emagrecimento.]',
       points: [
         'Escolha de exercícios com intenção',
         'Progressão de volume e estímulos',
@@ -68,13 +59,11 @@ const services = [
   },
   {
     title: 'Avaliação e acompanhamento',
-    description:
-      'Observação do movimento, orientação de execução e ajustes periódicos conforme a evolução.',
+    description: '[Texto a inserir: avaliação, acompanhamento e critérios de ajuste.]',
     detail: 'Acompanhamento',
     modal: {
       title: 'Avaliação e acompanhamento',
-      description:
-        'Leitura do movimento e do processo para que o treinamento continue fazendo sentido.',
+      description: '[Texto a inserir: como são feitas a avaliação e o acompanhamento.]',
       points: [
         'Avaliação do momento atual',
         'Orientação de execução',
@@ -88,23 +77,22 @@ const steps = [
   {
     number: '01',
     title: 'Conhecer',
-    description:
-      'Entender objetivo, rotina, experiência e contexto antes de escolher qualquer estímulo.',
+    description: '[Texto a inserir: etapa conhecer.]',
   },
   {
     number: '02',
     title: 'Planejar',
-    description: 'Organizar exercícios, volume e progressão de acordo com o momento do aluno.',
+    description: '[Texto a inserir: etapa planejar.]',
   },
   {
     number: '03',
     title: 'Acompanhar',
-    description: 'Observar execução, adesão e percepção para transformar o plano em prática.',
+    description: '[Texto a inserir: etapa acompanhar.]',
   },
   {
     number: '04',
     title: 'Ajustar',
-    description: 'Revisar o caminho com consistência, sem depender de fórmulas prontas.',
+    description: '[Texto a inserir: etapa ajustar.]',
   },
 ];
 
@@ -112,21 +100,19 @@ const contentItems = [
   {
     type: 'Biomecânica',
     title: 'Como pensar a execução antes de aumentar a carga',
-    description:
-      'Um guia direto para observar posição, trajetória e intenção em exercícios básicos.',
+    description: '[Texto a inserir: artigo ou post sobre biomecânica.]',
     href: '#biomecanica',
   },
   {
     type: 'Treino',
     title: 'Progressão não é apenas colocar mais peso',
-    description: 'Volume, controle, amplitude e consistência também fazem parte da evolução.',
+    description: '[Texto a inserir: conteúdo educativo sobre treinamento.]',
     href: '#treino-da-semana',
   },
   {
     type: 'Rotina',
     title: 'Um treino que cabe na vida tem mais chance de continuar',
-    description:
-      'A melhor estratégia é aquela que o aluno consegue aplicar com clareza e regularidade.',
+    description: '[Texto a inserir: conteúdo complementar.]',
   },
 ];
 
@@ -233,12 +219,6 @@ const testimonialImages = [
         </a>
       </nav>
       <div class="flex shrink-0 items-center gap-2">
-        <a
-          class="hidden min-h-11 items-center rounded-full bg-blue-600 px-5 text-xs font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 sm:inline-flex"
-          href={whatsappHref}
-        >
-          Falar no WhatsApp
-        </a>
         <details class="group relative lg:hidden">
           <summary
             class="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-300 [&::-webkit-details-marker]:hidden"
@@ -265,12 +245,6 @@ const testimonialImages = [
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#sobre">
               Sobre
             </a>
-            <a
-              class="mt-1 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white"
-              href={whatsappHref}
-            >
-              Falar no WhatsApp
-            </a>
           </nav>
         </details>
       </div>
@@ -279,22 +253,20 @@ const testimonialImages = [
 
   <main id="conteudo-principal" tabindex="-1">
     <Hero
-      eyebrow="Tiago Filadelfo · Treinador · Hipertrofia & Condicionamento"
-      title="Treino inteligente. Evolução que você consegue sustentar."
-      description="Planejamento individualizado para hipertrofia, recomposição corporal e condicionamento, com acompanhamento próximo e execução bem orientada."
+      eyebrow="Portfólio acadêmico · Educação Física"
+      title="Tiago Filadelfo: treinamento, estudo e prática profissional"
+      description="Este portfólio reúne a trajetória, a formação, a filosofia de treino e registros da atuação de Tiago no campo do treinamento físico."
       image="/assets/tiago-training.webp"
       imageAlt="Tiago orientando um treino em ambiente profissional"
-      primaryHref={whatsappHref}
-      primaryLabel="Agendar conversa"
       secondaryHref="#resultados"
-      secondaryLabel="Ver resultados"
+      secondaryLabel="Consultar registros"
     />
     <TrustBar
       items={[
         { label: 'Formato', value: 'Presencial e online' },
         { label: 'Abordagem', value: 'Planejamento individual' },
         { label: 'Foco', value: 'Execução e consistência' },
-        { label: 'Próximo passo', value: 'Conversa no WhatsApp' },
+        { label: 'Registro', value: 'Portfólio acadêmico' },
       ]}
     />
     <ResultCaseGabriel
@@ -330,40 +302,37 @@ const testimonialImages = [
         },
       ]}
     />
-    <TrainingExperience whatsappHref={whatsappHref} />
+    <TrainingExperience />
     <Services
-      title="Um plano que conversa com o seu momento"
-      intro="Escolha o formato de acompanhamento que faz sentido para a sua rotina e converse para entender os próximos passos."
+      title="Programas e formatos de treinamento"
+      intro="[Texto a inserir: descrição dos treinamentos presenciais, consultorias online e formas de acompanhamento.]"
       services={services}
     />
     <Method
-      title="Método simples de entender. Difícil de fingir."
-      intro="O trabalho começa antes do primeiro exercício e continua depois da sessão: observar, decidir, acompanhar e ajustar."
+      title="Metodologia de trabalho"
+      intro="[Texto a inserir: como o Tiago estrutura, acompanha e ajusta o treinamento.]"
       steps={steps}
     />
     <About
-      title="Da vivência no esporte ao acompanhamento individual"
-      description="Tiago Filadelfo é graduando em Educação Física e treinador. Sua trajetória une prática esportiva, estudo contínuo e acompanhamento próximo. A filosofia de trabalho parte da biomecânica, da execução consciente e de ajustes que respeitam o contexto de cada aluno — sem atalhos ou fórmulas prontas."
+      title="Trajetória e formação profissional"
+      description="[Texto a inserir: trajetória do Tiago no fitness, formação acadêmica, cursos, especializações, certificações, filosofia de treino e diferenciais profissionais.]"
       image="/assets/tiago-portrait.webp"
       imageAlt="Retrato profissional de Tiago Filadelfo"
       credentials={[
-        { label: 'Formação', value: 'Bacharelado em Educação Física — em andamento' },
-        { label: 'Estudo contínuo', value: 'Biomecânica e análise do movimento' },
-        { label: 'Filosofia', value: 'Consistência antes de promessa' },
-        { label: 'Diferencial', value: 'Planejamento, didática e ajustes individuais' },
+        { label: 'Formação acadêmica', value: '[A inserir]' },
+        { label: 'Cursos e especializações', value: '[A inserir]' },
+        { label: 'Filosofia de treino', value: '[A inserir]' },
+        { label: 'Diferenciais profissionais', value: '[A inserir]' },
       ]}
     />
     <ContentPreview
-      title="Conhecimento que vira prática"
-      intro="Conteúdo técnico para treinar com mais intenção e menos ruído."
+      title="Produção acadêmica e conteúdo técnico"
+      intro="[Texto a inserir: artigo ou post sobre biomecânica e análise do movimento.]"
       items={contentItems}
     />
     <Contact
-      title="Vamos entender o que você precisa para evoluir?"
-      description="Envie uma mensagem e conte seu objetivo. A primeira conversa serve para entender seu momento e apresentar o formato de acompanhamento mais adequado."
-      whatsappHref={whatsappHref}
-      whatsappLabel="Agendar avaliação online"
-      instagram="https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y"
+      title="Referências e informações complementares"
+      description="[Texto a inserir: contatos acadêmicos, referências, links de artigos, redes profissionais ou materiais complementares.]"
     />
   </main>
 
@@ -375,16 +344,6 @@ const testimonialImages = [
       </a>
     </div>
   </footer>
-
-  <a
-    href={whatsappHref}
-    class="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-50 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-blue-600 px-4 text-sm font-semibold text-white shadow-2xl shadow-blue-950/35 transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 max-[359px]:size-12 max-[359px]:px-0 sm:right-6 sm:min-h-14 sm:px-6"
-    aria-label="Quero treinar com Tiago pelo WhatsApp"
-  >
-    <MessageCircle size={19} aria-hidden="true" />
-    <span class="max-[359px]:hidden sm:hidden">Quero treinar</span>
-    <span class="hidden sm:inline">Quero treinar com você</span>
-  </a>
 
   <script is:inline>
     document.querySelectorAll('header details nav a').forEach((link) => {
