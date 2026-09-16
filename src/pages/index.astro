@@ -17,11 +17,13 @@ import { Menu } from 'lucide-astro';
 const services = [
   {
     title: 'Treinamento presencial',
-    description: '[Texto a inserir: como são realizados os treinamentos presenciais.]',
+    description:
+      'O acompanhamento presencial permite uma atenção maior à execução dos exercícios, correção de movimentos, ajustes de carga e aplicação prática das estratégias de treinamento.',
     detail: 'Presencial',
     modal: {
       title: 'Treinamento presencial',
-      description: '[Texto a inserir: descrição detalhada do treinamento presencial.]',
+      description:
+        'O acompanhamento presencial permite uma atenção maior à execução dos exercícios, correção de movimentos, ajustes de carga e aplicação prática das estratégias de treinamento.',
       points: [
         'Observação da execução em tempo real',
         'Ajustes de carga, amplitude e ritmo',
@@ -31,11 +33,13 @@ const services = [
   },
   {
     title: 'Consultoria online',
-    description: '[Texto a inserir: se o Tiago oferece consultoria online e como funciona.]',
+    description:
+      'Na consultoria online, o aluno recebe um planejamento individualizado e acompanhamento durante sua evolução, podendo acessar seu programa de treinamento através de uma plataforma digital.',
     detail: 'Online',
     modal: {
       title: 'Consultoria online',
-      description: '[Texto a inserir: descrição detalhada da consultoria online.]',
+      description:
+        'Na consultoria online, o aluno recebe um planejamento individualizado e acompanhamento durante sua evolução, podendo acessar seu programa de treinamento através de uma plataforma digital. A proposta é levar a mesma metodologia de planejamento e acompanhamento para alunos que não estão fisicamente próximos.',
       points: [
         'Treino organizado para sua rotina',
         'Canal de acompanhamento e feedback',
@@ -304,9 +308,18 @@ const testimonialImages = [
     />
     <TrainingExperience />
     <Services
-      title="Programas e formatos de treinamento"
-      intro="[Texto a inserir: descrição dos treinamentos presenciais, consultorias online e formas de acompanhamento.]"
+      title="Programas de treinamento"
+      intro="O trabalho de Tiago Filadelfo pode ser realizado tanto de forma presencial quanto através da consultoria online."
       services={services}
+      objectives={[
+        'Hipertrofia muscular;',
+        'Emagrecimento;',
+        'Recomposição corporal;',
+        'Condicionamento físico;',
+        'Desenvolvimento de força;',
+        'Melhora da técnica de execução;',
+        'Evolução estética e performance.',
+      ]}
     />
     <Method
       title="Metodologia de trabalho"
