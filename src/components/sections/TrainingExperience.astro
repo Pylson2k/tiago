@@ -39,10 +39,7 @@ const workout = [
 ];
 ---
 
-<section
-  id="treino-da-semana"
-  class="overflow-hidden bg-zinc-950 px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28"
->
+<section id="treino-da-semana" class="bg-zinc-950 px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
   <div class="mx-auto max-w-7xl">
     <div class="grid gap-14 lg:grid-cols-[.86fr_1.14fr] lg:items-start lg:gap-20">
       <div>
@@ -95,7 +92,7 @@ const workout = [
 
       <div
         id="biomecanica"
-        class="overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900/70 p-5 shadow-2xl shadow-blue-950/20 sm:p-8"
+        class="rounded-[2rem] border border-white/10 bg-zinc-900/70 p-5 shadow-2xl shadow-blue-950/20 sm:p-8"
       >
         <div class="flex flex-col gap-5 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -108,58 +105,57 @@ const workout = [
           </div>
           <div
             class="inline-flex w-fit rounded-full border border-white/10 bg-zinc-950 p-1"
+            role="group"
             aria-label="Vista anatômica"
           >
             <button
               type="button"
-              class="anatomy-view rounded-full bg-white px-4 py-2 text-xs font-semibold text-zinc-950"
+              class="anatomy-view min-h-11 rounded-full bg-white px-4 py-2 text-xs font-semibold text-zinc-950"
               data-view="FRONT"
+              aria-pressed="true"
             >
               Frente
             </button>
             <button
               type="button"
-              class="anatomy-view rounded-full px-4 py-2 text-xs font-semibold text-zinc-400"
+              class="anatomy-view min-h-11 rounded-full px-4 py-2 text-xs font-semibold text-zinc-400"
               data-view="BACK"
+              aria-pressed="false"
             >
               Costas
             </button>
           </div>
         </div>
 
-        <div class="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Grupos musculares">
+        <div class="mt-6 flex flex-wrap gap-2" role="group" aria-label="Grupos musculares">
           <button
             type="button"
-            role="tab"
-            aria-selected="true"
-            class="anatomy-tab rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold text-white"
+            aria-pressed="true"
+            class="anatomy-tab min-h-11 rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold text-white"
             data-target="peito"
           >
             Peito
           </button>
           <button
             type="button"
-            role="tab"
-            aria-selected="false"
-            class="anatomy-tab rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-zinc-300"
+            aria-pressed="false"
+            class="anatomy-tab min-h-11 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-zinc-300"
             data-target="costas"
           >
             Costas
           </button>
           <button
             type="button"
-            role="tab"
-            aria-selected="false"
-            class="anatomy-tab rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-zinc-300"
+            aria-pressed="false"
+            class="anatomy-tab min-h-11 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-zinc-300"
             data-target="pernas"
           >
             Pernas
           </button>
           <button
             type="button"
-            role="tab"
-            aria-selected="false"
-            class="anatomy-tab rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-zinc-300"
+            aria-pressed="false"
+            class="anatomy-tab min-h-11 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-zinc-300"
             data-target="core"
           >
             Core
@@ -169,8 +165,10 @@ const workout = [
         <div class="mt-7 grid gap-8 sm:grid-cols-[minmax(220px,.82fr)_1.18fr] sm:items-center">
           <div
             id="body-muscles-chart"
-            class="mx-auto h-[360px] w-full max-w-[290px] sm:h-[420px]"
+            class="mx-auto h-[min(360px,65svh)] w-full max-w-[290px] overflow-hidden rounded-2xl sm:h-[min(420px,65svh)]"
             aria-live="polite"
+            role="img"
+            aria-label="Mapa anatômico com destaque no peitoral e estabilizadores"
           ></div>
           <div>
             <span
@@ -196,7 +194,7 @@ const workout = [
             </div>
             <a
               href={whatsappHref}
-              class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white underline decoration-blue-500 decoration-2 underline-offset-4"
+              class="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-white underline decoration-blue-500 decoration-2 underline-offset-4"
             >
               Quero um treino para mim <ArrowUpRight size={17} aria-hidden="true" />
             </a>
@@ -210,7 +208,6 @@ const workout = [
 <style is:global>
   #body-muscles-chart .body-chart-container {
     height: 100% !important;
-    overflow: hidden !important;
     padding: 0 !important;
   }
 
@@ -239,8 +236,8 @@ const workout = [
         front: {
           'chest-upper-left': { intensity: 9, selected: true },
           'chest-upper-right': { intensity: 9, selected: true },
-          'chest-mid-left': { intensity: 10, selected: true },
-          'chest-mid-right': { intensity: 10, selected: true },
+          'chest-lower-left': { intensity: 10, selected: true },
+          'chest-lower-right': { intensity: 10, selected: true },
           'shoulder-front-left': { intensity: 5, selected: false },
           'shoulder-front-right': { intensity: 5, selected: false },
         },
@@ -264,8 +261,8 @@ const workout = [
           'lats-upper-right': { intensity: 10, selected: true },
           'lats-mid-left': { intensity: 9, selected: true },
           'lats-mid-right': { intensity: 9, selected: true },
-          'trapezius-mid-left': { intensity: 7, selected: false },
-          'trapezius-mid-right': { intensity: 7, selected: false },
+          'traps-mid-left': { intensity: 7, selected: false },
+          'traps-mid-right': { intensity: 7, selected: false },
         },
       },
       pernas: {
@@ -338,9 +335,12 @@ const workout = [
       },
     });
 
+    root.querySelectorAll('[tabindex]').forEach((part) => part.setAttribute('tabindex', '-1'));
+
     const updateViewButtons = () => {
       document.querySelectorAll('.anatomy-view').forEach((button) => {
         const active = button.dataset.view === view;
+        button.setAttribute('aria-pressed', String(active));
         button.classList.toggle('bg-white', active);
         button.classList.toggle('text-zinc-950', active);
         button.classList.toggle('text-zinc-400', !active);
@@ -350,8 +350,9 @@ const workout = [
     const updateTabs = () => {
       document.querySelectorAll('.anatomy-tab').forEach((tab) => {
         const active = tab.dataset.target === current;
-        tab.setAttribute('aria-selected', String(active));
+        tab.setAttribute('aria-pressed', String(active));
         tab.classList.toggle('bg-blue-600', active);
+        tab.classList.toggle('text-white', active);
         tab.classList.toggle('border', !active);
         tab.classList.toggle('border-white/10', !active);
         tab.classList.toggle('text-zinc-300', !active);
@@ -375,6 +376,7 @@ const workout = [
       document.querySelector('#anatomy-title').textContent = data.title;
       document.querySelector('#anatomy-copy').textContent = data.copy;
       document.querySelector('#anatomy-note').textContent = data.note;
+      root.setAttribute('aria-label', `Mapa anatômico com destaque em ${data.title.toLowerCase()}`);
       chart.update({ view, bodyState: stateFor() });
       updateViewButtons();
       updateTabs();

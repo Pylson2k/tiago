@@ -12,7 +12,7 @@ import About from '../components/sections/About.astro';
 import ContentPreview from '../components/sections/ContentPreview.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import Contact from '../components/sections/Contact.astro';
-import { MessageCircle } from 'lucide-astro';
+import { Menu, MessageCircle } from 'lucide-astro';
 
 const whatsappHref =
   'https://wa.me/5511963552470?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conhecer%20o%20acompanhamento.';
@@ -117,20 +117,18 @@ const contentItems = [
 const socialCases = [
   {
     title: 'Evolução de composição corporal',
-    before: {
-      src: '/assets/provas/caso1-antes.jpeg',
-      alt: 'Registro inicial da aluna em pose lateral',
-    },
-    after: {
-      src: '/assets/provas/caso1-depois.jpeg',
-      alt: 'Registro posterior da aluna em pose lateral',
+    image: {
+      src: '/assets/provas/antes-depois-01.jpeg',
+      alt: 'Comparativo antes e depois da evolução de composição corporal da aluna',
     },
     authorization: 'Imagem publicada mediante autorização da aluna.',
   },
   {
     title: 'Evolução de treinamento',
-    before: { src: '/assets/provas/caso2-antes.jpeg', alt: 'Registro inicial da aluna' },
-    after: { src: '/assets/provas/caso2-depois.jpeg', alt: 'Registro posterior da aluna' },
+    image: {
+      src: '/assets/provas/antes-depois-02.jpeg',
+      alt: 'Comparativo antes e depois da evolução de treinamento da aluna',
+    },
     authorization: 'Imagem publicada mediante autorização da aluna.',
   },
 ];
@@ -203,13 +201,13 @@ const proofVideos = [
 <BaseLayout
   title="Tiago Filadelfo — Treinamento individualizado"
   description="Treinamento individualizado para hipertrofia, recomposição corporal e condicionamento, com acompanhamento próximo."
-  canonical="https://landing-page-tiago-eta.vercel.app/"
+  canonical="https://tiago-liart.vercel.app/"
 >
   <header
     class="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-zinc-950/70 text-white backdrop-blur"
     id="topo"
   >
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-5 sm:px-8 lg:px-12">
       <BrandMark />
       <nav
         class="hidden items-center gap-7 text-sm text-zinc-300 lg:flex"
@@ -231,16 +229,52 @@ const proofVideos = [
           Sobre
         </a>
       </nav>
-      <a
-        class="inline-flex min-h-11 items-center rounded-full bg-blue-600 px-5 text-xs font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300"
-        href={whatsappHref}
-      >
-        Falar no WhatsApp
-      </a>
+      <div class="flex shrink-0 items-center gap-2">
+        <a
+          class="hidden min-h-11 items-center rounded-full bg-blue-600 px-5 text-xs font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 sm:inline-flex"
+          href={whatsappHref}
+        >
+          Falar no WhatsApp
+        </a>
+        <details class="group relative lg:hidden">
+          <summary
+            class="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-300 [&::-webkit-details-marker]:hidden"
+            aria-label="Abrir menu de navegação"
+          >
+            <Menu size={20} aria-hidden="true" />
+          </summary>
+          <nav
+            class="absolute right-0 top-14 z-40 grid w-64 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 p-2 text-sm text-zinc-200 shadow-2xl"
+            aria-label="Navegação móvel"
+          >
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#metodo">
+              Método
+            </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#resultados">
+              Resultados
+            </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#treino-da-semana">
+              Treino da semana
+            </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#servicos">
+              Serviços
+            </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#sobre">
+              Sobre
+            </a>
+            <a
+              class="mt-1 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white"
+              href={whatsappHref}
+            >
+              Falar no WhatsApp
+            </a>
+          </nav>
+        </details>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="conteudo-principal" tabindex="-1">
     <Hero
       eyebrow="Tiago Filadelfo · Treinador · Hipertrofia & Condicionamento"
       title="Treino inteligente. Evolução que você consegue sustentar."
@@ -321,10 +355,10 @@ const proofVideos = [
     />
   </main>
 
-  <footer class="bg-zinc-950 px-5 pb-24 pt-8 text-sm text-zinc-500 sm:px-8 sm:py-8 lg:px-12">
+  <footer class="bg-zinc-950 px-5 pb-[calc(6rem+env(safe-area-inset-bottom))] pt-8 text-sm text-zinc-500 sm:px-8 sm:py-8 lg:px-12">
     <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <span>© {new Date().getFullYear()} Tiago Filadelfo</span>
-      <a class="transition hover:text-white" href="#topo">
+      <a class="inline-flex min-h-11 items-center transition hover:text-white" href="#topo">
         Voltar ao topo ↑
       </a>
     </div>
@@ -332,11 +366,17 @@ const proofVideos = [
 
   <a
     href={whatsappHref}
-    class="fixed bottom-4 right-4 z-50 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-blue-600 px-4 text-sm font-semibold text-white shadow-2xl shadow-blue-950/35 transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 max-[359px]:size-12 max-[359px]:px-0 sm:right-6 sm:min-h-14 sm:px-6"
+    class="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-50 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-blue-600 px-4 text-sm font-semibold text-white shadow-2xl shadow-blue-950/35 transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 max-[359px]:size-12 max-[359px]:px-0 sm:right-6 sm:min-h-14 sm:px-6"
     aria-label="Quero treinar com Tiago pelo WhatsApp"
   >
     <MessageCircle size={19} aria-hidden="true" />
     <span class="max-[359px]:hidden sm:hidden">Quero treinar</span>
     <span class="hidden sm:inline">Quero treinar com você</span>
   </a>
+
+  <script is:inline>
+    document.querySelectorAll('header details nav a').forEach((link) => {
+      link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'));
+    });
+  </script>
 </BaseLayout>

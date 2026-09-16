@@ -2,8 +2,9 @@
 export interface ResultCase {
   title: string;
   description?: string;
-  before: { src: string; alt: string };
-  after: { src: string; alt: string };
+  image?: { src: string; alt: string };
+  before?: { src: string; alt: string };
+  after?: { src: string; alt: string };
   authorization?: string;
 }
 
@@ -57,30 +58,48 @@ const { title, intro, cases = [], testimonials = [], videos = [], disclaimer } =
       <div class="mt-12 grid gap-5 lg:grid-cols-2">
         {cases.map((item, index) => (
           <article class="overflow-hidden rounded-[1.75rem] border border-white/10 bg-zinc-900">
-            <div class="grid grid-cols-2 gap-1 bg-zinc-950 p-1">
-              <figure>
+            {item.image ? (
+              <figure class="bg-zinc-950 p-1">
                 <img
-                  src={item.before.src}
-                  alt={item.before.alt}
+                  src={item.image.src}
+                  alt={item.image.alt}
                   loading="lazy"
-                  class="aspect-[3/4] w-full object-cover"
+                  class="mx-auto max-h-[min(36rem,70svh)] w-full object-contain"
                 />
                 <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
-                  Antes
+                  Comparativo antes e depois
                 </figcaption>
               </figure>
-              <figure>
-                <img
-                  src={item.after.src}
-                  alt={item.after.alt}
-                  loading="lazy"
-                  class="aspect-[3/4] w-full object-cover"
-                />
-                <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
-                  Depois
-                </figcaption>
-              </figure>
-            </div>
+            ) : (
+              <div class="grid grid-cols-2 gap-1 bg-zinc-950 p-1">
+                {item.before && (
+                  <figure>
+                    <img
+                      src={item.before.src}
+                      alt={item.before.alt}
+                      loading="lazy"
+                      class="h-[26rem] w-full bg-black object-contain sm:h-[32rem]"
+                    />
+                    <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
+                      Antes
+                    </figcaption>
+                  </figure>
+                )}
+                {item.after && (
+                  <figure>
+                    <img
+                      src={item.after.src}
+                      alt={item.after.alt}
+                      loading="lazy"
+                      class="h-[26rem] w-full bg-black object-contain sm:h-[32rem]"
+                    />
+                    <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
+                      Depois
+                    </figcaption>
+                  </figure>
+                )}
+              </div>
+            )}
             <div class="p-6 sm:p-7">
               <p class="font-mono text-xs text-blue-300">CASO 0{index + 1}</p>
               <h3 class="mt-3 text-2xl font-semibold tracking-tight">{item.title}</h3>
@@ -102,14 +121,19 @@ const { title, intro, cases = [], testimonials = [], videos = [], disclaimer } =
             Depoimentos
           </span>
         </div>
-        <div class="mt-7 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
+        <p class="mt-3 text-xs text-zinc-500 sm:hidden">Deslize para ver todos os depoimentos.</p>
+        <div
+          class="mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-7 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4"
+          aria-label="Galeria de depoimentos"
+          tabindex="0"
+        >
           {testimonials.map((item) => (
             <figure class="min-w-[82vw] snap-start overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 sm:min-w-0">
               <img
                 src={item.src}
                 alt={item.alt}
                 loading="lazy"
-                class="aspect-[4/5] w-full object-cover"
+                class="aspect-[4/5] w-full bg-black object-contain"
               />
               <figcaption class="p-4">
                 {item.label && <p class="text-sm font-medium text-zinc-200">{item.label}</p>}

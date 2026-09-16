@@ -9,7 +9,7 @@
 
 html {
   background: var(--color-ink);
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
