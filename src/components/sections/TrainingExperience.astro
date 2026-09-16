@@ -95,7 +95,7 @@ const workout = [
 
       <div
         id="biomecanica"
-        class="rounded-[2rem] border border-white/10 bg-zinc-900/70 p-5 shadow-2xl shadow-blue-950/20 sm:p-8"
+        class="overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900/70 p-5 shadow-2xl shadow-blue-950/20 sm:p-8"
       >
         <div class="flex flex-col gap-5 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -169,7 +169,7 @@ const workout = [
         <div class="mt-7 grid gap-8 sm:grid-cols-[minmax(220px,.82fr)_1.18fr] sm:items-center">
           <div
             id="body-muscles-chart"
-            class="mx-auto h-[390px] w-full max-w-[290px]"
+            class="mx-auto h-[360px] w-full max-w-[290px] sm:h-[420px]"
             aria-live="polite"
           ></div>
           <div>
@@ -206,6 +206,21 @@ const workout = [
     </div>
   </div>
 </section>
+
+<style is:global>
+  #body-muscles-chart .body-chart-container {
+    height: 100% !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  #body-muscles-chart .body-chart-svg {
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+</style>
 
 <script is:inline src="/vendor/body-muscles/body-muscles.umd.min.js"></script>
 <script is:inline>
