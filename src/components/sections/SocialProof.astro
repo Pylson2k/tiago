@@ -102,9 +102,9 @@ const { title, intro, cases = [], testimonials = [], videos = [], disclaimer } =
             Depoimentos
           </span>
         </div>
-        <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-7 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-4">
           {testimonials.map((item) => (
-            <figure class="overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
+            <figure class="min-w-[82vw] snap-start overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 sm:min-w-0">
               <img
                 src={item.src}
                 alt={item.alt}
