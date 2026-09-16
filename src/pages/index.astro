@@ -317,7 +317,6 @@ const testimonialImages = [
       title="Portfólio de resultados"
       intro="Registros de evolução, feedbacks e casos documentados com autorização."
       cases={socialCases}
-      testimonials={testimonialImages}
       disclaimer="Resultados variam conforme histórico, rotina, adesão e individualidade de cada pessoa. Publicações de imagens e depoimentos dependem de autorização."
     />
     <VideoContent
@@ -423,7 +422,11 @@ Essa é uma das principais ideias que orientam meu trabalho.`}
       intro="[Texto a inserir: artigo ou post sobre biomecânica e análise do movimento.]"
       items={contentItems}
     />
-    <Testimonials title="Quem treinou, conta" testimonials={testimonials} />
+    <Testimonials
+      title="Quem treinou, conta"
+      testimonials={testimonials}
+      images={testimonialImages}
+    />
     <Contact
       title="Contato"
       description="Para informações sobre acompanhamento, materiais acadêmicos ou agendamento de avaliação, utilize um dos canais abaixo."

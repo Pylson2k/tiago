@@ -4,11 +4,18 @@ export interface Testimonial {
   name: string;
   context?: string;
 }
+export interface TestimonialImage {
+  src: string;
+  alt: string;
+  label?: string;
+  authorization?: string;
+}
 export interface Props {
   title: string;
   testimonials: Testimonial[];
+  images?: TestimonialImage[];
 }
-const { title, testimonials } = Astro.props;
+const { title, testimonials, images = [] } = Astro.props;
 ---
 
 <section id="depoimentos" class="bg-white px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
@@ -28,5 +35,33 @@ const { title, testimonials } = Astro.props;
         </figure>
       ))}
     </div>
+    {images.length > 0 && (
+      <div class="mt-12">
+        <h3 class="text-2xl font-semibold tracking-tight text-zinc-950">
+          Registros dos depoimentos
+        </h3>
+        <div
+          class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          aria-label="Prints de depoimentos de alunos"
+        >
+          {images.map((item) => (
+            <figure class="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50">
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                class="aspect-[4/5] w-full bg-zinc-100 object-contain"
+              />
+              <figcaption class="p-4">
+                {item.label && <p class="text-sm font-medium text-zinc-800">{item.label}</p>}
+                {item.authorization && (
+                  <p class="mt-2 text-xs leading-5 text-zinc-500">{item.authorization}</p>
+                )}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
 </section>
