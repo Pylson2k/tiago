@@ -18,24 +18,6 @@ import { Menu } from 'lucide-astro';
 const whatsappHref =
   'https://wa.me/5511963552470?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20acad%C3%AAmico.';
 
-const testimonials = [
-  {
-    quote: 'Muito obrigada por toda a atenção e por me acompanhar nessa jornada fitness.',
-    name: 'Ana Couto',
-    context: '8 meses de acompanhamento',
-  },
-  {
-    quote: 'Sua dedicação e a forma como você explica fazem toda a diferença.',
-    name: 'Ana Vitória',
-    context: 'Treinamento personalizado',
-  },
-  {
-    quote: 'É muito bom olhar para trás e perceber o quanto evoluí. Isso é só o começo.',
-    name: 'Cássia',
-    context: 'Acompanhamento presencial',
-  },
-];
-
 const services = [
   {
     title: 'Treinamento presencial',
@@ -426,7 +408,7 @@ Essa é uma das principais ideias que orientam meu trabalho.`}
     />
     <Testimonials
       title="Quem treinou, conta"
-      testimonials={testimonials}
+      testimonials={[]}
       images={testimonialImages}
       videoSrc="/assets/provas/tiago-apresentacao.mp4"
     />
