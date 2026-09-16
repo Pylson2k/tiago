@@ -14,8 +14,9 @@ export interface Props {
   title: string;
   testimonials: Testimonial[];
   images?: TestimonialImage[];
+  videoSrc?: string;
 }
-const { title, testimonials, images = [] } = Astro.props;
+const { title, testimonials, images = [], videoSrc } = Astro.props;
 ---
 
 <section id="depoimentos" class="bg-white px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
@@ -35,13 +36,29 @@ const { title, testimonials, images = [] } = Astro.props;
         </figure>
       ))}
     </div>
-    {images.length > 0 && (
+    {(videoSrc || images.length > 0) && (
       <div class="mt-12">
         <h3 class="text-2xl font-semibold tracking-tight text-zinc-950">
           Registros dos depoimentos
         </h3>
+        {videoSrc && (
+          <figure class="mt-6 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950">
+            <video
+              class="max-h-[min(38rem,70svh)] w-full object-contain"
+              controls
+              preload="metadata"
+              playsinline
+            >
+              <source src={videoSrc} type="video/mp4" />
+              Seu navegador não suporta a reprodução deste vídeo.
+            </video>
+            <figcaption class="p-4 text-sm text-zinc-300">
+              Registro em vídeo do trabalho de Tiago Filadelfo.
+            </figcaption>
+          </figure>
+        )}
         <div
-          class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          class:list={['grid gap-4 sm:grid-cols-2 lg:grid-cols-4', videoSrc ? 'mt-8' : 'mt-6']}
           aria-label="Prints de depoimentos de alunos"
         >
           {images.map((item) => (
