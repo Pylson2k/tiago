@@ -1,0 +1,42 @@
+---
+export interface VideoCard {
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  title: string;
+  intro?: string;
+  cards: VideoCard[];
+}
+
+const { title, intro, cards } = Astro.props;
+---
+
+<section id="videos" class="bg-zinc-100 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+  <div class="mx-auto max-w-7xl">
+    <p class="text-xs font-semibold uppercase tracking-[.2em] text-blue-600">Conteúdos em vídeo</p>
+    <h2 class="mt-4 max-w-2xl text-4xl font-semibold tracking-[-.045em] text-zinc-950 sm:text-5xl">
+      {title}
+    </h2>
+    {intro && <p class="mt-5 max-w-2xl text-lg leading-8 text-zinc-600">{intro}</p>}
+    <div class="mt-12 grid gap-5 md:grid-cols-2">
+      {cards.map((card, index) => (
+        <article class="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
+          <div class="flex aspect-video items-center justify-center border-b border-zinc-200 bg-zinc-950 p-6 text-center text-zinc-500">
+            <div>
+              <p class="font-mono text-xs uppercase tracking-[.18em] text-blue-300">
+                Vídeo {String(index + 1).padStart(2, '0')}
+              </p>
+              <p class="mt-3 text-sm">Espaço reservado para o próximo vídeo</p>
+            </div>
+          </div>
+          <div class="p-6 sm:p-7">
+            <h3 class="text-2xl font-semibold tracking-tight text-zinc-950">{card.title}</h3>
+            <p class="mt-3 leading-7 text-zinc-600">{card.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

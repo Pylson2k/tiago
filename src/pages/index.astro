@@ -5,12 +5,12 @@ import Hero from '../components/sections/Hero.astro';
 import TrustBar from '../components/sections/TrustBar.astro';
 import ResultCaseGabriel from '../components/sections/ResultCaseGabriel.astro';
 import SocialProof from '../components/sections/SocialProof.astro';
+import VideoContent from '../components/sections/VideoContent.astro';
 import TrainingExperience from '../components/sections/TrainingExperience.astro';
 import Services from '../components/sections/Services.astro';
 import Method from '../components/sections/Method.astro';
 import About from '../components/sections/About.astro';
 import ContentPreview from '../components/sections/ContentPreview.astro';
-import Testimonials from '../components/sections/Testimonials.astro';
 import Contact from '../components/sections/Contact.astro';
 import { Menu, MessageCircle } from 'lucide-astro';
 
@@ -23,28 +23,64 @@ const services = [
     description:
       'Sessões orientadas de perto, com atenção à execução, ao ritmo e ao objetivo de cada aluno.',
     detail: 'Presencial',
-    href: '#contato',
+    modal: {
+      title: 'Treinamento presencial',
+      description:
+        'Sessões orientadas de perto para transformar cada treino em uma prática clara e segura.',
+      points: [
+        'Observação da execução em tempo real',
+        'Ajustes de carga, amplitude e ritmo',
+        'Planejamento alinhado ao objetivo e à rotina',
+      ],
+    },
   },
   {
     title: 'Consultoria online',
     description:
       'Planejamento remoto com acompanhamento e ajustes baseados nos retornos do processo.',
     detail: 'Online',
-    href: '#contato',
+    modal: {
+      title: 'Consultoria online',
+      description:
+        'Acompanhamento remoto com planejamento, retornos e ajustes ao longo do processo.',
+      points: [
+        'Treino organizado para sua rotina',
+        'Canal de acompanhamento e feedback',
+        'Revisões periódicas do plano',
+      ],
+    },
   },
   {
     title: 'Planejamento personalizado',
     description:
       'Estrutura individual para hipertrofia, emagrecimento, condicionamento e performance, respeitando experiência e rotina.',
     detail: 'Sob medida',
-    href: '#contato',
+    modal: {
+      title: 'Planejamento personalizado',
+      description:
+        'Uma estrutura individual para hipertrofia, emagrecimento, condicionamento ou performance.',
+      points: [
+        'Escolha de exercícios com intenção',
+        'Progressão de volume e estímulos',
+        'Adaptações conforme sua resposta',
+      ],
+    },
   },
   {
     title: 'Avaliação e acompanhamento',
     description:
       'Observação do movimento, orientação de execução e ajustes periódicos conforme a evolução.',
     detail: 'Acompanhamento',
-    href: '#contato',
+    modal: {
+      title: 'Avaliação e acompanhamento',
+      description:
+        'Leitura do movimento e do processo para que o treinamento continue fazendo sentido.',
+      points: [
+        'Avaliação do momento atual',
+        'Orientação de execução',
+        'Ajustes periódicos baseados na evolução',
+      ],
+    },
   },
 ];
 
@@ -69,26 +105,6 @@ const steps = [
     number: '04',
     title: 'Ajustar',
     description: 'Revisar o caminho com consistência, sem depender de fórmulas prontas.',
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      'Muito obrigada pela sua dedicação, cuidado, honestidade e por todo apoio nessa jornada fitness.',
-    name: 'Ana Couto',
-    context: '8 meses de acompanhamento',
-  },
-  {
-    quote:
-      'Sua dedicação, conhecimento técnico e paciência me motivam a continuar. Adaptar os treinos faz toda a diferença.',
-    name: 'Ana Vitória',
-    context: 'Treinamento personalizado',
-  },
-  {
-    quote: 'É muito bom olhar para trás, ver minha evolução até aqui e pensar que é só o começo.',
-    name: 'Cássia',
-    context: 'Acompanhamento presencial',
   },
 ];
 
@@ -181,19 +197,6 @@ const testimonialImages = [
     alt: 'Print de depoimento de aluna',
     label: 'Depoimento de aluna',
     authorization: 'Publicado com autorização.',
-  },
-];
-
-const proofVideos = [
-  {
-    src: '/assets/provas/tiago-apresentacao.mp4',
-    title: 'Apresentação do trabalho',
-    description: 'Conheça a abordagem e o acompanhamento.',
-  },
-  {
-    src: '/assets/provas/video-futebol.mp4',
-    title: 'Treinamento na prática',
-    description: 'Exemplo de atividade orientada.',
   },
 ];
 ---
@@ -307,12 +310,25 @@ const proofVideos = [
       ]}
     />
     <SocialProof
-      title="Evolução construída com acompanhamento"
+      title="Quem treinou, conta"
       intro="Casos, relatos e momentos reais do trabalho desenvolvido."
       cases={socialCases}
       testimonials={testimonialImages}
-      videos={proofVideos}
       disclaimer="Resultados variam conforme histórico, rotina, adesão e individualidade de cada pessoa. Publicações de imagens e depoimentos dependem de autorização."
+    />
+    <VideoContent
+      title="Conteúdo técnico em movimento"
+      intro="Dois espaços para apresentar, com clareza, a abordagem de trabalho e o conhecimento aplicado aos esportes coletivos."
+      cards={[
+        {
+          title: 'Apresentação do trabalho',
+          description: 'Card reservado para um novo vídeo de apresentação do acompanhamento.',
+        },
+        {
+          title: 'Esportes coletivos',
+          description: 'Card reservado para um novo vídeo sobre a matéria de esportes coletivos.',
+        },
+      ]}
     />
     <TrainingExperience whatsappHref={whatsappHref} />
     <Services
@@ -341,10 +357,6 @@ const proofVideos = [
       title="Conhecimento que vira prática"
       intro="Conteúdo técnico para treinar com mais intenção e menos ruído."
       items={contentItems}
-    />
-    <Testimonials
-      title="O acompanhamento também aparece na experiência de quem treina"
-      testimonials={testimonials}
     />
     <Contact
       title="Vamos entender o que você precisa para evoluir?"
