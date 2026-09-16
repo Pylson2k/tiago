@@ -4,6 +4,7 @@ import BrandMark from '../components/BrandMark.astro';
 import Hero from '../components/sections/Hero.astro';
 import TrustBar from '../components/sections/TrustBar.astro';
 import ResultCaseGabriel from '../components/sections/ResultCaseGabriel.astro';
+import SocialProof from '../components/sections/SocialProof.astro';
 import Services from '../components/sections/Services.astro';
 import Method from '../components/sections/Method.astro';
 import About from '../components/sections/About.astro';
@@ -108,6 +109,91 @@ const contentItems = [
       'A melhor estratégia é aquela que o aluno consegue aplicar com clareza e regularidade.',
   },
 ];
+
+const socialCases = [
+  {
+    title: 'Evolução de composição corporal',
+    before: {
+      src: '/assets/provas/caso1-antes.jpeg',
+      alt: 'Registro inicial da aluna em pose lateral',
+    },
+    after: {
+      src: '/assets/provas/caso1-depois.jpeg',
+      alt: 'Registro posterior da aluna em pose lateral',
+    },
+    authorization: 'Imagem publicada mediante autorização da aluna.',
+  },
+  {
+    title: 'Evolução de treinamento',
+    before: { src: '/assets/provas/caso2-antes.jpeg', alt: 'Registro inicial da aluna' },
+    after: { src: '/assets/provas/caso2-depois.jpeg', alt: 'Registro posterior da aluna' },
+    authorization: 'Imagem publicada mediante autorização da aluna.',
+  },
+];
+
+const testimonialImages = [
+  {
+    src: '/assets/provas/depoimento-ana.jpg',
+    alt: 'Print de depoimento de aluna',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+  {
+    src: '/assets/provas/depoimento-ana-couto.jpeg',
+    alt: 'Print de depoimento de aluna sobre oito meses de acompanhamento',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+  {
+    src: '/assets/provas/depoimento-ana-vitoria.jpeg',
+    alt: 'Print de depoimento de aluna sobre evolução corporal',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+  {
+    src: '/assets/provas/depoimento-beatriz.jpeg',
+    alt: 'Print de depoimento de aluna',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+  {
+    src: '/assets/provas/depoimento-cassia.jpg',
+    alt: 'Print de depoimento de aluna sobre resultados',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+  {
+    src: '/assets/provas/depoimento-cassia-full.jpeg',
+    alt: 'Print de depoimento de aluna',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+  {
+    src: '/assets/provas/depoimento-lary.png',
+    alt: 'Print de depoimento de aluna sobre perda de peso',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+  {
+    src: '/assets/provas/depoimento-yara.jpeg',
+    alt: 'Print de depoimento de aluna',
+    label: 'Depoimento de aluna',
+    authorization: 'Publicado com autorização.',
+  },
+];
+
+const proofVideos = [
+  {
+    src: '/assets/provas/tiago-apresentacao.mp4',
+    title: 'Apresentação do trabalho',
+    description: 'Conheça a abordagem e o acompanhamento.',
+  },
+  {
+    src: '/assets/provas/video-futebol.mp4',
+    title: 'Treinamento na prática',
+    description: 'Exemplo de atividade orientada.',
+  },
+];
 ---
 
 <BaseLayout
@@ -177,6 +263,14 @@ const contentItems = [
         'Progressão de cargas e estímulos',
         'Ajustes periódicos no treinamento',
       ]}
+    />
+    <SocialProof
+      title="Evolução construída com acompanhamento"
+      intro="Casos, relatos e momentos reais do trabalho desenvolvido."
+      cases={socialCases}
+      testimonials={testimonialImages}
+      videos={proofVideos}
+      disclaimer="Resultados variam conforme histórico, rotina, adesão e individualidade de cada pessoa. Publicações de imagens e depoimentos dependem de autorização."
     />
     <Services
       title="Um plano que conversa com o seu momento"
