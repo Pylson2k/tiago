@@ -12,7 +12,29 @@ import Method from '../components/sections/Method.astro';
 import About from '../components/sections/About.astro';
 import ContentPreview from '../components/sections/ContentPreview.astro';
 import Contact from '../components/sections/Contact.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
 import { Menu } from 'lucide-astro';
+
+const whatsappHref =
+  'https://wa.me/5511963552470?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20acad%C3%AAmico.';
+
+const testimonials = [
+  {
+    quote: 'Muito obrigada por toda a atenção e por me acompanhar nessa jornada fitness.',
+    name: 'Ana Couto',
+    context: '8 meses de acompanhamento',
+  },
+  {
+    quote: 'Sua dedicação e a forma como você explica fazem toda a diferença.',
+    name: 'Ana Vitória',
+    context: 'Treinamento personalizado',
+  },
+  {
+    quote: 'É muito bom olhar para trás e perceber o quanto evoluí. Isso é só o começo.',
+    name: 'Cássia',
+    context: 'Acompanhamento presencial',
+  },
+];
 
 const services = [
   {
@@ -206,20 +228,23 @@ const testimonialImages = [
         class="hidden items-center gap-7 text-sm text-zinc-300 lg:flex"
         aria-label="Navegação principal"
       >
-        <a class="transition hover:text-white" href="#metodo">
-          Método
+        <a class="transition hover:text-white" href="#sobre">
+          Sobre mim
         </a>
         <a class="transition hover:text-white" href="#resultados">
           Resultados
         </a>
-        <a class="transition hover:text-white" href="#treino-da-semana">
-          Treino da semana
+        <a class="transition hover:text-white" href="#conteudo">
+          Conteúdo educativo
         </a>
         <a class="transition hover:text-white" href="#servicos">
           Serviços
         </a>
-        <a class="transition hover:text-white" href="#sobre">
-          Sobre
+        <a class="transition hover:text-white" href="#depoimentos">
+          Depoimentos
+        </a>
+        <a class="transition hover:text-white" href="#contato">
+          Contato
         </a>
       </nav>
       <div class="flex shrink-0 items-center gap-2">
@@ -234,20 +259,23 @@ const testimonialImages = [
             class="absolute right-0 top-14 z-40 grid w-64 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 p-2 text-sm text-zinc-200 shadow-2xl"
             aria-label="Navegação móvel"
           >
-            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#metodo">
-              Método
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#sobre">
+              Sobre mim
             </a>
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#resultados">
               Resultados
             </a>
-            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#treino-da-semana">
-              Treino da semana
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#conteudo">
+              Conteúdo educativo
             </a>
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#servicos">
               Serviços
             </a>
-            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#sobre">
-              Sobre
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#depoimentos">
+              Depoimentos
+            </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#contato">
+              Contato
             </a>
           </nav>
         </details>
@@ -255,7 +283,7 @@ const testimonialImages = [
     </div>
   </header>
 
-  <main id="conteudo-principal" tabindex="-1">
+  <main id="conteudo-principal" class="portfolio-flow" tabindex="-1">
     <Hero
       eyebrow="Portfólio acadêmico · Educação Física"
       title="Tiago Filadelfo: treinamento, estudo e prática profissional"
@@ -286,15 +314,15 @@ const testimonialImages = [
       ]}
     />
     <SocialProof
-      title="Quem treinou, conta"
-      intro="Casos, relatos e momentos reais do trabalho desenvolvido."
+      title="Portfólio de resultados"
+      intro="Registros de evolução, feedbacks e casos documentados com autorização."
       cases={socialCases}
       testimonials={testimonialImages}
       disclaimer="Resultados variam conforme histórico, rotina, adesão e individualidade de cada pessoa. Publicações de imagens e depoimentos dependem de autorização."
     />
     <VideoContent
-      title="Conteúdo técnico em movimento"
-      intro="Dois espaços para apresentar, com clareza, a abordagem de trabalho e o conhecimento aplicado aos esportes coletivos."
+      title="Conteúdo educativo em vídeo"
+      intro="Vídeos curtos para apresentar a execução correta de exercícios e temas do treinamento."
       cards={[
         {
           title: 'Apresentação do trabalho',
@@ -391,13 +419,15 @@ Essa é uma das principais ideias que orientam meu trabalho.`}
       ]}
     />
     <ContentPreview
-      title="Produção acadêmica e conteúdo técnico"
+      title="Conteúdo educativo"
       intro="[Texto a inserir: artigo ou post sobre biomecânica e análise do movimento.]"
       items={contentItems}
     />
+    <Testimonials title="Quem treinou, conta" testimonials={testimonials} />
     <Contact
-      title="Referências e informações complementares"
-      description="[Texto a inserir: contatos acadêmicos, referências, links de artigos, redes profissionais ou materiais complementares.]"
+      title="Contato"
+      description="Para informações sobre acompanhamento, materiais acadêmicos ou agendamento de avaliação, utilize um dos canais abaixo."
+      whatsappHref={whatsappHref}
     />
   </main>
 

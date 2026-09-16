@@ -20,6 +20,41 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Ordem acadêmica fixa do portfólio: cada capítulo segue o contrato de conteúdo. */
+main.portfolio-flow {
+  display: flex;
+  flex-direction: column;
+}
+
+main.portfolio-flow > #inicio,
+main.portfolio-flow > section[aria-label='Diferenciais'] {
+  order: 1;
+}
+main.portfolio-flow > #sobre {
+  order: 2;
+}
+main.portfolio-flow > #servicos {
+  order: 3;
+}
+main.portfolio-flow > #resultados,
+main.portfolio-flow > #provas {
+  order: 4;
+}
+main.portfolio-flow > #conteudo,
+main.portfolio-flow > #videos,
+main.portfolio-flow > #treino-da-semana {
+  order: 5;
+}
+main.portfolio-flow > #depoimentos {
+  order: 6;
+}
+main.portfolio-flow > #contato {
+  order: 7;
+}
+main.portfolio-flow > #metodo {
+  display: none;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
