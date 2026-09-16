@@ -486,8 +486,48 @@ Essa é uma das principais ideias que orientam meu trabalho.`}
   </footer>
 
   <script is:inline>
+    const progress = document.createElement('div');
+    progress.id = 'portfolio-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    document.body.append(progress);
+
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
     document.querySelectorAll('header details nav a').forEach((link) => {
       link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'));
     });
+
+    const navigableSections = [
+      'inicio',
+      'sobre',
+      'servicos',
+      'resultados',
+      'conteudo',
+      'depoimentos',
+      'contato',
+    ]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const navigationLinks = [...document.querySelectorAll('header nav a[href^="#"]')];
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navigationLinks.forEach((link) =>
+            link.classList.toggle(
+              'nav-active',
+              link.getAttribute('href') === `#${entry.target.id}`,
+            ),
+          );
+        });
+      },
+      { rootMargin: '-20% 0px -65% 0px', threshold: 0 },
+    );
+    navigableSections.forEach((section) => sectionObserver.observe(section));
   </script>
 </BaseLayout>

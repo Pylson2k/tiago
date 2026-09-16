@@ -20,6 +20,107 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Camada editorial: ritmo, foco e feedback visual consistentes em todo o portfólio. */
+main.portfolio-flow > section {
+  scroll-margin-top: 5.5rem;
+}
+
+main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais']) {
+  position: relative;
+}
+
+main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais'])::before {
+  position: absolute;
+  inset: 0 5%;
+  height: 1px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  content: '';
+  pointer-events: none;
+}
+
+main.portfolio-flow article {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+main.portfolio-flow article:hover {
+  transform: translateY(-2px);
+}
+
+#conteudo article:hover,
+#servicos article:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 38%, transparent);
+  box-shadow: 0 16px 34px rgb(11 13 16 / 8%);
+}
+
+#provas article figure img,
+#resultados figure img {
+  transition: transform 400ms ease;
+}
+
+#provas article:hover figure img,
+#resultados figure:hover img {
+  transform: scale(1.015);
+}
+
+/* Credenciais funcionam como uma pequena linha do tempo acadêmica. */
+#sobre dl {
+  position: relative;
+}
+
+#sobre dl::before {
+  position: absolute;
+  top: 0.9rem;
+  bottom: 0.9rem;
+  left: 0.35rem;
+  width: 1px;
+  background: #d4d4d8;
+  content: '';
+}
+
+#sobre dl > div {
+  position: relative;
+  padding-left: 1.35rem;
+}
+
+#sobre dl > div::before {
+  position: absolute;
+  top: 0.85rem;
+  left: 0;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 2px solid white;
+  border-radius: 999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+  content: '';
+}
+
+#portfolio-progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 60;
+  width: 0;
+  height: 3px;
+  background: var(--color-accent);
+  transition: width 80ms linear;
+}
+
+header nav a.nav-active {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 0.45rem;
+}
+
+@media (max-width: 640px) {
+  main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais'])::before {
+    inset-inline: 1.25rem;
+  }
+}
+
 /* Ordem acadêmica fixa do portfólio: cada capítulo segue o contrato de conteúdo. */
 main.portfolio-flow {
   display: flex;
