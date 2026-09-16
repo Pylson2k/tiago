@@ -7,6 +7,7 @@ export interface Props {
   eyebrow?: string;
   title: string;
   description: string;
+  philosophy?: string;
   image?: string;
   imageAlt?: string;
   credentials?: Credential[];
@@ -15,6 +16,7 @@ const {
   eyebrow = 'Sobre o treinador',
   title,
   description,
+  philosophy,
   image,
   imageAlt = '',
   credentials = [],
@@ -37,6 +39,14 @@ const {
         {title}
       </h2>
       <p class="mt-6 max-w-xl text-lg leading-8 text-zinc-600">{description}</p>
+      {philosophy && (
+        <div class="mt-8 max-w-xl border-l-2 border-blue-600 pl-5">
+          <p class="text-xs font-semibold uppercase tracking-[.18em] text-blue-600">
+            Filosofia de treinamento
+          </p>
+          <p class="mt-4 whitespace-pre-line text-base leading-8 text-zinc-600">{philosophy}</p>
+        </div>
+      )}
       {credentials.length > 0 && (
         <dl class="mt-10 grid gap-5 border-t border-zinc-200 pt-7 sm:grid-cols-2">
           {credentials.map((item) => (
