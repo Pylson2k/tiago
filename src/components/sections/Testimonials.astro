@@ -65,18 +65,43 @@ const { title, testimonials, images = [], videoSrc } = Astro.props;
         >
           {images.map((item) => (
             <figure class="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50">
-              <img
-                src={item.src}
-                alt={item.alt}
-                loading="lazy"
-                class="aspect-[4/5] w-full bg-zinc-100 object-contain"
-              />
+              <button
+                type="button"
+                class="block w-full cursor-zoom-in text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-inset"
+                data-testimonial-trigger={`testimonial-image-${item.src.replace(/[^a-zA-Z0-9]/g, '-')}`}
+                aria-label={`Ampliar ${item.alt}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  class="aspect-[4/5] w-full bg-zinc-100 object-contain"
+                />
+              </button>
               <figcaption class="p-4">
                 {item.label && <p class="text-sm font-medium text-zinc-800">{item.label}</p>}
                 {item.authorization && (
                   <p class="mt-2 text-xs leading-5 text-zinc-500">{item.authorization}</p>
                 )}
               </figcaption>
+              <dialog
+                id={`testimonial-image-${item.src.replace(/[^a-zA-Z0-9]/g, '-')}`}
+                class="testimonial-dialog m-auto max-h-[92svh] w-[min(94vw,56rem)] rounded-2xl bg-zinc-950 p-3 text-white shadow-2xl backdrop:bg-zinc-950/80"
+              >
+                <div class="flex items-center justify-end pb-2">
+                  <button
+                    type="button"
+                    class="inline-flex min-h-10 items-center rounded-full border border-white/20 px-4 text-sm text-zinc-200 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                    data-testimonial-close
+                  >
+                    Fechar
+                  </button>
+                </div>
+                <img src={item.src} alt={item.alt} class="max-h-[78svh] w-full object-contain" />
+                <p class="px-2 pb-2 pt-3 text-xs text-zinc-400">
+                  Clique em Fechar ou pressione Esc para retornar.
+                </p>
+              </dialog>
             </figure>
           ))}
         </div>
@@ -84,3 +109,21 @@ const { title, testimonials, images = [], videoSrc } = Astro.props;
     )}
   </div>
 </section>
+
+<script is:inline>
+  document.querySelectorAll('[data-testimonial-trigger]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const id = trigger.getAttribute('data-testimonial-trigger');
+      const dialog = id ? document.getElementById(id) : null;
+      if (dialog instanceof HTMLDialogElement) dialog.showModal();
+    });
+  });
+  document.querySelectorAll('[data-testimonial-close]').forEach((close) => {
+    close.addEventListener('click', () => close.closest('dialog')?.close());
+  });
+  document.querySelectorAll('.testimonial-dialog').forEach((dialog) => {
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>
