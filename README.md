@@ -29,7 +29,10 @@ npm test -- --passWithNoTests
 - `src/content.config.ts` — schemas Zod das coleções;
 - `src/styles/` — tokens e estilos globais;
 - `public/assets/` — ativos usados no novo preview;
+- `public/vendor/body-muscles/` — biblioteca local do mapa anatômico interativo;
 - `PLANO_RECONSTRUCAO_PORTFOLIO.md` — plano completo de evolução e operação.
+
+A página inclui apresentação, resultados, provas sociais, Treino da Semana, mapa de biomecânica, serviços, método, trajetória, conteúdo educativo, depoimentos e contato.
 
 Os arquivos `index.html`, `src/index.css`, `src/main.js` e `src/lead-tracker.js` são a implementação legada e permanecem no repositório apenas para referência durante a migração.
 

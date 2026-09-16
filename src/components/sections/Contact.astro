@@ -1,4 +1,6 @@
 ---
+import { Instagram, Mail, MessageCircle } from 'lucide-astro';
+
 export interface Props {
   title: string;
   description: string;
@@ -27,22 +29,33 @@ const {
     <div class="flex flex-col items-start gap-5 lg:items-end">
       <a
         href={whatsappHref}
-        class="inline-flex min-h-14 items-center justify-center rounded-full bg-zinc-950 px-7 text-sm font-semibold text-white transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
+        class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-zinc-950 px-7 text-sm font-semibold text-white transition hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
       >
-        {whatsappLabel}{' '}
+        <MessageCircle size={19} aria-hidden="true" />
+        {whatsappLabel}
         <span aria-hidden="true" class="ml-3">
           ↗
         </span>
       </a>
       <div class="flex flex-wrap gap-4 text-sm text-blue-100">
         {email && (
-          <a href={`mailto:${email}`} class="underline underline-offset-4">
+          <a
+            href={`mailto:${email}`}
+            class="inline-flex items-center gap-2 underline underline-offset-4"
+          >
+            <Mail size={16} aria-hidden="true" />
             {email}
           </a>
         )}
         {instagram && (
-          <a href={instagram} class="underline underline-offset-4">
-            Instagram
+          <a
+            href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 underline underline-offset-4"
+          >
+            <Instagram size={16} aria-hidden="true" />
+            Ver conteúdo no Instagram
           </a>
         )}
       </div>

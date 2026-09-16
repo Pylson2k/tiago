@@ -5,12 +5,14 @@ import Hero from '../components/sections/Hero.astro';
 import TrustBar from '../components/sections/TrustBar.astro';
 import ResultCaseGabriel from '../components/sections/ResultCaseGabriel.astro';
 import SocialProof from '../components/sections/SocialProof.astro';
+import TrainingExperience from '../components/sections/TrainingExperience.astro';
 import Services from '../components/sections/Services.astro';
 import Method from '../components/sections/Method.astro';
 import About from '../components/sections/About.astro';
 import ContentPreview from '../components/sections/ContentPreview.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import Contact from '../components/sections/Contact.astro';
+import { MessageCircle } from 'lucide-astro';
 
 const whatsappHref =
   'https://wa.me/5511963552470?text=Ol%C3%A1%20Tiago%2C%20vim%20pelo%20seu%20portf%C3%B3lio%20e%20quero%20conhecer%20o%20acompanhamento.';
@@ -31,18 +33,18 @@ const services = [
     href: '#contato',
   },
   {
-    title: 'Plano personalizado',
+    title: 'Planejamento personalizado',
     description:
-      'Uma estrutura de treino organizada para hipertrofia, recomposição corporal e condicionamento.',
-    detail: 'Individual',
+      'Estrutura individual para hipertrofia, emagrecimento, condicionamento e performance, respeitando experiência e rotina.',
+    detail: 'Sob medida',
     href: '#contato',
   },
   {
-    title: 'Treino da semana',
+    title: 'Avaliação e acompanhamento',
     description:
-      'Conteúdos curtos para entender técnica, intenção do movimento e progressão com mais clareza.',
-    detail: 'Conteúdo',
-    href: '#conteudo',
+      'Observação do movimento, orientação de execução e ajustes periódicos conforme a evolução.',
+    detail: 'Acompanhamento',
+    href: '#contato',
   },
 ];
 
@@ -72,21 +74,21 @@ const steps = [
 
 const testimonials = [
   {
-    quote: 'A dedicação, o cuidado e a adaptação dos treinos fizeram diferença na minha evolução.',
-    name: 'Aluna em acompanhamento',
-    context: 'Feedback anonimizado',
+    quote:
+      'Muito obrigada pela sua dedicação, cuidado, honestidade e por todo apoio nessa jornada fitness.',
+    name: 'Ana Couto',
+    context: '8 meses de acompanhamento',
   },
   {
     quote:
-      'A atenção em cada execução e a forma de conduzir os treinos me deram mais segurança para continuar.',
-    name: 'Aluno em acompanhamento',
-    context: 'Feedback anonimizado',
+      'Sua dedicação, conhecimento técnico e paciência me motivam a continuar. Adaptar os treinos faz toda a diferença.',
+    name: 'Ana Vitória',
+    context: 'Treinamento personalizado',
   },
   {
-    quote:
-      'O planejamento respeitou minhas limitações e ainda assim trouxe uma evolução que eu conseguia perceber.',
-    name: 'Aluna em acompanhamento',
-    context: 'Feedback anonimizado',
+    quote: 'É muito bom olhar para trás, ver minha evolução até aqui e pensar que é só o começo.',
+    name: 'Cássia',
+    context: 'Acompanhamento presencial',
   },
 ];
 
@@ -96,11 +98,13 @@ const contentItems = [
     title: 'Como pensar a execução antes de aumentar a carga',
     description:
       'Um guia direto para observar posição, trajetória e intenção em exercícios básicos.',
+    href: '#biomecanica',
   },
   {
     type: 'Treino',
     title: 'Progressão não é apenas colocar mais peso',
     description: 'Volume, controle, amplitude e consistência também fazem parte da evolução.',
+    href: '#treino-da-semana',
   },
   {
     type: 'Rotina',
@@ -217,6 +221,9 @@ const proofVideos = [
         <a class="transition hover:text-white" href="#resultados">
           Resultados
         </a>
+        <a class="transition hover:text-white" href="#treino-da-semana">
+          Treino da semana
+        </a>
         <a class="transition hover:text-white" href="#servicos">
           Serviços
         </a>
@@ -235,6 +242,7 @@ const proofVideos = [
 
   <main>
     <Hero
+      eyebrow="Tiago Filadelfo · Treinador · Hipertrofia & Condicionamento"
       title="Treino inteligente. Evolução que você consegue sustentar."
       description="Planejamento individualizado para hipertrofia, recomposição corporal e condicionamento, com acompanhamento próximo e execução bem orientada."
       image="/assets/tiago-training.webp"
@@ -272,6 +280,7 @@ const proofVideos = [
       videos={proofVideos}
       disclaimer="Resultados variam conforme histórico, rotina, adesão e individualidade de cada pessoa. Publicações de imagens e depoimentos dependem de autorização."
     />
+    <TrainingExperience whatsappHref={whatsappHref} />
     <Services
       title="Um plano que conversa com o seu momento"
       intro="Escolha o formato de acompanhamento que faz sentido para a sua rotina e converse para entender os próximos passos."
@@ -283,13 +292,15 @@ const proofVideos = [
       steps={steps}
     />
     <About
-      title="Treinamento com presença, clareza e responsabilidade"
-      description="Tiago Filadelfo é graduando em Educação Física e treinador. Seu trabalho combina atenção à execução, planejamento individualizado e uma comunicação que ajuda o aluno a entender o próprio processo."
+      title="Da vivência no esporte ao acompanhamento individual"
+      description="Tiago Filadelfo é graduando em Educação Física e treinador. Sua trajetória une prática esportiva, estudo contínuo e acompanhamento próximo. A filosofia de trabalho parte da biomecânica, da execução consciente e de ajustes que respeitam o contexto de cada aluno — sem atalhos ou fórmulas prontas."
       image="/assets/tiago-portrait.webp"
       imageAlt="Retrato profissional de Tiago Filadelfo"
       credentials={[
-        { label: 'Formação', value: 'Graduação em Educação Física — em andamento' },
-        { label: 'Princípio', value: 'Consistência antes de promessa' },
+        { label: 'Formação', value: 'Bacharelado em Educação Física — em andamento' },
+        { label: 'Estudo contínuo', value: 'Biomecânica e análise do movimento' },
+        { label: 'Filosofia', value: 'Consistência antes de promessa' },
+        { label: 'Diferencial', value: 'Planejamento, didática e ajustes individuais' },
       ]}
     />
     <ContentPreview
@@ -305,7 +316,8 @@ const proofVideos = [
       title="Vamos entender o que você precisa para evoluir?"
       description="Envie uma mensagem e conte seu objetivo. A primeira conversa serve para entender seu momento e apresentar o formato de acompanhamento mais adequado."
       whatsappHref={whatsappHref}
-      whatsappLabel="Agendar conversa"
+      whatsappLabel="Agendar avaliação online"
+      instagram="https://www.instagram.com/reel/DIy91aMOAVY/?igsh=YmJja3lrOHRsOW4y"
     />
   </main>
 
@@ -317,4 +329,13 @@ const proofVideos = [
       </a>
     </div>
   </footer>
+
+  <a
+    href={whatsappHref}
+    class="fixed bottom-4 left-4 right-4 z-50 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-blue-600 px-6 text-sm font-semibold text-white shadow-2xl shadow-blue-950/35 transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 sm:left-auto sm:right-6 sm:w-auto"
+    aria-label="Quero treinar com Tiago pelo WhatsApp"
+  >
+    <MessageCircle size={19} aria-hidden="true" />
+    Quero treinar com você
+  </a>
 </BaseLayout>
