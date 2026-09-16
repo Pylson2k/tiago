@@ -4,6 +4,12 @@ export interface ContentItem {
   type: string;
   description: string;
   href?: string;
+  modal?: {
+    subtitle: string;
+    sections: { title: string; paragraphs?: string[]; bullets?: string[] }[];
+    conclusion: string;
+    references: string[];
+  };
 }
 export interface Props {
   title: string;
@@ -32,16 +38,92 @@ const { title, intro, items } = Astro.props;
           </p>
           <h3 class="mt-8 text-2xl font-semibold tracking-tight text-zinc-950">{item.title}</h3>
           <p class="mt-3 leading-7 text-zinc-600">{item.description}</p>
-          {item.href && (
+          {item.modal ? (
+            <button
+              type="button"
+              data-content-trigger={`content-modal-${i}`}
+              class="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-zinc-950 underline decoration-blue-500 underline-offset-4"
+            >
+              Ler estudo completo →
+            </button>
+          ) : item.href ? (
             <a
               href={item.href}
               class="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-zinc-950 underline decoration-blue-500 underline-offset-4"
             >
               Ler conteúdo →
             </a>
+          ) : null}
+          {item.modal && (
+            <dialog
+              id={`content-modal-${i}`}
+              class="content-dialog m-auto max-h-[90svh] w-[min(94vw,60rem)] rounded-3xl bg-white p-0 text-zinc-950 shadow-2xl backdrop:bg-zinc-950/70"
+            >
+              <div class="flex items-start justify-between gap-5 border-b border-zinc-200 p-6 sm:p-8">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[.16em] text-blue-600">
+                    {item.type}
+                  </p>
+                  <h4 class="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+                    {item.title}
+                  </h4>
+                  <p class="mt-2 text-sm text-zinc-500">{item.modal.subtitle}</p>
+                </div>
+                <button
+                  type="button"
+                  data-content-close
+                  class="inline-flex min-h-10 shrink-0 items-center rounded-full border border-zinc-300 px-4 text-sm text-zinc-700 transition hover:bg-zinc-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                >
+                  Fechar
+                </button>
+              </div>
+              <div class="max-h-[68svh] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+                {item.modal.sections.map((section) => (
+                  <section class="not-first:mt-8">
+                    <h5 class="text-lg font-semibold text-zinc-950">{section.title}</h5>
+                    {section.paragraphs?.map((paragraph) => (
+                      <p class="mt-3 leading-7 text-zinc-600">{paragraph}</p>
+                    ))}
+                    {section.bullets && (
+                      <ul class="mt-3 list-disc space-y-2 pl-5 leading-7 text-zinc-600">
+                        {section.bullets.map((bullet) => (
+                          <li>{bullet}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                ))}
+                <h5 class="mt-8 text-lg font-semibold text-zinc-950">Conclusão</h5>
+                <p class="mt-3 leading-7 text-zinc-600">{item.modal.conclusion}</p>
+                <h5 class="mt-8 text-lg font-semibold text-zinc-950">Referências</h5>
+                <ul class="mt-3 space-y-3 text-sm leading-6 text-zinc-500">
+                  {item.modal.references.map((reference) => (
+                    <li>{reference}</li>
+                  ))}
+                </ul>
+              </div>
+            </dialog>
           )}
         </article>
       ))}
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.querySelectorAll('[data-content-trigger]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const id = trigger.getAttribute('data-content-trigger');
+      const dialog = id ? document.getElementById(id) : null;
+      if (dialog instanceof HTMLDialogElement) dialog.showModal();
+    });
+  });
+  document.querySelectorAll('[data-content-close]').forEach((close) => {
+    close.addEventListener('click', () => close.closest('dialog')?.close());
+  });
+  document.querySelectorAll('.content-dialog').forEach((dialog) => {
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>
