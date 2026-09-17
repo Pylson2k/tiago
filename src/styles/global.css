@@ -289,14 +289,14 @@ header nav a.nav-active {
 
 /* FitMaster visual system: dark editorial shell with red signal color. */
 :root {
-  --fit-bg: #171313;
-  --fit-surface: #211b1a;
-  --fit-surface-raised: #2a2220;
-  --fit-red: #ef1d25;
-  --fit-red-dark: #b90f18;
-  --fit-text: #f7f2ec;
-  --fit-muted: #b5aaa4;
-  --fit-line: rgb(247 242 236 / 18%);
+  --fit-bg: #0b0d10;
+  --fit-surface: #151922;
+  --fit-surface-raised: #1d2330;
+  --fit-red: #4a53ff;
+  --fit-red-dark: #343bd1;
+  --fit-text: #f5f5f2;
+  --fit-muted: #a3a9b2;
+  --fit-line: rgb(245 245 242 / 16%);
 }
 
 body {
@@ -305,8 +305,8 @@ body {
 }
 
 header#topo {
-  border-color: rgb(247 242 236 / 14%) !important;
-  background: rgb(23 19 19 / 92%) !important;
+  border-color: rgb(245 245 242 / 14%) !important;
+  background: rgb(11 13 16 / 92%) !important;
   box-shadow: 0 10px 35px rgb(0 0 0 / 24%) !important;
 }
 
@@ -328,8 +328,8 @@ header#topo nav a.nav-active {
 
 .hero-editorial > div:first-child {
   background:
-    radial-gradient(circle at 84% 30%, rgb(239 29 37 / 28%), transparent 28%),
-    linear-gradient(115deg, #171313 0%, #251918 100%) !important;
+    radial-gradient(circle at 84% 30%, rgb(74 83 255 / 30%), transparent 28%),
+    linear-gradient(115deg, #0b0d10 0%, #151922 100%) !important;
 }
 
 .hero-editorial .editorial-container {
@@ -375,7 +375,7 @@ header#topo nav a.nav-active {
 }
 
 .hero-editorial .editorial-container > div:first-of-type a:last-child {
-  border-color: rgb(247 242 236 / 30%) !important;
+  border-color: rgb(245 245 242 / 30%) !important;
   color: var(--fit-text) !important;
 }
 
@@ -397,7 +397,7 @@ header#topo nav a.nav-active {
 }
 
 .hero-editorial__media figcaption {
-  background: rgb(23 19 19 / 82%) !important;
+  background: rgb(11 13 16 / 82%) !important;
   color: var(--fit-text) !important;
 }
 
@@ -421,8 +421,8 @@ main.portfolio-flow > section:nth-of-type(odd):not(#inicio),
 #provas,
 #conteudo,
 #contato {
-  background: #f1e9e1 !important;
-  color: #1d1716 !important;
+  background: #f5f5f2 !important;
+  color: #11151b !important;
 }
 
 main.portfolio-flow > section:nth-of-type(odd):not(#inicio) .display-title,
@@ -430,7 +430,7 @@ main.portfolio-flow > section:nth-of-type(odd):not(#inicio) .display-title,
 #provas .display-title,
 #conteudo .display-title,
 #contato .display-title {
-  color: #1d1716 !important;
+  color: #11151b !important;
 }
 
 main.portfolio-flow > section:nth-of-type(even) .display-title,
@@ -510,7 +510,7 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 
 #servicos article,
 #conteudo article {
-  background: #211a19 !important;
+  background: #151922 !important;
   color: var(--fit-text) !important;
 }
 
@@ -539,7 +539,7 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 }
 
 #resultados {
-  background: #171313 !important;
+  background: #0b0d10 !important;
   color: var(--fit-text) !important;
 }
 
@@ -560,7 +560,7 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 }
 
 #provas article {
-  background: #211a19 !important;
+  background: #151922 !important;
   color: var(--fit-text) !important;
 }
 
@@ -578,7 +578,7 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 }
 
 #treino-da-semana {
-  background: #0b0909 !important;
+  background: #080a0d !important;
 }
 
 #treino-da-semana .workout-card {
@@ -588,12 +588,12 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 #treino-da-semana .workout-card:hover,
 #treino-da-semana .workout-card[aria-pressed='true'] {
   border-color: var(--fit-red) !important;
-  background: rgb(239 29 37 / 15%) !important;
+  background: rgb(74 83 255 / 15%) !important;
 }
 
 #treino-da-semana .text-blue-300,
 #biomecanica .text-blue-300 {
-  color: #ff656a !important;
+  color: #8f96ff !important;
 }
 
 #biomecanica {
@@ -603,7 +603,7 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 }
 
 #depoimentos figure {
-  background: #211a19 !important;
+  background: #151922 !important;
 }
 
 #depoimentos blockquote,
@@ -642,7 +642,7 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 }
 
 #contato button {
-  background: #171313 !important;
+  background: #0b0d10 !important;
   color: white !important;
 }
 
