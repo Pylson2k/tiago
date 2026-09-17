@@ -47,6 +47,8 @@ const resultCase = defineCollection({
     approach: z.array(z.string().min(10)).min(2),
     observedOutcome: z.string().min(20),
     image: imageRef,
+    beforeImage: imageRef.optional(),
+    afterImage: imageRef.optional(),
     imageAlt: z.string().min(20),
     mediaTreatment: z.enum(['static-composite', 'separate-before-after']),
     disclaimer: z.string().min(20),

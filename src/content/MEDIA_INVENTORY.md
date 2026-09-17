@@ -12,6 +12,8 @@ originais devem ser tratados por Astro Assets/Sharp antes do deploy.
 | `tiago-training.webp`          | Contexto de treino | Confirmar enquadramento e autorização.                    |
 | `tiago-portrait-editorial.png` | Retrato/About      | Variante editorial 4:5, preservando a foto original.      |
 | `tiago-training-editorial.png` | Hero               | Variante editorial 3:2, preservando a foto original.      |
+| `gabriel-before.webp`          | Caso Gabriel       | Recorte inicial independente, sem alterar o resultado.    |
+| `gabriel-after.webp`           | Caso Gabriel       | Recorte posterior independente, sem alterar o resultado.  |
 | `tiago-apresentacao.mp4`       | Apresentação       | Gerar poster e versão comprimida.                         |
 | `video-futebol.mp4`            | Prática esportiva  | Confirmar direito de imagem de todas as pessoas.          |
 

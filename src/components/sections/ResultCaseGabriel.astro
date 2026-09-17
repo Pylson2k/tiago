@@ -2,8 +2,10 @@
 export interface Props {
   title: string;
   summary: string;
-  image: string;
-  imageAlt: string;
+  beforeImage: string;
+  afterImage: string;
+  beforeAlt: string;
+  afterAlt: string;
   highlights?: string[];
   eyebrow?: string;
   disclaimer?: string;
@@ -11,8 +13,10 @@ export interface Props {
 const {
   title,
   summary,
-  image,
-  imageAlt,
+  beforeImage,
+  afterImage,
+  beforeAlt,
+  afterAlt,
   highlights = [],
   eyebrow = 'Caso em destaque',
   disclaimer = 'Registros cedidos pelo aluno. Luz, distância, enquadramento e pose podem variar.',
@@ -44,7 +48,34 @@ const {
         )}
       </div>
       <figure class="overflow-hidden bg-zinc-950 p-2 sm:p-3">
-        <img src={image} alt={imageAlt} loading="lazy" class="w-full rounded-2xl object-cover" />
+        <div class="grid grid-cols-2 gap-1">
+          <div class="bg-black">
+            <img
+              src={beforeImage}
+              alt={beforeAlt}
+              loading="lazy"
+              width="603"
+              height="1436"
+              class="aspect-[.42] w-full object-cover object-center"
+            />
+            <p class="px-3 py-2 text-[.65rem] font-semibold uppercase tracking-[.16em] text-zinc-400">
+              Antes
+            </p>
+          </div>
+          <div class="bg-black">
+            <img
+              src={afterImage}
+              alt={afterAlt}
+              loading="lazy"
+              width="603"
+              height="1436"
+              class="aspect-[.42] w-full object-cover object-center"
+            />
+            <p class="px-3 py-2 text-[.65rem] font-semibold uppercase tracking-[.16em] text-zinc-400">
+              Depois
+            </p>
+          </div>
+        </div>
         <figcaption class="px-2 pb-2 pt-3 text-xs leading-5 text-zinc-400">{disclaimer}</figcaption>
       </figure>
     </div>
