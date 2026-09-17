@@ -5,13 +5,15 @@ originais devem ser tratados por Astro Assets/Sharp antes do deploy.
 
 ## Triagem
 
-| Arquivo                  | Uso                | Observação                                                |
-| ------------------------ | ------------------ | --------------------------------------------------------- |
-| `gabriel-evolucao.jpeg`  | Caso Gabriel       | Composição estática; requer autorização; não usar slider. |
-| `tiago-portrait.webp`    | Retrato/hero       | Confirmar foto definitiva.                                |
-| `tiago-training.webp`    | Contexto de treino | Confirmar enquadramento e autorização.                    |
-| `tiago-apresentacao.mp4` | Apresentação       | Gerar poster e versão comprimida.                         |
-| `video-futebol.mp4`      | Prática esportiva  | Confirmar direito de imagem de todas as pessoas.          |
+| Arquivo                        | Uso                | Observação                                                |
+| ------------------------------ | ------------------ | --------------------------------------------------------- |
+| `gabriel-evolucao.jpeg`        | Caso Gabriel       | Composição estática; requer autorização; não usar slider. |
+| `tiago-portrait.webp`          | Retrato/hero       | Confirmar foto definitiva.                                |
+| `tiago-training.webp`          | Contexto de treino | Confirmar enquadramento e autorização.                    |
+| `tiago-portrait-editorial.png` | Retrato/About      | Variante editorial 4:5, preservando a foto original.      |
+| `tiago-training-editorial.png` | Hero               | Variante editorial 3:2, preservando a foto original.      |
+| `tiago-apresentacao.mp4`       | Apresentação       | Gerar poster e versão comprimida.                         |
+| `video-futebol.mp4`            | Prática esportiva  | Confirmar direito de imagem de todas as pessoas.          |
 
 ## Não publicar automaticamente
 
