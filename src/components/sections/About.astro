@@ -84,7 +84,9 @@ const {
           {credentials.map((item) => (
             <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
               <dt class="text-xs uppercase tracking-[.16em] text-zinc-500">{item.label}</dt>
-              <dd class="mt-1 font-medium text-zinc-950">{item.value}</dd>
+              <dd class="mt-1 font-medium text-zinc-950">
+                {item.value === '[A inserir]' ? 'Informação em atualização' : item.value}
+              </dd>
             </div>
           ))}
         </dl>

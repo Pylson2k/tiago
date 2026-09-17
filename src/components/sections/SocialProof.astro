@@ -49,14 +49,41 @@ const { title, intro, cases = [], testimonials = [], disclaimer } = Astro.props;
           <article class="group grid overflow-hidden border border-zinc-300 bg-white lg:grid-cols-[1.15fr_.85fr]">
             {item.image ? (
               <figure class="relative overflow-hidden bg-zinc-950 p-1 lg:border-r lg:border-zinc-300">
-                <img
-                  src={item.image.src}
-                  alt={item.image.alt}
-                  loading="lazy"
-                  class="mx-auto h-auto w-full object-contain"
-                />
+                <div class="comparison-reveal" data-comparison>
+                  <img
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    loading="lazy"
+                    class="comparison-reveal__sizer"
+                  />
+                  <img
+                    src={item.image.src}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    class="comparison-reveal__layer comparison-reveal__after"
+                  />
+                  <div class="comparison-reveal__before" data-comparison-before>
+                    <img
+                      src={item.image.src}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      class="comparison-reveal__layer"
+                    />
+                  </div>
+                  <span class="comparison-reveal__label comparison-reveal__label--before">
+                    Antes
+                  </span>
+                  <span class="comparison-reveal__label comparison-reveal__label--after">
+                    Depois
+                  </span>
+                  <span class="comparison-reveal__handle" aria-hidden="true">
+                    ↔
+                  </span>
+                </div>
                 <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
-                  Comparativo antes e depois · imagem completa
+                  Passe o cursor ou toque para comparar
                 </figcaption>
               </figure>
             ) : item.before && item.after ? (
@@ -147,20 +174,19 @@ const { title, intro, cases = [], testimonials = [], disclaimer } = Astro.props;
 </section>
 
 <script is:inline>
-  document.querySelectorAll('[data-scratch-reveal]').forEach((reveal) => {
-    const foreground = reveal.querySelector('[data-scratch-foreground]');
-    if (!(foreground instanceof HTMLElement)) return;
+  document.querySelectorAll('[data-comparison]').forEach((comparison) => {
+    const before = comparison.querySelector('[data-comparison-before]');
+    if (!(before instanceof HTMLElement)) return;
     const update = (event) => {
       const point = event.touches?.[0] ?? event;
-      const rect = reveal.getBoundingClientRect();
+      const rect = comparison.getBoundingClientRect();
       const percent = Math.max(0, Math.min(100, ((point.clientX - rect.left) / rect.width) * 100));
-      foreground.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+      before.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
     };
-    reveal.addEventListener('pointermove', update);
-    reveal.addEventListener('touchmove', update, { passive: true });
-    reveal.addEventListener('pointerleave', () => {
-      foreground.style.clipPath = 'inset(0 0 0 0)';
+    comparison.addEventListener('pointermove', update);
+    comparison.addEventListener('touchmove', update, { passive: true });
+    comparison.addEventListener('pointerleave', () => {
+      before.style.clipPath = 'inset(0 0 0 0)';
     });
-    foreground.style.clipPath = 'inset(0 0 0 0)';
   });
 </script>

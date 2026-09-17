@@ -29,20 +29,22 @@ const {
   aria-labelledby="hero-title"
 >
   <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_76%_18%,rgba(255,94,47,.18),transparent_32%),linear-gradient(125deg,#f7f5e9_0%,#ebe8d9_100%)]"></div>
-  <div class="editorial-container grid min-h-[88svh] items-end gap-10 pb-14 pt-32 sm:pb-20 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:gap-16 lg:py-24">
-    <div class="max-w-2xl">
-      <p class="eyebrow mb-7 text-orange-600">01 / {eyebrow}</p>
+  <div class="editorial-container flex min-h-[92svh] flex-col items-center pb-10 pt-32 text-center sm:pb-16 lg:pt-36">
+    <div class="flex max-w-5xl flex-col items-center">
+      <p class="eyebrow mb-7 rounded-sm bg-white/80 px-3 py-2 text-orange-600 shadow-sm">
+        01 / {eyebrow}
+      </p>
       <h1
         id="hero-title"
-        class="display-title max-w-3xl text-[clamp(3.25rem,7vw,7.5rem)] font-semibold leading-[.88]"
+        class="display-title max-w-5xl text-[clamp(3.1rem,7.5vw,7.75rem)] font-semibold leading-[.88]"
       >
         {title}
       </h1>
-      <p class="mt-8 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
+      <p class="mt-8 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
         {description}
       </p>
       {primaryHref || secondaryHref ? (
-        <div class="mt-9 flex flex-wrap items-center gap-3">
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
           {primaryHref && (
             <a
               href={primaryHref}
@@ -62,7 +64,7 @@ const {
         </div>
       ) : null}
     </div>
-    <figure class="hero-editorial__media relative overflow-hidden border border-zinc-950/10 bg-zinc-900 shadow-2xl shadow-orange-950/20 lg:-mr-12 lg:rotate-2">
+    <figure class="hero-editorial__media relative mt-12 w-full max-w-3xl overflow-hidden border border-zinc-950/10 bg-zinc-900 shadow-2xl shadow-orange-950/20">
       <img
         src={image}
         alt={imageAlt}

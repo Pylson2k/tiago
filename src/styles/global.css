@@ -2,7 +2,7 @@
 @import './tokens.css';
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -106,31 +106,99 @@ main.portfolio-flow section {
   transition: transform 400ms ease;
 }
 
-.scratch-reveal {
+#provas article:hover figure img,
+#resultados figure:hover img {
+  transform: scale(1.015);
+}
+
+.comparison-reveal {
+  position: relative;
+  overflow: hidden;
+  background: #090a0c;
   touch-action: pan-y;
 }
 
-.scratch-reveal__foreground {
+.comparison-reveal__sizer {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+}
+
+.comparison-reveal__layer {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: block;
+  width: 200%;
+  max-width: none;
+  height: 100%;
+  object-fit: fill;
+}
+
+.comparison-reveal__after {
+  left: -100%;
+}
+
+.comparison-reveal__before {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  overflow: hidden;
   clip-path: inset(0 0 0 0);
-  transition: clip-path 120ms ease-out;
-  will-change: clip-path;
+  transition: clip-path 180ms ease-out;
+}
+
+.comparison-reveal__label,
+.comparison-reveal__handle {
+  position: absolute;
+  pointer-events: none;
+  background: rgb(9 10 12 / 78%);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.comparison-reveal__label {
+  bottom: 0.75rem;
+  padding: 0.4rem 0.65rem;
+}
+
+.comparison-reveal__label--before {
+  left: 0.75rem;
+}
+
+.comparison-reveal__label--after {
+  right: 0.75rem;
+}
+
+.comparison-reveal__handle {
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 180ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .scratch-reveal:hover .scratch-reveal__foreground {
+  .comparison-reveal:hover .comparison-reveal__before {
     clip-path: inset(0 0 0 100%);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scratch-reveal__foreground {
+  .comparison-reveal__before {
     transition: none;
   }
-}
-
-#provas article:hover figure img,
-#resultados figure:hover img {
-  transform: scale(1.015);
 }
 
 /* Credenciais funcionam como uma pequena linha do tempo acadêmica. */
