@@ -87,34 +87,37 @@ const { title, intro, cases = [], testimonials = [], disclaimer } = Astro.props;
                 </figcaption>
               </figure>
             ) : item.before && item.after ? (
-              <div class="grid grid-cols-2 gap-1 bg-zinc-950 p-1">
-                {item.before && (
-                  <figure>
+              <figure class="relative overflow-hidden bg-zinc-950 p-1 lg:border-r lg:border-zinc-300">
+                <div class="comparison-reveal" data-comparison>
+                  <img
+                    src={item.before.src}
+                    alt={item.before.alt}
+                    loading="lazy"
+                    class="comparison-reveal__sizer"
+                  />
+                  <img
+                    src={item.after.src}
+                    alt={item.after.alt}
+                    loading="lazy"
+                    class="comparison-reveal__layer comparison-reveal__after"
+                  />
+                  <div class="comparison-reveal__before" data-comparison-before>
                     <img
                       src={item.before.src}
-                      alt={item.before.alt}
+                      alt=""
+                      aria-hidden="true"
                       loading="lazy"
-                      class="h-[26rem] w-full bg-black object-contain sm:h-[32rem]"
+                      class="comparison-reveal__layer"
                     />
-                    <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
-                      Antes
-                    </figcaption>
-                  </figure>
-                )}
-                {item.after && (
-                  <figure>
-                    <img
-                      src={item.after.src}
-                      alt={item.after.alt}
-                      loading="lazy"
-                      class="h-[26rem] w-full bg-black object-contain sm:h-[32rem]"
-                    />
-                    <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
-                      Depois
-                    </figcaption>
-                  </figure>
-                )}
-              </div>
+                  </div>
+                  <span class="comparison-reveal__label comparison-reveal__label--before">Antes</span>
+                  <span class="comparison-reveal__label comparison-reveal__label--after">Depois</span>
+                  <span class="comparison-reveal__handle" aria-hidden="true">↔</span>
+                </div>
+                <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
+                  Passe o cursor ou toque para comparar
+                </figcaption>
+              </figure>
             ) : null}
             <div class="p-6 sm:p-8">
               <p class="font-mono text-xs text-orange-600">CASO 0{index + 1} / DOCUMENTADO</p>

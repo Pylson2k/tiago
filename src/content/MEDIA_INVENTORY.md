@@ -14,6 +14,7 @@ originais devem ser tratados por Astro Assets/Sharp antes do deploy.
 | `tiago-training-editorial.png` | Arquivo legado     | Variante anterior; preservada para comparação, não é o slot atual. |
 | `tiago-hero-composition.webp`  | Hero               | Nova composição gerada com direção editorial 16:9; Tiago à direita e área negativa à esquerda. |
 | `tiago-about-composition.webp` | Sobre/About       | Nova composição gerada 4:5; retrato distinto do Hero com área negativa para texto. |
+| `tiago-training-detail.webp`   | Serviços/treino   | Nova composição gerada 3:2 para cards de programas, com foco na execução. |
 | `gabriel-before.webp`          | Caso Gabriel       | Recorte inicial independente, sem alterar o resultado.    |
 | `gabriel-after.webp`           | Caso Gabriel       | Recorte posterior independente, sem alterar o resultado.  |
 | `tiago-apresentacao.mp4`       | Apresentação       | Gerar poster e versão comprimida.                         |
