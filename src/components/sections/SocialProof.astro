@@ -96,46 +96,34 @@ const { title, intro, cases = [], testimonials = [], disclaimer } = Astro.props;
                 </figcaption>
               </figure>
             ) : item.before && item.after ? (
-              <figure class="relative overflow-hidden bg-zinc-950 p-1 lg:border-r lg:border-zinc-300">
-                <div
-                  class="comparison-reveal"
-                  data-comparison
-                  role="slider"
-                  tabindex="0"
-                  aria-label="Controle de comparação entre antes e depois"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  aria-valuenow="0"
-                >
+              <div class="grid grid-cols-2 gap-2 bg-zinc-950 p-2 lg:border-r lg:border-zinc-300">
+                <figure class="overflow-hidden bg-black">
                   <img
                     src={item.before.src}
                     alt={item.before.alt}
                     loading="lazy"
-                    class="comparison-reveal__sizer"
+                    width="720"
+                    height="2560"
+                    class="h-[clamp(20rem,42vw,30rem)] w-full object-contain"
                   />
+                  <figcaption class="border-t border-white/10 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-400">
+                    Antes
+                  </figcaption>
+                </figure>
+                <figure class="overflow-hidden bg-black">
                   <img
                     src={item.after.src}
                     alt={item.after.alt}
                     loading="lazy"
-                    class="comparison-reveal__layer comparison-reveal__after"
+                    width="720"
+                    height="2560"
+                    class="h-[clamp(20rem,42vw,30rem)] w-full object-contain"
                   />
-                  <div class="comparison-reveal__before" data-comparison-before>
-                    <img
-                      src={item.before.src}
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      class="comparison-reveal__layer"
-                    />
-                  </div>
-                  <span class="comparison-reveal__label comparison-reveal__label--before">Antes</span>
-                  <span class="comparison-reveal__label comparison-reveal__label--after">Depois</span>
-                  <span class="comparison-reveal__handle" aria-hidden="true">↔</span>
-                </div>
-                <figcaption class="px-3 py-3 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-500">
-                  Passe o cursor ou toque para comparar
-                </figcaption>
-              </figure>
+                  <figcaption class="border-t border-white/10 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[.16em] text-zinc-400">
+                    Depois
+                  </figcaption>
+                </figure>
+              </div>
             ) : null}
             <div class="p-6 sm:p-8">
               <p class="font-mono text-xs text-orange-600">CASO 0{index + 1} / DOCUMENTADO</p>
