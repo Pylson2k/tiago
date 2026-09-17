@@ -64,12 +64,15 @@ const {
         </div>
       ) : null}
     </div>
-    <figure class="hero-editorial__media relative mt-12 w-full max-w-3xl overflow-hidden border border-zinc-950/10 bg-zinc-900 shadow-2xl shadow-orange-950/20">
+    <figure class="hero-editorial__media relative mt-12 w-full max-w-6xl overflow-hidden border border-zinc-950/10 bg-zinc-900 shadow-2xl shadow-orange-950/20">
       <img
         src={image}
         alt={imageAlt}
-        class="aspect-[5/6] w-full object-cover grayscale-[15%] transition duration-700 hover:scale-105"
+        width="1672"
+        height="941"
+        class="block aspect-[16/9] w-full object-cover object-center grayscale-[8%] transition duration-700 hover:scale-[1.02]"
         loading="eager"
+        fetchpriority="high"
       />
       <figcaption class="absolute bottom-4 left-4 rounded-full bg-white/85 px-4 py-2 text-xs text-zinc-800 backdrop-blur">
         Registro de atuação profissional

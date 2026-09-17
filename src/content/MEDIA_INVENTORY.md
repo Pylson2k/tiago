@@ -10,8 +10,10 @@ originais devem ser tratados por Astro Assets/Sharp antes do deploy.
 | `gabriel-evolucao.jpeg`        | Caso Gabriel       | Composição estática; requer autorização; não usar slider. |
 | `tiago-portrait.webp`          | Retrato/hero       | Confirmar foto definitiva.                                |
 | `tiago-training.webp`          | Contexto de treino | Confirmar enquadramento e autorização.                    |
-| `tiago-portrait-editorial.png` | Retrato/About      | Variante editorial 4:5, preservando a foto original.      |
-| `tiago-training-editorial.png` | Hero               | Variante editorial 3:2, preservando a foto original.      |
+| `tiago-portrait-editorial.png` | Arquivo legado     | Variante anterior; preservada para comparação, não é o slot atual. |
+| `tiago-training-editorial.png` | Arquivo legado     | Variante anterior; preservada para comparação, não é o slot atual. |
+| `tiago-hero-composition.webp`  | Hero               | Nova composição gerada com direção editorial 16:9; Tiago à direita e área negativa à esquerda. |
+| `tiago-about-composition.webp` | Sobre/About       | Nova composição gerada 4:5; retrato distinto do Hero com área negativa para texto. |
 | `gabriel-before.webp`          | Caso Gabriel       | Recorte inicial independente, sem alterar o resultado.    |
 | `gabriel-after.webp`           | Caso Gabriel       | Recorte posterior independente, sem alterar o resultado.  |
 | `tiago-apresentacao.mp4`       | Apresentação       | Gerar poster e versão comprimida.                         |
