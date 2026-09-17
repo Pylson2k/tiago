@@ -14,8 +14,8 @@ approach:
   - Ajustes periódicos e consistência.
 observedOutcome: As imagens mostram aumento perceptível do volume muscular e maior desenvolvimento geral do físico, especialmente em braços, ombros, pernas e tronco.
 image: assets/gabriel-evolucao.jpeg
-beforeImage: assets/gabriel-before.webp
-afterImage: assets/gabriel-after.webp
+beforeImage: assets/gabriel-before-restored.webp
+afterImage: assets/gabriel-after-restored.webp
 imageAlt: Registros independentes de Gabriel antes e depois, em pose de duplo bíceps frontal.
 mediaTreatment: separate-before-after
 disclaimer: Luz, distância, enquadramento, pose e condições dos registros podem variar; a separação preserva os arquivos originais sem alterar o resultado físico.

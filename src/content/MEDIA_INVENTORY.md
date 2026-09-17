@@ -17,6 +17,12 @@ originais devem ser tratados por Astro Assets/Sharp antes do deploy.
 | `tiago-training-detail.webp`   | Serviços/treino   | Nova composição gerada 3:2 para cards de programas, com foco na execução. |
 | `gabriel-before.webp`          | Caso Gabriel       | Recorte inicial independente, sem alterar o resultado.    |
 | `gabriel-after.webp`           | Caso Gabriel       | Recorte posterior independente, sem alterar o resultado.  |
+| `gabriel-before-restored.webp` | Caso Gabriel       | Restauração fotográfica não generativa; preserva identidade e resultado. |
+| `gabriel-after-restored.webp`  | Caso Gabriel       | Restauração fotográfica não generativa; preserva identidade e resultado. |
+| `caso1-antes-restored.webp`    | Caso 01            | Upscale e tratamento tonal controlado, sem alteração corporal. |
+| `caso1-depois-restored.webp`   | Caso 01            | Upscale e tratamento tonal controlado, sem alteração corporal. |
+| `caso2-antes-restored.webp`    | Caso 02            | Upscale e tratamento tonal controlado, sem alteração corporal. |
+| `caso2-depois-restored.webp`   | Caso 02            | Upscale e tratamento tonal controlado, sem alteração corporal. |
 | `tiago-apresentacao.mp4`       | Apresentação       | Gerar poster e versão comprimida.                         |
 | `video-futebol.mp4`            | Prática esportiva  | Confirmar direito de imagem de todas as pessoas.          |
 
