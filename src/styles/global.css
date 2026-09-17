@@ -270,10 +270,6 @@ header nav a.nav-active {
   }
 }
 
-main.portfolio-flow > #metodo {
-  display: none;
-}
-
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
@@ -288,5 +284,401 @@ main.portfolio-flow > #metodo {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* FitMaster visual system: dark editorial shell with red signal color. */
+:root {
+  --fit-bg: #171313;
+  --fit-surface: #211b1a;
+  --fit-surface-raised: #2a2220;
+  --fit-red: #ef1d25;
+  --fit-red-dark: #b90f18;
+  --fit-text: #f7f2ec;
+  --fit-muted: #b5aaa4;
+  --fit-line: rgb(247 242 236 / 18%);
+}
+
+body {
+  background: var(--fit-bg);
+  color: var(--fit-text);
+}
+
+header#topo {
+  border-color: rgb(247 242 236 / 14%) !important;
+  background: rgb(23 19 19 / 92%) !important;
+  box-shadow: 0 10px 35px rgb(0 0 0 / 24%) !important;
+}
+
+header#topo a,
+header#topo summary {
+  color: var(--fit-text) !important;
+}
+
+header#topo nav a:hover,
+header#topo nav a.nav-active {
+  color: var(--fit-red) !important;
+}
+
+.hero-editorial {
+  min-height: 100svh;
+  background: var(--fit-bg) !important;
+  color: var(--fit-text) !important;
+}
+
+.hero-editorial > div:first-child {
+  background:
+    radial-gradient(circle at 84% 30%, rgb(239 29 37 / 28%), transparent 28%),
+    linear-gradient(115deg, #171313 0%, #251918 100%) !important;
+}
+
+.hero-editorial .editorial-container {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 7rem);
+  min-height: 100svh;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  text-align: left;
+}
+
+.hero-editorial .editorial-container > div:first-of-type {
+  align-items: flex-start;
+  max-width: 42rem;
+}
+
+.hero-editorial .display-title,
+.hero-editorial .editorial-container > div:first-of-type p:not(.eyebrow) {
+  color: var(--fit-text) !important;
+}
+
+.hero-editorial .display-title {
+  max-width: 11ch;
+  font-size: clamp(3.2rem, 6.6vw, 7.25rem) !important;
+  line-height: 0.88 !important;
+  text-transform: uppercase;
+}
+
+.hero-editorial .eyebrow,
+.hero-editorial .eyebrow::before {
+  color: var(--fit-red) !important;
+  background: transparent;
+}
+
+.hero-editorial .editorial-container > div:first-of-type a:first-child {
+  background: var(--fit-red) !important;
+}
+
+.hero-editorial .editorial-container > div:first-of-type a:first-child:hover {
+  background: var(--fit-red-dark) !important;
+}
+
+.hero-editorial .editorial-container > div:first-of-type a:last-child {
+  border-color: rgb(247 242 236 / 30%) !important;
+  color: var(--fit-text) !important;
+}
+
+.hero-editorial__media {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100% !important;
+  max-width: none !important;
+  border: 0 !important;
+  border-radius: 0.35rem;
+  box-shadow: 0 28px 80px rgb(0 0 0 / 34%) !important;
+}
+
+.hero-editorial__media img {
+  aspect-ratio: 4 / 5 !important;
+  min-height: clamp(30rem, 58vw, 48rem);
+  object-position: center 30%;
+  filter: saturate(0.86) contrast(1.08);
+}
+
+.hero-editorial__media figcaption {
+  background: rgb(23 19 19 / 82%) !important;
+  color: var(--fit-text) !important;
+}
+
+main.portfolio-flow > section {
+  scroll-margin-top: 5rem;
+}
+
+main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais'])::before {
+  display: none;
+}
+
+main.portfolio-flow > section:nth-of-type(even),
+#sobre,
+#depoimentos {
+  background: var(--fit-bg) !important;
+  color: var(--fit-text) !important;
+}
+
+main.portfolio-flow > section:nth-of-type(odd):not(#inicio),
+#servicos,
+#provas,
+#conteudo,
+#contato {
+  background: #f1e9e1 !important;
+  color: #1d1716 !important;
+}
+
+main.portfolio-flow > section:nth-of-type(odd):not(#inicio) .display-title,
+#servicos .display-title,
+#provas .display-title,
+#conteudo .display-title,
+#contato .display-title {
+  color: #1d1716 !important;
+}
+
+main.portfolio-flow > section:nth-of-type(even) .display-title,
+#sobre .display-title,
+#depoimentos .display-title {
+  color: var(--fit-text) !important;
+}
+
+.eyebrow {
+  color: var(--fit-red) !important;
+}
+
+.eyebrow::before {
+  background: currentColor;
+}
+
+[aria-label='Diferenciais'] {
+  border-color: var(--fit-line) !important;
+  background: var(--fit-surface) !important;
+}
+
+[aria-label='Diferenciais'] > div,
+[aria-label='Diferenciais'] > div > div {
+  background: transparent !important;
+}
+
+[aria-label='Diferenciais'] > div > div {
+  border-right: 1px solid var(--fit-line);
+}
+
+[aria-label='Diferenciais'] p:first-child {
+  color: var(--fit-red) !important;
+}
+
+[aria-label='Diferenciais'] p:last-child {
+  color: var(--fit-text) !important;
+}
+
+#sobre article,
+#sobre dl > div,
+#servicos article,
+#conteudo article,
+#contato form,
+#provas article,
+#depoimentos figure {
+  border-color: var(--fit-line) !important;
+  border-radius: 0.35rem !important;
+  box-shadow: none !important;
+}
+
+#sobre article {
+  background: var(--fit-surface) !important;
+  color: var(--fit-text) !important;
+}
+
+#sobre article p,
+#sobre dd,
+#sobre li,
+#sobre .text-zinc-600 {
+  color: var(--fit-muted) !important;
+}
+
+#sobre article p:first-child,
+#sobre dt {
+  color: var(--fit-red) !important;
+}
+
+#sobre dl::before {
+  background: var(--fit-red) !important;
+}
+
+#sobre dl > div::before {
+  border-color: var(--fit-bg) !important;
+  background: var(--fit-red) !important;
+  box-shadow: 0 0 0 1px var(--fit-red) !important;
+}
+
+#servicos article,
+#conteudo article {
+  background: #211a19 !important;
+  color: var(--fit-text) !important;
+}
+
+#servicos article h3,
+#conteudo article h3,
+#servicos article p,
+#conteudo article p {
+  color: inherit !important;
+}
+
+#servicos article p,
+#conteudo article p {
+  color: var(--fit-muted) !important;
+}
+
+#servicos article:hover {
+  background: var(--fit-red) !important;
+}
+
+#servicos article:hover p {
+  color: white !important;
+}
+
+#servicos article img {
+  filter: saturate(0.78) contrast(1.05);
+}
+
+#resultados {
+  background: #171313 !important;
+  color: var(--fit-text) !important;
+}
+
+#resultados .display-title,
+#resultados .text-zinc-600,
+#resultados li,
+#resultados figcaption {
+  color: var(--fit-text) !important;
+}
+
+#resultados .text-zinc-600,
+#resultados figcaption {
+  color: var(--fit-muted) !important;
+}
+
+#resultados .bg-zinc-950 {
+  background: #090808 !important;
+}
+
+#provas article {
+  background: #211a19 !important;
+  color: var(--fit-text) !important;
+}
+
+#provas article .text-zinc-600,
+#provas article .text-zinc-500 {
+  color: var(--fit-muted) !important;
+}
+
+#provas article .text-orange-600 {
+  color: var(--fit-red) !important;
+}
+
+.comparison-reveal {
+  height: clamp(19rem, 43vw, 30rem);
+}
+
+#treino-da-semana {
+  background: #0b0909 !important;
+}
+
+#treino-da-semana .workout-card {
+  border-radius: 0.35rem !important;
+}
+
+#treino-da-semana .workout-card:hover,
+#treino-da-semana .workout-card[aria-pressed='true'] {
+  border-color: var(--fit-red) !important;
+  background: rgb(239 29 37 / 15%) !important;
+}
+
+#treino-da-semana .text-blue-300,
+#biomecanica .text-blue-300 {
+  color: #ff656a !important;
+}
+
+#biomecanica {
+  border-color: var(--fit-line) !important;
+  border-radius: 0.35rem !important;
+  background: var(--fit-surface) !important;
+}
+
+#depoimentos figure {
+  background: #211a19 !important;
+}
+
+#depoimentos blockquote,
+#depoimentos figcaption {
+  color: var(--fit-text) !important;
+}
+
+#depoimentos .text-zinc-400,
+#depoimentos .text-zinc-500 {
+  color: var(--fit-muted) !important;
+}
+
+#contato {
+  background: var(--fit-red) !important;
+  color: white !important;
+}
+
+#contato .display-title,
+#contato .text-zinc-600,
+#contato label,
+#contato .text-zinc-400 {
+  color: white !important;
+}
+
+#contato a,
+#contato form {
+  border-color: rgb(255 255 255 / 45%) !important;
+}
+
+#contato input,
+#contato textarea,
+#contato select {
+  border-color: rgb(255 255 255 / 45%) !important;
+  background: rgb(0 0 0 / 12%) !important;
+  color: white !important;
+}
+
+#contato button {
+  background: #171313 !important;
+  color: white !important;
+}
+
+@media (max-width: 900px) {
+  .hero-editorial .editorial-container {
+    display: flex;
+    min-height: auto;
+    padding-top: 8rem;
+    text-align: left;
+  }
+
+  .hero-editorial .editorial-container > div:first-of-type {
+    align-items: flex-start;
+  }
+
+  .hero-editorial__media {
+    margin-top: 1.5rem;
+  }
+
+  .hero-editorial__media img {
+    min-height: 30rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-editorial .display-title {
+    max-width: 10ch;
+    font-size: clamp(2.8rem, 14vw, 4.6rem) !important;
+  }
+
+  [aria-label='Diferenciais'] > div > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--fit-line);
+  }
+
+  .comparison-reveal {
+    height: 22rem;
   }
 }

@@ -5,7 +5,7 @@ name: Tiago Gomes Filadelfo
 role: Graduando em Educação Física e treinador
 headline: Treino inteligente. Evolução que você consegue sustentar.
 summary: Planejamento individualizado para acompanhar objetivos, execução e consistência no treinamento.
-portrait: assets/tiago-about-composition.webp
+portrait: assets/tiago-portrait.webp
 facts:
   - label: Formação
     value: Graduação em Educação Física — em andamento
