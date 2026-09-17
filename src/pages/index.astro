@@ -259,14 +259,14 @@ const testimonialImages = [
         <a class="transition hover:text-white" href="#sobre">
           Sobre mim
         </a>
+        <a class="transition hover:text-white" href="#servicos">
+          Serviços
+        </a>
         <a class="transition hover:text-white" href="#resultados">
           Resultados
         </a>
         <a class="transition hover:text-white" href="#conteudo">
           Conteúdo educativo
-        </a>
-        <a class="transition hover:text-white" href="#servicos">
-          Serviços
         </a>
         <a class="transition hover:text-white" href="#depoimentos">
           Depoimentos
@@ -293,14 +293,14 @@ const testimonialImages = [
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#sobre">
               Sobre mim
             </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#servicos">
+              Serviços
+            </a>
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#resultados">
               Resultados
             </a>
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#conteudo">
               Conteúdo educativo
-            </a>
-            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#servicos">
-              Serviços
             </a>
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#depoimentos">
               Depoimentos
@@ -486,6 +486,33 @@ Essa é uma das principais ideias que orientam meu trabalho.`}
   </footer>
 
   <script is:inline>
+    const portfolioMain = document.querySelector('main.portfolio-flow');
+    if (portfolioMain) {
+      const hero = portfolioMain.querySelector('#inicio');
+      const trust = portfolioMain.querySelector('[aria-label="Diferenciais"]');
+      const chapterIds = [
+        'sobre',
+        'servicos',
+        'resultados',
+        'provas',
+        'conteudo',
+        'videos',
+        'treino-da-semana',
+        'depoimentos',
+        'contato',
+      ];
+      const chapters = chapterIds
+        .map((id) => document.getElementById(id))
+        .filter((section) => section instanceof HTMLElement);
+      if (hero && trust && chapters.length === chapterIds.length) {
+        portfolioMain.append(hero, trust, ...chapters);
+        const hashTarget = window.location.hash.slice(1);
+        if (hashTarget) {
+          requestAnimationFrame(() => document.getElementById(hashTarget)?.scrollIntoView());
+        }
+      }
+    }
+
     const progress = document.createElement('div');
     progress.id = 'portfolio-progress';
     progress.setAttribute('aria-hidden', 'true');

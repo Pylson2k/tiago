@@ -20,6 +20,48 @@ body {
   font-family: var(--font-sans);
 }
 
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+.editorial-container {
+  width: min(100% - 2.5rem, var(--container-editorial));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-accent);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 1.8rem;
+  height: 1px;
+  background: currentColor;
+  content: '';
+}
+
+.display-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.07em;
+}
+
+.hero-editorial__media::after {
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgb(255 255 255 / 30%);
+  content: '';
+  pointer-events: none;
+}
+
 /* Camada editorial: ritmo, foco e feedback visual consistentes em todo o portfólio. */
 main.portfolio-flow > section {
   scroll-margin-top: 5.5rem;
@@ -49,6 +91,10 @@ main.portfolio-flow article:hover {
   transform: translateY(-2px);
 }
 
+main.portfolio-flow section {
+  isolation: isolate;
+}
+
 #conteudo article:hover,
 #servicos article:hover {
   border-color: color-mix(in srgb, var(--color-accent) 38%, transparent);
@@ -58,6 +104,28 @@ main.portfolio-flow article:hover {
 #provas article figure img,
 #resultados figure img {
   transition: transform 400ms ease;
+}
+
+.scratch-reveal {
+  touch-action: pan-y;
+}
+
+.scratch-reveal__foreground {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 120ms ease-out;
+  will-change: clip-path;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .scratch-reveal:hover .scratch-reveal__foreground {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scratch-reveal__foreground {
+    transition: none;
+  }
 }
 
 #provas article:hover figure img,
@@ -116,42 +184,24 @@ header nav a.nav-active {
 }
 
 @media (max-width: 640px) {
+  .editorial-container {
+    width: min(100% - 2rem, var(--container-editorial));
+  }
+
   main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais'])::before {
     inset-inline: 1.25rem;
   }
+
+  .hero-editorial__media {
+    margin-right: 0;
+    transform: none;
+  }
+
+  .hero-editorial__media::after {
+    inset: 0.75rem;
+  }
 }
 
-/* Ordem acadêmica fixa do portfólio: cada capítulo segue o contrato de conteúdo. */
-main.portfolio-flow {
-  display: flex;
-  flex-direction: column;
-}
-
-main.portfolio-flow > #inicio,
-main.portfolio-flow > section[aria-label='Diferenciais'] {
-  order: 1;
-}
-main.portfolio-flow > #sobre {
-  order: 2;
-}
-main.portfolio-flow > #servicos {
-  order: 3;
-}
-main.portfolio-flow > #resultados,
-main.portfolio-flow > #provas {
-  order: 4;
-}
-main.portfolio-flow > #conteudo,
-main.portfolio-flow > #videos,
-main.portfolio-flow > #treino-da-semana {
-  order: 5;
-}
-main.portfolio-flow > #depoimentos {
-  order: 6;
-}
-main.portfolio-flow > #contato {
-  order: 7;
-}
 main.portfolio-flow > #metodo {
   display: none;
 }
