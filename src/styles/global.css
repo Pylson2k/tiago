@@ -209,16 +209,6 @@ main.portfolio-flow section {
   position: relative;
 }
 
-#sobre dl::before {
-  position: absolute;
-  top: 0.9rem;
-  bottom: 0.9rem;
-  left: 0.85rem;
-  width: 1px;
-  background: #d4d4d8;
-  content: '';
-}
-
 #sobre dl > div {
   position: relative;
   padding-left: 1.75rem;
@@ -491,9 +481,6 @@ main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais'])::bef
 #sobre article p:first-child,
 #sobre dt {
   color: var(--fit-red);
-}
-#sobre dl::before {
-  background: var(--fit-red);
 }
 #sobre dl > div::before {
   border-color: var(--fit-bg);
