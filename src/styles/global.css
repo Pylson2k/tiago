@@ -414,32 +414,36 @@ main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais'])::bef
   display: none;
 }
 
-main.portfolio-flow > section:nth-of-type(even),
+#inicio,
 #sobre,
+#resultados,
+#treino-da-semana,
 #depoimentos {
   background: var(--fit-bg) !important;
   color: var(--fit-text) !important;
 }
 
-main.portfolio-flow > section:nth-of-type(odd):not(#inicio),
 #servicos,
+#metodo,
 #provas,
-#conteudo,
-#contato {
+#videos,
+#conteudo {
   background: #f5f5f2 !important;
   color: #11151b !important;
 }
 
-main.portfolio-flow > section:nth-of-type(odd):not(#inicio) .display-title,
 #servicos .display-title,
+#metodo .display-title,
 #provas .display-title,
+#videos .display-title,
 #conteudo .display-title,
 #contato .display-title {
   color: #11151b !important;
 }
 
-main.portfolio-flow > section:nth-of-type(even) .display-title,
 #sobre .display-title,
+#resultados .display-title,
+#treino-da-semana .display-title,
 #depoimentos .display-title {
   color: var(--fit-text) !important;
 }
@@ -515,28 +519,33 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 
 #servicos article,
 #conteudo article {
-  background: #151922 !important;
-  color: var(--fit-text) !important;
+  background: white !important;
+  color: #11151b !important;
 }
 
 #servicos article h3,
-#conteudo article h3,
-#servicos article p,
-#conteudo article p {
-  color: inherit !important;
+#servicos article h4,
+#conteudo article h3 {
+  color: #11151b !important;
 }
 
 #servicos article p,
 #conteudo article p {
-  color: var(--fit-muted) !important;
+  color: #52525b !important;
 }
 
 #servicos article:hover {
-  background: var(--fit-red) !important;
+  background: var(--fit-surface) !important;
+  color: var(--fit-text) !important;
+}
+
+#servicos article:hover h3,
+#servicos article:hover h4 {
+  color: var(--fit-text) !important;
 }
 
 #servicos article:hover p {
-  color: white !important;
+  color: var(--fit-muted) !important;
 }
 
 #servicos article img {
