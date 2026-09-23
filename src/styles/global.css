@@ -213,7 +213,7 @@ main.portfolio-flow section {
   position: absolute;
   top: 0.9rem;
   bottom: 0.9rem;
-  left: 0.35rem;
+  left: 0.85rem;
   width: 1px;
   background: #d4d4d8;
   content: '';
@@ -221,13 +221,13 @@ main.portfolio-flow section {
 
 #sobre dl > div {
   position: relative;
-  padding-left: 1.35rem;
+  padding-left: 1.75rem;
 }
 
 #sobre dl > div::before {
   position: absolute;
   top: 0.85rem;
-  left: 0;
+  left: 0.55rem;
   width: 0.7rem;
   height: 0.7rem;
   border: 2px solid white;
