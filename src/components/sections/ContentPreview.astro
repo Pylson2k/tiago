@@ -50,22 +50,6 @@ const { title, intro, items } = Astro.props;
               ? 'Espaço reservado para um próximo conteúdo educativo.'
               : item.description}
           </p>
-          {item.modal ? (
-            <button
-              type="button"
-              data-content-trigger={`content-modal-${i}`}
-              class="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-zinc-950 underline decoration-blue-500 underline-offset-4"
-            >
-              Ler estudo completo →
-            </button>
-          ) : item.href ? (
-            <a
-              href={item.href}
-              class="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-zinc-950 underline decoration-blue-500 underline-offset-4"
-            >
-              Ler conteúdo →
-            </a>
-          ) : null}
           {item.modal && (
             <dialog
               id={`content-modal-${i}`}
