@@ -57,13 +57,15 @@ const services = [
   },
   {
     title: 'Planejamento personalizado',
-    description: '[Texto a inserir: trabalho voltado para hipertrofia e emagrecimento.]',
+    description:
+      'Planejamento de exercícios, volume e progressão organizado de acordo com o objetivo e a rotina de cada aluno.',
     detail: 'Sob medida',
     image: '/assets/tiago-portrait.webp',
     imageAlt: 'Retrato editorial de Tiago no ambiente de treinamento',
     modal: {
       title: 'Planejamento personalizado',
-      description: '[Texto a inserir: abordagem para hipertrofia e emagrecimento.]',
+      description:
+        'A escolha dos estímulos considera o momento atual, a resposta ao treino e a construção de uma evolução sustentável.',
       points: [
         'Escolha de exercícios com intenção',
         'Progressão de volume e estímulos',
@@ -73,13 +75,15 @@ const services = [
   },
   {
     title: 'Avaliação e acompanhamento',
-    description: '[Texto a inserir: avaliação, acompanhamento e critérios de ajuste.]',
+    description:
+      'O acompanhamento observa a execução, a adaptação ao programa e os sinais que orientam os próximos ajustes.',
     detail: 'Acompanhamento',
     image: '/assets/tiago-training.webp',
     imageAlt: 'Detalhe de execução técnica em treinamento',
     modal: {
       title: 'Avaliação e acompanhamento',
-      description: '[Texto a inserir: como são feitas a avaliação e o acompanhamento.]',
+      description:
+        'A avaliação e os feedbacks ao longo do processo ajudam a manter o treino claro, seguro e conectado ao objetivo.',
       points: [
         'Avaliação do momento atual',
         'Orientação de execução',
@@ -93,22 +97,22 @@ const steps = [
   {
     number: '01',
     title: 'Conhecer',
-    description: '[Texto a inserir: etapa conhecer.]',
+    description: 'Entender objetivo, rotina, experiência e o momento atual do aluno.',
   },
   {
     number: '02',
     title: 'Planejar',
-    description: '[Texto a inserir: etapa planejar.]',
+    description: 'Organizar exercícios, volume, intensidade e progressões com intenção.',
   },
   {
     number: '03',
     title: 'Acompanhar',
-    description: '[Texto a inserir: etapa acompanhar.]',
+    description: 'Observar a execução e acompanhar como o corpo responde aos estímulos.',
   },
   {
     number: '04',
     title: 'Ajustar',
-    description: '[Texto a inserir: etapa ajustar.]',
+    description: 'Refinar o plano com base na evolução, na rotina e na consistência possível.',
   },
 ];
 
@@ -165,13 +169,14 @@ const contentItems = [
   {
     type: 'Treino',
     title: 'Progressão não é apenas colocar mais peso',
-    description: '[Texto a inserir: conteúdo educativo sobre treinamento.]',
+    description:
+      'Um olhar prático sobre técnica, progressão e escolhas que tornam o treino mais eficiente.',
     href: '#treino-da-semana',
   },
   {
     type: 'Rotina',
     title: 'Um treino que cabe na vida tem mais chance de continuar',
-    description: '[Texto a inserir: conteúdo complementar.]',
+    description: 'Estratégias para construir uma rotina de treino que seja possível manter.',
   },
 ];
 
@@ -286,20 +291,26 @@ const testimonialImages = [
         <a class="transition hover:text-white" href="#servicos">
           Serviços
         </a>
+        <a class="transition hover:text-white" href="#treino-da-semana">
+          Treino
+        </a>
+        <a class="transition hover:text-white" href="#metodo">
+          Método
+        </a>
         <a class="transition hover:text-white" href="#resultados">
           Resultados
-        </a>
-        <a class="transition hover:text-white" href="#conteudo">
-          Conteúdo educativo
-        </a>
-        <a class="transition hover:text-white" href="#depoimentos">
-          Depoimentos
         </a>
         <a class="transition hover:text-white" href="#contato">
           Contato
         </a>
       </nav>
       <div class="flex shrink-0 items-center gap-2">
+        <a
+          href="#contato"
+          class="hidden min-h-10 items-center justify-center rounded-full bg-blue-600 px-4 text-xs font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 lg:inline-flex"
+        >
+          Falar com Tiago
+        </a>
         <details class="group relative lg:hidden">
           <summary
             class="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-300 [&::-webkit-details-marker]:hidden"
@@ -319,6 +330,12 @@ const testimonialImages = [
             </a>
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#servicos">
               Serviços
+            </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#treino-da-semana">
+              Treino
+            </a>
+            <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#metodo">
+              Método
             </a>
             <a class="rounded-xl px-4 py-3 hover:bg-white/10" href="#resultados">
               Resultados
@@ -345,6 +362,8 @@ const testimonialImages = [
       description="Este portfólio reúne a trajetória, a formação, a filosofia de treino e registros da atuação de Tiago no campo do treinamento físico."
       image="/assets/tiago-training.webp"
       imageAlt="Tiago em uma composição editorial no ambiente de treinamento"
+      primaryHref="#servicos"
+      primaryLabel="Conhecer o trabalho"
       secondaryHref="#resultados"
       secondaryLabel="Consultar registros"
     />
@@ -389,7 +408,9 @@ O resultado pode ser observado na evolução apresentada nas imagens, com aument
       cards={[
         {
           title: 'Apresentação do trabalho',
-          description: 'Card reservado para um novo vídeo de apresentação do acompanhamento.',
+          description:
+            'Uma apresentação sobre o trabalho, a formação e a forma como o acompanhamento é construído.',
+          src: '/assets/provas/tiago-apresentacao.mp4',
         },
         {
           title: 'Esportes coletivos',
@@ -439,7 +460,7 @@ O objetivo não é simplesmente fazer o aluno “gastar calorias”, mas constru
     />
     <Method
       title="Metodologia de trabalho"
-      intro="[Texto a inserir: como o Tiago estrutura, acompanha e ajusta o treinamento.]"
+      intro="O trabalho começa pela compreensão do momento atual, passa por um planejamento claro e evolui com acompanhamento e ajustes contínuos."
       steps={steps}
     />
     <About
@@ -485,7 +506,7 @@ Essa é uma das principais ideias que orientam meu trabalho.`}
     />
     <ContentPreview
       title="Conteúdo educativo"
-      intro="[Texto a inserir: artigo ou post sobre biomecânica e análise do movimento.]"
+      intro="Conteúdos para entender melhor treinamento, movimento e as decisões por trás de uma evolução consistente."
       items={contentItems}
     />
     <Testimonials
@@ -546,7 +567,7 @@ Essa é uma das principais ideias que orientam meu trabalho.`}
 
     const updateProgress = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
+      progress.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;
     };
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();

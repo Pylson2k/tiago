@@ -18,6 +18,9 @@ body {
   background: var(--color-ink);
   color: var(--color-paper);
   font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -238,10 +241,12 @@ main.portfolio-flow section {
   position: fixed;
   inset: 0 auto auto 0;
   z-index: 60;
-  width: 0;
+  width: 100%;
   height: 3px;
   background: var(--color-accent);
-  transition: width 80ms linear;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 80ms linear;
 }
 
 header nav a.nav-active {
@@ -591,15 +596,8 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
   background: rgb(74 83 255 / 15%) !important;
 }
 
-#treino-da-semana .text-blue-300,
-#biomecanica .text-blue-300 {
+#treino-da-semana .text-blue-300 {
   color: #8f96ff !important;
-}
-
-#biomecanica {
-  border-color: var(--fit-line) !important;
-  border-radius: 0.35rem !important;
-  background: var(--fit-surface) !important;
 }
 
 #depoimentos figure {
@@ -644,6 +642,73 @@ main.portfolio-flow > section:nth-of-type(even) .display-title,
 #contato button {
   background: #0b0d10 !important;
   color: white !important;
+}
+
+/* Shared interaction and responsive quality floor. */
+main.portfolio-flow a,
+main.portfolio-flow button,
+main.portfolio-flow summary,
+main.portfolio-flow select,
+main.portfolio-flow input,
+main.portfolio-flow textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+main.portfolio-flow button:active,
+main.portfolio-flow a:active {
+  transform: translateY(1px);
+}
+
+main.portfolio-flow section > .editorial-container,
+main.portfolio-flow section > div.mx-auto {
+  position: relative;
+}
+
+#sobre article,
+#servicos article,
+#conteudo article,
+#provas article,
+#depoimentos figure,
+#contato form {
+  border-radius: 1rem !important;
+}
+
+#servicos article:hover {
+  background: var(--fit-surface-raised) !important;
+  color: var(--fit-text) !important;
+}
+
+#servicos article:hover h3,
+#servicos article:hover p {
+  color: inherit !important;
+}
+
+#treino-da-semana .workout-card,
+#treino-da-semana > div > div > div:last-child {
+  border-radius: 1rem !important;
+}
+
+@media (max-width: 767px) {
+  .editorial-container {
+    width: min(100% - 2rem, var(--container-editorial));
+  }
+
+  main.portfolio-flow > section {
+    scroll-margin-top: 4.5rem;
+  }
+
+  main.portfolio-flow > section > .editorial-container,
+  main.portfolio-flow > section > div.mx-auto {
+    max-width: 42rem;
+  }
+
+  .hero-editorial .editorial-container {
+    padding-top: 7rem;
+  }
+
+  #contato form {
+    padding: 1.25rem;
+  }
 }
 
 @media (max-width: 900px) {
