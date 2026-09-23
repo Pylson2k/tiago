@@ -292,16 +292,21 @@ header nav a.nav-active {
   }
 }
 
-/* FitMaster visual system: dark editorial shell with red signal color. */
+/* FitMaster visual system: one explicit surface contract for every section. */
 :root {
   --fit-bg: #0b0d10;
   --fit-surface: #151922;
-  --fit-surface-raised: #1d2330;
+  --fit-surface-raised: #202735;
+  --fit-light: #f4f4f1;
+  --fit-light-surface: #ffffff;
   --fit-red: #4a53ff;
   --fit-red-dark: #343bd1;
   --fit-text: #f5f5f2;
   --fit-muted: #a3a9b2;
+  --fit-light-text: #11151b;
+  --fit-light-muted: #52525b;
   --fit-line: rgb(245 245 242 / 16%);
+  --fit-light-line: #d4d4d8;
 }
 
 body {
@@ -310,31 +315,31 @@ body {
 }
 
 header#topo {
-  border-color: rgb(245 245 242 / 14%) !important;
-  background: rgb(11 13 16 / 92%) !important;
-  box-shadow: 0 10px 35px rgb(0 0 0 / 24%) !important;
+  border-color: rgb(245 245 242 / 14%);
+  background: rgb(11 13 16 / 92%);
+  box-shadow: 0 10px 35px rgb(0 0 0 / 24%);
 }
 
 header#topo a,
 header#topo summary {
-  color: var(--fit-text) !important;
+  color: var(--fit-text);
 }
 
 header#topo nav a:hover,
 header#topo nav a.nav-active {
-  color: var(--fit-red) !important;
+  color: var(--fit-red);
 }
 
 .hero-editorial {
   min-height: 100svh;
-  background: var(--fit-bg) !important;
-  color: var(--fit-text) !important;
+  background: var(--fit-bg);
+  color: var(--fit-text);
 }
 
 .hero-editorial > div:first-child {
   background:
     radial-gradient(circle at 84% 30%, rgb(74 83 255 / 30%), transparent 28%),
-    linear-gradient(115deg, #0b0d10 0%, #151922 100%) !important;
+    linear-gradient(115deg, #0b0d10 0%, #151922 100%);
 }
 
 .hero-editorial .editorial-container {
@@ -352,305 +357,246 @@ header#topo nav a.nav-active {
   align-items: flex-start;
   max-width: 42rem;
 }
-
 .hero-editorial .display-title,
 .hero-editorial .editorial-container > div:first-of-type p:not(.eyebrow) {
-  color: var(--fit-text) !important;
+  color: var(--fit-text);
 }
-
 .hero-editorial .display-title {
   max-width: 11ch;
-  font-size: clamp(3.2rem, 6.6vw, 7.25rem) !important;
-  line-height: 0.88 !important;
+  font-size: clamp(3.2rem, 6.6vw, 7.25rem);
+  line-height: 0.88;
   text-transform: uppercase;
 }
-
 .hero-editorial .eyebrow,
 .hero-editorial .eyebrow::before {
-  color: var(--fit-red) !important;
+  color: var(--fit-red);
   background: transparent;
 }
-
 .hero-editorial .editorial-container > div:first-of-type a:first-child {
-  background: var(--fit-red) !important;
+  background: var(--fit-red);
 }
-
 .hero-editorial .editorial-container > div:first-of-type a:first-child:hover {
-  background: var(--fit-red-dark) !important;
+  background: var(--fit-red-dark);
 }
-
 .hero-editorial .editorial-container > div:first-of-type a:last-child {
-  border-color: rgb(245 245 242 / 30%) !important;
-  color: var(--fit-text) !important;
+  border-color: rgb(245 245 242 / 30%);
+  color: var(--fit-text);
 }
 
 .hero-editorial__media {
   grid-column: 2;
   grid-row: 1;
-  width: 100% !important;
-  max-width: none !important;
-  border: 0 !important;
+  width: 100%;
+  max-width: none;
+  border: 0;
   border-radius: 0.35rem;
-  box-shadow: 0 28px 80px rgb(0 0 0 / 34%) !important;
+  box-shadow: 0 28px 80px rgb(0 0 0 / 34%);
 }
 
 .hero-editorial__media img {
-  aspect-ratio: 4 / 5 !important;
+  aspect-ratio: 4 / 5;
   min-height: clamp(30rem, 58vw, 48rem);
   object-position: center 30%;
   filter: saturate(0.86) contrast(1.08);
 }
-
 .hero-editorial__media figcaption {
-  background: rgb(11 13 16 / 82%) !important;
-  color: var(--fit-text) !important;
+  background: rgb(11 13 16 / 82%);
+  color: var(--fit-text);
 }
 
 main.portfolio-flow > section {
   scroll-margin-top: 5rem;
 }
-
 main.portfolio-flow > section:not(#inicio):not([aria-label='Diferenciais'])::before {
   display: none;
 }
 
+/* Section themes are explicit; component utilities cannot create accidental contrast failures. */
 #inicio,
 #sobre,
 #resultados,
 #treino-da-semana,
 #depoimentos {
-  background: var(--fit-bg) !important;
-  color: var(--fit-text) !important;
+  background: var(--fit-bg);
+  color: var(--fit-text);
 }
 
-#servicos,
 #metodo,
+#servicos,
 #provas,
 #videos,
 #conteudo {
-  background: #f5f5f2 !important;
-  color: #11151b !important;
+  background: var(--fit-light);
+  color: var(--fit-light-text);
 }
 
-#servicos .display-title,
+#contato {
+  background: var(--fit-red);
+  color: white;
+}
+
 #metodo .display-title,
+#servicos .display-title,
 #provas .display-title,
 #videos .display-title,
-#conteudo .display-title,
-#contato .display-title {
-  color: #11151b !important;
+#conteudo .display-title {
+  color: var(--fit-light-text);
 }
 
 #sobre .display-title,
 #resultados .display-title,
 #treino-da-semana .display-title,
-#depoimentos .display-title {
-  color: var(--fit-text) !important;
+#depoimentos .display-title,
+#contato .display-title {
+  color: var(--fit-text);
 }
 
 .eyebrow {
-  color: var(--fit-red) !important;
+  color: var(--fit-red);
 }
-
 .eyebrow::before {
   background: currentColor;
 }
 
 [aria-label='Diferenciais'] {
-  border-color: var(--fit-line) !important;
-  background: var(--fit-surface) !important;
+  border-color: var(--fit-line);
+  background: var(--fit-surface);
 }
-
 [aria-label='Diferenciais'] > div,
 [aria-label='Diferenciais'] > div > div {
-  background: transparent !important;
+  background: transparent;
 }
-
 [aria-label='Diferenciais'] > div > div {
   border-right: 1px solid var(--fit-line);
 }
-
 [aria-label='Diferenciais'] p:first-child {
-  color: var(--fit-red) !important;
+  color: var(--fit-red);
 }
-
 [aria-label='Diferenciais'] p:last-child {
-  color: var(--fit-text) !important;
+  color: var(--fit-text);
 }
 
-#sobre article,
-#sobre dl > div,
-#servicos article,
-#conteudo article,
-#contato form,
-#provas article,
-#depoimentos figure {
-  border-color: var(--fit-line) !important;
-  border-radius: 0.35rem !important;
-  box-shadow: none !important;
-}
-
+/* Dark surface components. */
 #sobre article {
-  background: var(--fit-surface) !important;
-  color: var(--fit-text) !important;
+  background: var(--fit-surface);
+  color: var(--fit-text);
+  border-color: var(--fit-line);
 }
-
 #sobre article p,
 #sobre dd,
 #sobre li,
 #sobre .text-zinc-600 {
-  color: var(--fit-muted) !important;
+  color: var(--fit-muted);
 }
-
 #sobre article p:first-child,
 #sobre dt {
-  color: var(--fit-red) !important;
+  color: var(--fit-red);
 }
-
 #sobre dl::before {
-  background: var(--fit-red) !important;
+  background: var(--fit-red);
 }
-
 #sobre dl > div::before {
-  border-color: var(--fit-bg) !important;
-  background: var(--fit-red) !important;
-  box-shadow: 0 0 0 1px var(--fit-red) !important;
-}
-
-#servicos article,
-#conteudo article {
-  background: white !important;
-  color: #11151b !important;
-}
-
-#servicos article h3,
-#servicos article h4,
-#conteudo article h3 {
-  color: #11151b !important;
-}
-
-#servicos article p,
-#conteudo article p {
-  color: #52525b !important;
-}
-
-#servicos article:hover {
-  background: var(--fit-surface) !important;
-  color: var(--fit-text) !important;
-}
-
-#servicos article:hover h3,
-#servicos article:hover h4 {
-  color: var(--fit-text) !important;
-}
-
-#servicos article:hover p {
-  color: var(--fit-muted) !important;
-}
-
-#servicos article img {
-  filter: saturate(0.78) contrast(1.05);
-}
-
-#resultados {
-  background: #0b0d10 !important;
-  color: var(--fit-text) !important;
+  border-color: var(--fit-bg);
+  background: var(--fit-red);
+  box-shadow: 0 0 0 1px var(--fit-red);
 }
 
 #resultados .display-title,
-#resultados .text-zinc-600,
-#resultados li,
-#resultados figcaption {
-  color: var(--fit-text) !important;
+#resultados li {
+  color: var(--fit-text);
 }
-
 #resultados .text-zinc-600,
 #resultados figcaption {
-  color: var(--fit-muted) !important;
+  color: var(--fit-muted);
 }
-
 #resultados .bg-zinc-950 {
-  background: #090808 !important;
-}
-
-#provas article {
-  background: #151922 !important;
-  color: var(--fit-text) !important;
-}
-
-#provas article .text-zinc-600,
-#provas article .text-zinc-500 {
-  color: var(--fit-muted) !important;
-}
-
-#provas article .text-orange-600 {
-  color: var(--fit-red) !important;
-}
-
-.comparison-reveal {
-  height: clamp(19rem, 43vw, 30rem);
-}
-
-#treino-da-semana {
-  background: #080a0d !important;
-}
-
-#treino-da-semana .workout-card {
-  border-radius: 0.35rem !important;
+  background: #090808;
 }
 
 #treino-da-semana .workout-card:hover,
 #treino-da-semana .workout-card[aria-pressed='true'] {
-  border-color: var(--fit-red) !important;
-  background: rgb(74 83 255 / 15%) !important;
+  border-color: var(--fit-red);
+  background: rgb(74 83 255 / 15%);
 }
-
 #treino-da-semana .text-blue-300 {
-  color: #8f96ff !important;
+  color: #8f96ff;
 }
 
 #depoimentos figure {
-  background: #151922 !important;
+  background: var(--fit-surface);
+  border-color: var(--fit-line);
 }
-
-#depoimentos blockquote,
-#depoimentos figcaption {
-  color: var(--fit-text) !important;
+#depoimentos blockquote {
+  color: var(--fit-text);
 }
-
+#depoimentos figcaption,
 #depoimentos .text-zinc-400,
-#depoimentos .text-zinc-500 {
-  color: var(--fit-muted) !important;
+#depoimentos .text-zinc-500,
+#depoimentos .text-zinc-800 {
+  color: var(--fit-muted);
 }
 
-#contato {
-  background: var(--fit-red) !important;
-  color: white !important;
+/* Light surface components. */
+#servicos article,
+#conteudo article,
+#provas article {
+  background: var(--fit-light-surface);
+  color: var(--fit-light-text);
+  border-color: var(--fit-light-line);
+}
+#servicos article h3,
+#servicos article h4,
+#conteudo article h3,
+#provas article h3 {
+  color: var(--fit-light-text);
+}
+#servicos article p,
+#conteudo article p,
+#provas article .text-zinc-600,
+#provas article .text-zinc-500 {
+  color: var(--fit-light-muted);
+}
+#servicos article:hover {
+  background: var(--fit-surface);
+  color: var(--fit-text);
+}
+#servicos article:hover h3,
+#servicos article:hover h4 {
+  color: var(--fit-text);
+}
+#servicos article:hover p {
+  color: var(--fit-muted);
+}
+#servicos article img {
+  filter: saturate(0.78) contrast(1.05);
+}
+#provas article .text-orange-600 {
+  color: var(--fit-red);
+}
+.comparison-reveal {
+  height: clamp(19rem, 43vw, 30rem);
 }
 
 #contato .display-title,
 #contato .text-zinc-600,
 #contato label,
 #contato .text-zinc-400 {
-  color: white !important;
+  color: white;
 }
-
 #contato a,
 #contato form {
-  border-color: rgb(255 255 255 / 45%) !important;
+  border-color: rgb(255 255 255 / 45%);
 }
-
 #contato input,
 #contato textarea,
 #contato select {
-  border-color: rgb(255 255 255 / 45%) !important;
-  background: rgb(0 0 0 / 12%) !important;
-  color: white !important;
+  border-color: rgb(255 255 255 / 45%);
+  background: rgb(0 0 0 / 12%);
+  color: white;
 }
-
 #contato button {
-  background: #0b0d10 !important;
-  color: white !important;
+  background: #0b0d10;
+  color: white;
 }
 
 /* Shared interaction and responsive quality floor. */
@@ -662,39 +608,26 @@ main.portfolio-flow input,
 main.portfolio-flow textarea {
   -webkit-tap-highlight-color: transparent;
 }
-
 main.portfolio-flow button:active,
 main.portfolio-flow a:active {
   transform: translateY(1px);
 }
-
 main.portfolio-flow section > .editorial-container,
 main.portfolio-flow section > div.mx-auto {
   position: relative;
 }
-
 #sobre article,
 #servicos article,
 #conteudo article,
 #provas article,
 #depoimentos figure,
-#contato form {
-  border-radius: 1rem !important;
+#contato form,
+#treino-da-semana .workout-card {
+  border-radius: 1rem;
+  box-shadow: none;
 }
-
-#servicos article:hover {
-  background: var(--fit-surface-raised) !important;
-  color: var(--fit-text) !important;
-}
-
-#servicos article:hover h3,
-#servicos article:hover p {
-  color: inherit !important;
-}
-
-#treino-da-semana .workout-card,
 #treino-da-semana > div > div > div:last-child {
-  border-radius: 1rem !important;
+  border-radius: 1rem;
 }
 
 @media (max-width: 767px) {
